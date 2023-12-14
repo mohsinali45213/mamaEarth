@@ -6,6 +6,7 @@ const Header = () => {
   return (
     <div className='header'>
       <div className='header-top'>
+        <img id="openNav" src="src/assets/Images/menu-burger.png" alt="" />
         <img id='logo' src="src/assets/Images/mamaearth_logo.png" alt="logo" />
         <div className='search'>
           <input type="search-input" />
@@ -25,7 +26,7 @@ const Header = () => {
         </div>
       </div>
       <div className='navbar'>
-        <ul>
+        <ul id='navbar-ul'>
           <li><Link id='navItem' to="/">Home</Link></li>
           <li><Link id='navItem' to="/">Hair</Link></li>
           <li><Link id='navItem' to="/">Face</Link></li>
