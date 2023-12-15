@@ -1,8 +1,28 @@
 import React from 'react'
-
+import Cart from '../Components/Cart'
+import "../Style/Home.css"
 const Home = () => {
+  const product ={
+    img:"/src/assets/Images/1.jpg",
+    description:"Onion Hair Oil for Hair Regrowth and Hair Fall Control, 250ml",
+    info:"Boosts Hair Growth | Adds Strength & Shine",
+    price:"₹349.00"
+  }
   return (
-    <div style={{height:"200vh"}}>Home</div>
+    <div className='allProduct'>
+      <Cart  img={product.img} description={product.description} info={product.info} price={product.price} />
+      <Cart  img={product.img} description={product.description} info={product.info} price={product.price} />
+      <Cart  img={product.img} description={product.description} info={product.info} price={product.price} />
+      <Cart  img={product.img} description={product.description} info={product.info} price={product.price} />
+      <Cart  img={product.img} description={product.description} info={product.info} price={product.price} />
+      <Cart  img={product.img} description={product.description} info={product.info} price={product.price} />
+      <Cart  img={product.img} description={product.description} info={product.info} price={product.price} />
+      <Cart  img={product.img} description={product.description} info={product.info} price={product.price} />
+      <Cart  img={product.img} description={product.description} info={product.info} price={product.price} />
+      <Cart  img={product.img} description={product.description} info={product.info} price={product.price} />
+      <Cart  img={product.img} description={product.description} info={product.info} price={product.price} />
+      <Cart  img={product.img} description={product.description} info={product.info} price={product.price} />
+    </div>
   )
 }
 

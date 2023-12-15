@@ -10,10 +10,10 @@
   display: none;
 }
 .header{
-  box-shadow: 0 0 5px rgba(128, 128, 128, 0.663);
+  box-shadow: 0 0 5px rgba(128, 128, 128, 0.7);
   position:sticky;
   z-index:1;
-  background-color: white;
+  background-color:white;
   top: 0;
 }
 .header-top {
@@ -25,7 +25,7 @@
 }
 
 #logo {
-  width: 100px;
+  width: 155px;
 }
 #icon {
   width: 24px;
@@ -44,7 +44,7 @@
 }
 span {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   gap: 5px;
 }
 .search {
@@ -56,13 +56,15 @@ span {
   padding:9px;
   border: 1px solid lightgray;
   outline: none;
+  border-radius:  20px 0 0 20px;
 }
 .search button {
-  width: 6%;
+  width: 5%;
   padding:6px 0 3px 0;
   border: 1px solid lightgray;
   position: absolute;
   font-size: 1.1rem;
+  border-radius:  0 20px 20px 0;
 }
 
 /* Navbar */
@@ -129,7 +131,7 @@ li {
     padding-bottom: 2.5rem;
   }
   #logo{
-    width: 90px;
+    width: 105px;
   }
   #icon{
     width: 20px;
