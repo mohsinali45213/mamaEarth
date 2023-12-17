@@ -21,7 +21,6 @@
   .allProduct{
     grid-template-columns: auto auto;
     padding: 1rem;
-    background-color: rgb(234, 234, 231);
   }
   #price{
     display: block;
@@ -32,7 +31,6 @@
     grid-template-columns: auto auto ;
     gap:.8rem;
     padding:.8rem;
-    margin: 16px;
   }
 }
 
