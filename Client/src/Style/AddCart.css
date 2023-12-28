@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-img{
+.container img{
   width: 85px;
 }
 .container{
@@ -26,7 +26,8 @@ img{
   display: flex;
   align-items: center;
   gap: 1rem;
-  color: rgb(9, 174, 239);
+  /* color: rgb(9, 174, 239); */
+  color: var(--color);
   padding: .8rem;
   box-shadow: 0 0 5px gray;
   margin-bottom: .2rem;
@@ -59,7 +60,7 @@ img{
 }
 .count-container{
   display: flex;
-  border: rgb(0, 153, 255) 2px solid;
+  border:var(--color) 1px solid;
   padding:.3rem 0;
   align-items: center;
 }
@@ -68,4 +69,23 @@ img{
   background-color: transparent;
   border: none;
   margin: 0 1rem;
+}
+
+@media screen and (max-width: 420px) {
+  .container.container.open{
+    width: 100%;
+  }
+  .container img{
+    width: 75px;
+  }
+  .info-container h5{
+    font-size: .7rem;
+  }
+  .price-container span{
+    font-size: .9rem;
+  }
+  .count-container{
+    padding: 2px;
+    border: var(--color) solid 1px ;
+  }
 }

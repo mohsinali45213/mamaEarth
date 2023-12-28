@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../Style/AddCart.css";
-const AddCart = ({ slid ,setSlid}) => {
+const AddCart = ({ slide ,setSlide,}) => {
   const [count, setCount] = useState(1);
   const increment = () => {
     setCount(count + 1);
@@ -11,9 +11,9 @@ const AddCart = ({ slid ,setSlid}) => {
     }
   };
   return (
-    <div className={`container ${slid ? "open" : ""}`}>
+    <div className={`container ${slide ? "open" : ""}`}>
       <div className="head-container">
-        <i onClick={()=>setSlid(false)} className="fa-solid fa-arrow-left"></i>
+        <i onClick={()=>setSlide(false)} className="fa-solid fa-arrow-left"></i>
         <h3>My Cart</h3>
       </div>
       <div className="cart-container">

@@ -1,5 +1,6 @@
 :root {
   --font: Arial, Helvetica, sans-serif;
+  --color: rgb(0, 183, 255);
 }
 li {
   cursor: pointer;
@@ -34,6 +35,7 @@ li {
 }
 #icon {
   width: 24px;
+  color: var(--color)
 }
 #search {
   width: 20px;
@@ -69,6 +71,8 @@ input:focus {
   width: 5%;
   padding: 6px 0 3px 0;
   border: 1px solid lightgray;
+  border-left: none;
+  background-color: var(--color);
   position: absolute;
   font-size: 1.1rem;
   border-radius: 0 20px 20px 0;
@@ -132,7 +136,7 @@ div.open {
   padding: 1rem;
   gap: 1rem;
   text-wrap: nowrap;
-  background-color: rgb(52, 198, 255);
+  background-color: var(--color)
 }
 .user-name {
   padding: 2rem 0 0 0;
@@ -157,7 +161,7 @@ div.open {
 }
 .order-detail ul li i {
   font-size: 1rem;
-  color: rgb(52, 198, 255);
+  color: var(--color)
 }
 .order-detail ul li span {
   text-wrap: nowrap;
@@ -178,7 +182,7 @@ div.open {
   .nav-info {
     display: flex;
     gap: 1rem;
-    background-color: rgb(52, 198, 255);
+    background-color: var(--color);
     padding: 1rem;
     text-wrap: nowrap;
   }
@@ -229,7 +233,7 @@ div.open {
     justify-self: flex-end;
   }
   .icons {
-    margin-left: 35%;
+    margin-left: 30%;
   }
   #openNav {
     width: 18px;
