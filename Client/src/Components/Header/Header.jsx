@@ -12,17 +12,18 @@ const Header = () => {
 
   useEffect(() => {
     const clickHandler = (event) => {
-      if (
-        !event.target.closest("#btnAccount") &&
-        !event.target.closest(".account-detail")
-      ) {
-        setIsOpen2(false);
-      }
+
       if (
         !event.target.closest("#openNav") &&
         !event.target.closest(".navbar")
       ) {
         setIsOpen1(false);
+      }
+      if (
+        !event.target.closest("#btnAccount") &&
+        !event.target.closest(".account-detail")
+      ) {
+        setIsOpen2(false);
       }
       if (
         !event.target.closest("#btnCart") &&
@@ -31,9 +32,7 @@ const Header = () => {
         setIsOpen3(false);
       }
     };
-
     document.addEventListener("click", clickHandler);
-
     return () => {
       document.removeEventListener("click", clickHandler);
     };
