@@ -20,11 +20,9 @@ const allCategory=async()=>{
   }
 }
 
-allCategory();
-
-const singleCategory =async()=>{
+const singleCategory =async(slug)=>{
   try {
-    const single  = await axios.get("/category/face")
+    const single  = await axios.get(`/category/${slug}`)
     console.log(single.data);
     return single.data
   } catch (error) {
@@ -32,10 +30,41 @@ const singleCategory =async()=>{
   }
 }
 
-const updateCategory=async ()=>{
+const updateCategory=async (slug)=>{
   try {
-    const update = await axios.put("/")
+    const update = await axios.put(`/category/${slug}`)
+    console.log(update.data);
+    return update.data
   } catch (error) {
-    
+    console.log("Category Is not Update");
   }
+}
+
+const removeCategory=async (slug)=>{
+  try {
+    const remove = await axios.delete(`/category/${slug}`)
+    console.log(remove.data);
+    return remove.data
+  } catch (error) {
+    console.log("Category Is not Delete");
+  }
+}
+
+const getSubs =async (parentID) =>{
+  try {
+    const subs  = await axios.get(`/categories/subs/${parentID}`)
+    console.log(subs.data);
+    return subs.data
+  } catch (error) {
+    console.log("Subs is not get..");
+  }
+}
+
+export{
+  createCategory,
+  removeCategory,
+  updateCategory,
+  getSubs,
+  allCategory,
+  singleCategory
 }

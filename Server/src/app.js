@@ -8,14 +8,20 @@ import categoryRoutes from "./routes/category.routes.js";
 import subCategoryRoutes from "./routes/subcategory.routes.js";
 import productRoutes from "./routes/product.routes.js";
 const app = express();
-
-app.use(express.json());
-app.use(cookieParser());
-
 //.env configuration
 dotenv.config({
   path: "../.env",
 });
+
+// app.use(
+//   cors({
+//     origin: process.env.CORS_ORIGIN,
+//     credentials: true,
+//   })
+// );
+app.use(express.json());
+app.use(cookieParser());
+
 
 //Database Connection call
 connectDB()
@@ -28,8 +34,6 @@ connectDB()
     console.log("MongoDB Connection Failed", err);
   });
 
-// cors configuration
-app.use(cors());
 
 //Routes
 app.use("/api/v1/users", userRoutes);
