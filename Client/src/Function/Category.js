@@ -12,7 +12,7 @@ const createCategory = async(name)=>{
 
 const allCategory=async()=>{
   try {
-    const list  = await axios.get("/categories")
+    const list  = await axios.get("http://localhost:3000/api/v1/categories")
     console.log(list.data);
     return list.data
   } catch (error) {

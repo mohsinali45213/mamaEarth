@@ -15,7 +15,8 @@ const productRoutes = Router();
 
 productRoutes.post("/product", upload.single('userImage'), createProduct);
 productRoutes.get("/products/total", productsCount);
-productRoutes.get("/products/:count", allProduct );
+productRoutes.get("/products", allProduct );
+// productRoutes.get("/products/:count", allProduct );
 productRoutes.delete("/product/:slug", removeProduct);
 productRoutes.get("/product/:slug", readProduct);
 productRoutes.put("/product/:slug", upload.single('userImage'),updateProduct);

@@ -24,7 +24,6 @@ const createProduct= async (req, res) => {
 
 const allProduct = async (req, res) => {
   let products = await Product.find({})
-    .limit(parseInt(req.params.count))
     .populate('category')
     .populate('subs')
     .sort([['createdAt', 'desc']]);

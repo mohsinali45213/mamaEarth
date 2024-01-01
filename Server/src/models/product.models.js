@@ -16,6 +16,12 @@ const productSchema = new mongoose.Schema(
       lowercase: true,
       index: true,
     },
+    about:{
+     type:String,
+    },
+    info:{
+      type:String
+    },
     description: {
       type: String,
       required: true,
