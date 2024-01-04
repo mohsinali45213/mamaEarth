@@ -21,7 +21,7 @@ const createCategory = async (req,res) => {
 
 //List of All Category
 const listCategory = async (req, res) => {
-  const categories = await Category.find({}).sort({ createdAt: -1 }).exec();
+  const categories = await Category.find({}).sort({ createdAt: 1 }).exec();
   res.json(categories);
 };
 
@@ -58,6 +58,7 @@ const removeCategory = async (req, res) => {
     res.status(400).send("Category deleted failed");
   }
 };
+
 const getSubs = async (req, res) => {
   const subs = await SubCategory.find({ parent: req.params._id });
   res.json(subs);

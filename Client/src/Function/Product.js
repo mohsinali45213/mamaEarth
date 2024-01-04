@@ -55,6 +55,3 @@ export {
   allProduct,
   singleProduct,
 };
-
-
-console.log(process.env.API_URL);

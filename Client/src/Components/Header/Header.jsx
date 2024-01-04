@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, Link, useLocation } from "react-router-dom";
+import { useNavigate, Link, useLocation, Outlet } from "react-router-dom";
 import "./Header.css";
 import AddCart from "../../Page/AddCart";
-
+import { allCategory } from "../../Function/Category.js";
 const Header = () => {
   const location = useLocation();
 
@@ -10,9 +10,24 @@ const Header = () => {
   const [isOpen2, setIsOpen2] = useState(false);
   const [isOpen3, setIsOpen3] = useState(false);
 
+
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const categoriesData = await allCategory();
+        setCategories(categoriesData);
+      } catch (error) {
+        console.log("getCategory Failed");
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
   useEffect(() => {
     const clickHandler = (event) => {
-
       if (
         !event.target.closest("#openNav") &&
         !event.target.closest(".navbar")
@@ -44,6 +59,7 @@ const Header = () => {
     setIsOpen3(false);
   }, [location.pathname]);
 
+  
   return (
     <div className="header">
       <div className="header-top">
@@ -81,47 +97,14 @@ const Header = () => {
               <h5>9834342134</h5>
             </div>
           </div>
-
-          <li>
-            <Link id="navItem" to="/">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link id="navItem" to="/">
-              Hair
-            </Link>
-          </li>
-          <li>
-            <Link id="navItem" to="/">
-              Face
-            </Link>
-          </li>
-          <li>
-            <Link id="navItem" to="/">
-              Body
-            </Link>
-          </li>
-          <li>
-            <Link id="navItem" to="/">
-              MakeUp
-            </Link>
-          </li>
-          <li>
-            <Link id="navItem" to="/">
-              Ingredient
-            </Link>
-          </li>
-          <li>
-            <Link id="navItem" to="/">
-              Baby
-            </Link>
-          </li>
-          <li>
-            <Link id="navItem" to="/">
-              All Products
-            </Link>
-          </li>
+          <li><Link to="/" id="navItem">Home</Link></li>
+          {categories?.map((category) => (
+            <li key={category._id}>
+              <Link id="navItem" to={`/category/${category.slug}`}>
+                {category.name}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
 
@@ -159,6 +142,7 @@ const Header = () => {
         </div>
       </div>
       <AddCart slide={isOpen3} setSlide={setIsOpen3} />
+     
     </div>
   );
 };

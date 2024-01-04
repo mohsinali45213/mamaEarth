@@ -21,7 +21,7 @@ const createSubCategory = async (req, res) => {
 
 //List of All subCategory
 const listSubCategory = async (req, res) => {
-  const subs = await SubCategory.find({}).sort({ createAt: -1 }).exec();
+  const subs = await SubCategory.find({}).sort({ createAt: 1 }).exec();
   res.json(subs);
 };
 

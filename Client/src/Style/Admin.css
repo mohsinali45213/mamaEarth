@@ -1,0 +1,123 @@
+:root {
+  --fontColor: rgba(255, 255, 255, 0.603);
+  --bg1: #242424;
+  --bg2: 484848;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ---HEADER--- */
+
+.main-container {
+  display: flex;
+}
+#title {
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.181);
+  letter-spacing: 2px;
+}
+.left-container {
+  letter-spacing: 1px;
+  background-color: var(--bg1);
+  height: 100vh;
+  font-weight: 600;
+  width: fit-content;
+  text-transform: uppercase;
+  color: var(--fontColor);
+  border-right: 1px solid rgba(255, 255, 255, 0.082);
+}
+.left-container ul {
+  font-size: 0.8rem;
+}
+.left-container ul li {
+  list-style: none;
+  cursor: pointer;
+  transition: all ease 0.2s;
+}
+.left-container ul li:hover {
+  background-color: var(--bg2);
+}
+#link {
+  padding: 1.3rem 4.5rem 1.3rem 2rem;
+  width: 100%;
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.603);
+  text-decoration: none;
+}
+.right-container {
+  width: 100%;
+  padding: 1rem 1rem 0 1rem;
+  background-color: var(--bg1);
+}
+
+/* ---HEADER--- */
+
+/* ---TABLE--- */
+
+table {
+  box-shadow: 0 0 5px #282828;
+  border-spacing: 0;
+  color: var(--fontColor);
+  font-weight: 600;
+  text-align: start;
+  padding: 1rem;
+  border-radius: 5px;
+  border: 1px rgba(255, 255, 255, 0.132) solid;
+  cursor: pointer;
+}
+th {
+  font-family: "Courier New", Courier, monospace;
+  padding: 1rem 0;
+}
+thead tr {
+  background-color: #282828;
+}
+td {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: "Courier New", Courier, monospace;
+}
+tbody tr {
+  background-color: #454545;
+}
+
+tbody td i {
+  margin: 0 1rem;
+}
+.c-container button,
+.sub-container button {
+  padding: 0.8rem 2.5rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  color: var(--fontColor);
+  background-color: #353535;
+  border: none;
+  gap: 0.4rem;
+  font-weight: 700;
+  border: 1px rgba(255, 255, 255, 0.132) solid;
+}
+tbody tr:hover,button:hover{
+  background-color:#424242 ;
+}
+thead th:first-child{
+  border-radius: 5px 0 0 0;
+}
+thead th:last-child{
+  border-radius:0 5px 0 0;
+}
+tbody tr:last-child td:first-child{
+  border-radius: 0 0 0 5px;
+}
+tbody tr:last-child td:last-child{
+  border-radius:0 0 5px 0;
+}
+/* ---TABLE--- */
