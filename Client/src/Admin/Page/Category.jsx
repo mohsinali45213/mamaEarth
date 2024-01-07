@@ -11,11 +11,10 @@ import Loading from "../../Page/Loading";
 const Category = () => {
   const [category, setCategory] = useState();
   const [isDeletePopup,setIsDeletePopup] = useState(false);
-  // const [name, setName] = useState("");
   const [slug,setSlug] = useState("")
   useEffect(() => {
     fetchCategory();
-  }, []);
+  }, [""]);
 
   const fetchCategory = async () => {
     const result = await allCategory();
@@ -23,14 +22,9 @@ const Category = () => {
   };
 
   const insertCategory =async (name) =>{
-    if(!name){
-      return alert('Please input category name')
-    }
     await createCategory(name);
-    setName("")
     fetchCategory();
   }
-
   const putCategory = async(slug,name)=>{
     const result  =  await updateCategory(slug,name)
     fetchCategory();

@@ -7,6 +7,7 @@ import slugify from "slugify";
 const createCategory = async (req,res) => {
   try {
     const { name } = req.body;
+    console.log(name);
     const category = new Category({
       name,
       slug: slugify(name),

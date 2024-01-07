@@ -17,19 +17,22 @@ const SubCategory = () => {
 
   useEffect(() => {
     fetchSubCategory();
-  }, []);
+  }, [isInsUpPopup]);
 
   const fetchSubCategory = async () => {
     const result = await allSubCategory();
     setSubCategory(result.reverse());
   };
 
-  const insertSubCategory =async (e,name,id) =>{
-    console.log(name,id);
-    // e.preventDefault()
-    // await createSubCategory(name,id);
-    // fetchSubCategory();
-    setIsInsUpPopup(true)
+  const insertSubCategory =async(name,id) =>{
+    await createSubCategory(name,id)
+    fetchSubCategory()
+    setIsInsUpPopup(false)
+  }
+
+  const putSubCategory =async(slug,name,id)=>{
+   await updateSubCategory(slug,name,id)
+   fetchSubCategory()
   }
 
   const deleteSubCategory = async (slug) => {
@@ -58,7 +61,9 @@ const SubCategory = () => {
               <td>{i + 1}</td>
               <td>{cat?.name}</td>
               <td>
-                <i onClick={()=>setIsInsUpPopup(true)} className="fa-solid fa-pen-to-square"></i>
+                <i onClick={()=>{
+                  setIsInsUpPopup(true)
+                }} className="fa-solid fa-pen-to-square"></i>
                 <i onClick={()=>{
                   setIsDeletePopup(true);
                   setSlug(cat?.slug)
@@ -69,9 +74,8 @@ const SubCategory = () => {
         </tbody>
       </table>
       {isDeletePopup&&<DeletePopup setOpen={setIsDeletePopup} deleteCategory={deleteSubCategory} slug={slug}/>}
-      {isInsUpPopup&&<CategoriesPopup setOpen={setIsInsUpPopup}
-      InUpCategory={insertSubCategory}
-     
+      {isInsUpPopup&&<CategoriesPopup setOpen={setIsInsUpPopup} insertCategory={insertSubCategory}
+      title={{one:"1",two:"2"}}
       />}
     </div>
   );

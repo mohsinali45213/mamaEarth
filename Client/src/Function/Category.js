@@ -9,7 +9,6 @@ const createCategory = async (name) => {
     console.log("Category is not created::", error);
   }
 };
-createCategory("saesdf")
 const allCategory = async () => {
   try {
     const list = await axios.get(`http://localhost:3000/api/v1/categories`);
@@ -58,7 +57,6 @@ const getSubs = async (parentID) => {
     console.log("Subs is not get..");
   }
 };
-
 export {
   createCategory,
   removeCategory,

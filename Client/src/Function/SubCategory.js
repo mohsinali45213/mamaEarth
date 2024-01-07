@@ -4,12 +4,12 @@ const createSubCategory = async (name, parent) => {
   try {
     const createSub = await axios.post(`http://localhost:3000/api/v1/sub`, {name, parent});
     console.log(createSub.data);
-    return createSub.data;
+    return createSub.data;  
   } catch (error) {
     console.log("SubCategory is not Created");
   }
 };
-createSubCategory("nothinsdg","659966d0c59c4c65620504ea")
+
 const allSubCategory = async () => {
   try {
     const allSub = await axios.get(`http://localhost:3000/api/v1/subs`);
@@ -30,9 +30,9 @@ const singleSubCategory = async (slug) => {
   }
 };
 
-const updateSubCategory = async (slug) => {
+const updateSubCategory = async (slug,name,parent) => {
   try {
-    const updateSub = await axios.put(`http://localhost:3000/api/v1/sub/${slug}`);
+    const updateSub = await axios.put(`http://localhost:3000/api/v1/sub/${slug}`,{name,parent});
     console.log(updateSub.data);
     return updateSub.data;
   } catch (error) {
