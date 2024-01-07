@@ -7,13 +7,15 @@ import {
 } from "../../Function/SubCategory";
 import Loading from "../../Page/Loading";
 import DeletePopup from "../../Components/DeletePopup";
-import CategoriesPopup from "../../Components/CategoriesPopup";
+import SubCategoriesPopup from "../../Components/SubCategoriesPopup";
 
 const SubCategory = () => {
   const [subCategory, setSubCategory] = useState();
   const [isDeletePopup,setIsDeletePopup] = useState(false);
   const [isInsUpPopup,setIsInsUpPopup] = useState(false)
-  const [slug,setSlug] = useState()
+  const [parentId,setParentId] = useState("")
+  const [slug,setSlug] = useState("")
+  const [subCategoryName,setSubCategoryName] = useState("")
 
   useEffect(() => {
     fetchSubCategory();
@@ -33,6 +35,8 @@ const SubCategory = () => {
   const putSubCategory =async(slug,name,id)=>{
    await updateSubCategory(slug,name,id)
    fetchSubCategory()
+   setIsInsUpPopup(false)
+   setSubCategoryName("")
   }
 
   const deleteSubCategory = async (slug) => {
@@ -44,7 +48,10 @@ const SubCategory = () => {
   };
   return (
     <div className="c-container">
-      <button id='btnNew' onClick={()=>setIsInsUpPopup(true)}>
+      <button id='btnNew' onClick={()=>{
+        setIsInsUpPopup(true)
+        setSubCategoryName("")
+      }}>
         <i className="fa-solid fa-circle-plus"></i> New
       </button>
       <table>
@@ -63,6 +70,9 @@ const SubCategory = () => {
               <td>
                 <i onClick={()=>{
                   setIsInsUpPopup(true)
+                  setSlug(cat?.slug)
+                  setParentId(cat?._id)
+                  setSubCategoryName(cat.name)
                 }} className="fa-solid fa-pen-to-square"></i>
                 <i onClick={()=>{
                   setIsDeletePopup(true);
@@ -74,7 +84,7 @@ const SubCategory = () => {
         </tbody>
       </table>
       {isDeletePopup&&<DeletePopup setOpen={setIsDeletePopup} deleteCategory={deleteSubCategory} slug={slug}/>}
-      {isInsUpPopup&&<CategoriesPopup setOpen={setIsInsUpPopup} insertCategory={insertSubCategory}
+      {isInsUpPopup&&<SubCategoriesPopup setOpen={setIsInsUpPopup} insertCategory={insertSubCategory} putSubCategory={putSubCategory} slug={slug}parents={parentId} setSlug={setSlug} name={subCategoryName}
       title={{one:"1",two:"2"}}
       />}
     </div>

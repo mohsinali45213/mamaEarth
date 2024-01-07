@@ -10,7 +10,6 @@ import Header from "./Components/Header/Header";
 import Home from "./Page/Home";
 
 const App = () => {
-  
   return (
     <div>
       <BrowserRouter>
@@ -26,7 +25,6 @@ const App = () => {
           >
             <Route path="/" element={<Home />} />
           </Route>
-
 
           <Route path="/admin" element={<Head />}>
             <Route path="/admin/products" element={<Products />} />

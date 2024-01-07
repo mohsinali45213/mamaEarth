@@ -31,6 +31,9 @@ const singleSubCategory = async (slug) => {
 };
 
 const updateSubCategory = async (slug,name,parent) => {
+  console.log(slug);
+  console.log(name);
+  console.log(parent);
   try {
     const updateSub = await axios.put(`http://localhost:3000/api/v1/sub/${slug}`,{name,parent});
     console.log(updateSub.data);

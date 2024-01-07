@@ -7,27 +7,33 @@ import {
 } from "../../Function/Category";
 import DeletePopup from "../../Components/DeletePopup";
 import Loading from "../../Page/Loading";
+import CatPopup from "../../Components/CatPopup";
 
 const Category = () => {
   const [category, setCategory] = useState();
   const [isDeletePopup,setIsDeletePopup] = useState(false);
+  const [isInsUpPopup,setIsInsUpPopup] = useState(false)
   const [slug,setSlug] = useState("")
+  const [name,setName] =useState("")
+
   useEffect(() => {
     fetchCategory();
-  }, [""]);
+  }, [isInsUpPopup]);
 
   const fetchCategory = async () => {
     const result = await allCategory();
     setCategory(result.reverse());
   };
 
-  const insertCategory =async (name) =>{
-    await createCategory(name);
+  const insertCategory =async (CategoryName) =>{
+    await createCategory(CategoryName);
     fetchCategory();
+    setIsInsUpPopup(false)
   }
-  const putCategory = async(slug,name)=>{
-    const result  =  await updateCategory(slug,name)
+  const putCategory = async(slug,CategoryName)=>{
+      await updateCategory(slug,CategoryName)
     fetchCategory();
+    setIsInsUpPopup(false)
   }
 
   const deleteCategory = async (slug) => {
@@ -42,7 +48,7 @@ const Category = () => {
     category?
     
     <div className="c-container">
-      <button id='btnNew'>
+      <button id='btnNew' onClick={()=>setIsInsUpPopup(true)}>
         <i className="fa-solid fa-circle-plus"></i> New
       </button><br />
       <table>
@@ -59,7 +65,11 @@ const Category = () => {
               <td>{i + 1}</td>
               <td>{cat?.name}</td>
               <td>
-                <i className="fa-solid fa-pen-to-square"></i>
+                <i onClick={()=>{
+                  setIsInsUpPopup(true)
+                  setSlug(cat.slug)
+                  setName(cat.name)
+                  }} className="fa-solid fa-pen-to-square"></i>
                 <i onClick={()=>{
                 setIsDeletePopup(true)
                 setSlug(cat?.slug)
@@ -71,6 +81,12 @@ const Category = () => {
         </tbody>
       </table>
       {isDeletePopup&&<DeletePopup setOpen={setIsDeletePopup} deleteCategory={deleteCategory} slug={slug}/>}
+      {isInsUpPopup&&<CatPopup setOpen={setIsInsUpPopup} insertCategory={insertCategory}
+      putCategory={putCategory}
+      name={name}
+      slug={slug}
+      setSlug={setSlug}
+      />}
     </div>
     :<><Loading/></>
   );

@@ -3,25 +3,26 @@ import { allCategory } from "../Function/Category";
 import MidBox from "./MidBox";
 import "../Style/MidBox.css";
 
-const CategoriesPopup = ({ setOpen,insertCategory,title}) => {
+const SubCategoriesPopup = ({ setOpen,insertCategory,putSubCategory,slug,setSlug,name,parents,title}) => {
   const [category,setCategory]  = useState()
   const [categoryName,setCategoryName] = useState("")
   const [parentId,setParentId] = useState("")
 
   useEffect(() => {
     fetchCategory();
+    setCategoryName(name)
   }, []);
   
   const fetchCategory = async () => {
     const result = await allCategory();
     setCategory(result.reverse());
   };
-  
   return (
     <MidBox>
         <div className="cat-container">
-          <h5>Insert category you want to add</h5>
+          <h5>Insert subcategory you want to add</h5>
           <input type="text" value={categoryName} onChange={(e)=>setCategoryName(e.target.value)} />
+
           <select value={parentId} onChange={(e)=>setParentId(e.target.value)}>
           <option value="" disabled>Select a category</option>
             {category?.map((cat) => (
@@ -31,14 +32,23 @@ const CategoriesPopup = ({ setOpen,insertCategory,title}) => {
             ))}
           </select>
           <div>
-            <button onClick={() => setOpen(false)} id="btn-left">
+            <button onClick={() =>{
+              setOpen(false)
+              setSlug("")
+            } } id="btn-left">
               Cancel
             </button>
-            <button onClick={()=>insertCategory(categoryName,parentId)} id="btn-right">Save</button>
+            {
+              slug?
+              <button onClick={()=>putSubCategory(slug,categoryName,parentId)} id="btn-right">Update</button>
+              :
+              <button onClick={()=>insertCategory(categoryName,parentId)} id="btn-right">Save</button>
+            }
+
           </div>
         </div>
     </MidBox>
   );
 };
 
-export default CategoriesPopup;
+export default SubCategoriesPopup;
