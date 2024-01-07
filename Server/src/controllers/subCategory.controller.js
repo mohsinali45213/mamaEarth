@@ -6,14 +6,13 @@ import slugify from "slugify";
 const createSubCategory = async (req, res) => {
   try {
     const { name, parent } = req.body;
-    console.log(req.body);
-    // const sub = new SubCategory({
-    //   name,
-    //   slug: slugify(name),
-    //   parent,
-    // }).save();
+    const sub = new SubCategory({
+      name,
+      slug: slugify(name),
+      parent,
+    }).save();
 
-    // res.json({ sub });
+    res.json({ sub });
   } catch (error) {
     console.log("Subcategory create error---->", error);
     res.status(400).send("Creating sub-category failed");
