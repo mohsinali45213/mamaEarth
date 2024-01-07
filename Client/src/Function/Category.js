@@ -2,14 +2,13 @@ import axios from "axios";
 
 const createCategory = async (name) => {
   try {
-    const create = await axios.post(`http://localhost:3000/api/v1/category`, name);
+    const create = await axios.post(`http://localhost:3000/api/v1/category`,{name});
     console.log("Category is created");
     return create.data;
   } catch (error) {
     console.log("Category is not created::", error);
   }
 };
-
 const allCategory = async () => {
   try {
     const list = await axios.get(`http://localhost:3000/api/v1/categories`);
@@ -29,9 +28,9 @@ const singleCategory = async (slug) => {
   }
 };
 
-const updateCategory = async (slug) => {
+const updateCategory = async (slug,name) => {
   try {
-    const update = await axios.put(`http://localhost:3000/api/v1/category/${slug}`);
+    const update = await axios.put(`http://localhost:3000/api/v1/category/${slug}`,{name});
     console.log(update.data);
     return update.data;
   } catch (error) {

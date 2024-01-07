@@ -1,15 +1,15 @@
 import axios from "axios";
 
-const createSubCategory = async (name, parentID) => {
+const createSubCategory = async (name, parent) => {
   try {
-    const createSub = await axios.post(`http://localhost:3000/api/v1/sub`, name, parentID);
+    const createSub = await axios.post(`http://localhost:3000/api/v1/sub`, {name, parent});
     console.log(createSub.data);
     return createSub.data;
   } catch (error) {
     console.log("SubCategory is not Created");
   }
 };
-
+createSubCategory("nothinsdg","659966d0c59c4c65620504ea")
 const allSubCategory = async () => {
   try {
     const allSub = await axios.get(`http://localhost:3000/api/v1/subs`);

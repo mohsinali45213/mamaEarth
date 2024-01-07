@@ -1,7 +1,7 @@
 import axios from "axios";
 const createProduct = async (productDetail) => {
   try {
-    const product = await axios.post(`/product`, productDetail);
+    const product = await axios.post(`http://localhost:3000/api/v1/product`, productDetail);
     return product.data;
     console.log(product.data);
   } catch (error) {

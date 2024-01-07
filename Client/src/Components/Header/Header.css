@@ -60,7 +60,7 @@ li {
   padding-left: 2rem;
 }
 .search input,
-input:focus {
+.search input:focus {
   width: 70%;
   padding: 9px;
   border: 1px solid lightgray;
@@ -215,6 +215,7 @@ div.open {
   }
   #navItem {
     color: rgb(70, 70, 70);
+    padding-left: 1rem;
   }
 }
 

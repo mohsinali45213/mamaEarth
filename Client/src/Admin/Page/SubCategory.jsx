@@ -5,9 +5,15 @@ import {
   createSubCategory,
   updateSubCategory,
 } from "../../Function/SubCategory";
+import Loading from "../../Page/Loading";
+import DeletePopup from "../../Components/DeletePopup";
+import CategoriesPopup from "../../Components/CategoriesPopup";
 
 const SubCategory = () => {
   const [subCategory, setSubCategory] = useState();
+  const [isDeletePopup,setIsDeletePopup] = useState(false);
+  const [isInsUpPopup,setIsInsUpPopup] = useState(false)
+  const [slug,setSlug] = useState()
 
   useEffect(() => {
     fetchSubCategory();
@@ -16,19 +22,26 @@ const SubCategory = () => {
   const fetchSubCategory = async () => {
     const result = await allSubCategory();
     setSubCategory(result.reverse());
-    console.log(result);
   };
 
+  const insertSubCategory =async (e,name,id) =>{
+    console.log(name,id);
+    // e.preventDefault()
+    // await createSubCategory(name,id);
+    // fetchSubCategory();
+    setIsInsUpPopup(true)
+  }
 
   const deleteSubCategory = async (slug) => {
-    if(window.confirm(slug)){
-      
+    const result = await removeSubCategory(slug);
+    fetchSubCategory()
+    if(result){
+      setIsDeletePopup(false)
     }
   };
-  
   return (
     <div className="c-container">
-      <button>
+      <button id='btnNew' onClick={()=>setIsInsUpPopup(true)}>
         <i className="fa-solid fa-circle-plus"></i> New
       </button>
       <table>
@@ -36,22 +49,30 @@ const SubCategory = () => {
           <tr>
             <th>ID</th>
             <th>Name</th>
-            <th></th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
           {subCategory?.map((cat, i) => (
-            <tr key={cat._id}>
+            <tr key={cat?._id}>
               <td>{i + 1}</td>
-              <td>{cat.name}</td>
+              <td>{cat?.name}</td>
               <td>
-                <i className="fa-solid fa-pen-to-square"></i>
-                <i onClick={()=>deleteSubCategory(cat.slug)} className="fa-solid fa-trash"></i>
+                <i onClick={()=>setIsInsUpPopup(true)} className="fa-solid fa-pen-to-square"></i>
+                <i onClick={()=>{
+                  setIsDeletePopup(true);
+                  setSlug(cat?.slug)
+                }} className="fa-solid fa-trash"></i>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      {isDeletePopup&&<DeletePopup setOpen={setIsDeletePopup} deleteCategory={deleteSubCategory} slug={slug}/>}
+      {isInsUpPopup&&<CategoriesPopup setOpen={setIsInsUpPopup}
+      InUpCategory={insertSubCategory}
+     
+      />}
     </div>
   );
 };

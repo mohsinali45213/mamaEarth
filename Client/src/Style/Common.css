@@ -1,0 +1,19 @@
+#loading {
+  position: absolute;
+  width: 30px;
+  height:30px;
+  border-radius: 50%;
+  border: 4px solid rgb(215, 215, 215);
+  border-right: 4px solid darkcyan;
+  animation: load 1.5s infinite linear;
+  top: 48%;
+  left: 48%;
+}
+@keyframes load {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -6,6 +6,7 @@ const createProduct= async (req, res) => {
   try {
     console.log('Product Body=> ', req.body);
     req.body.slug = slugify(req.body.title);
+    // const photo = req.file;
     const product = await new Product(req.body).save();
     res.status(200).json({
       success: true,

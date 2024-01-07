@@ -1,7 +1,7 @@
 :root {
   --fontColor: rgba(255, 255, 255, 0.603);
   --bg1: #242424;
-  --bg2: 484848;
+  --bg2: #484848;
 }
 
 * {
@@ -39,13 +39,13 @@
 .left-container ul li {
   list-style: none;
   cursor: pointer;
-  transition: all ease 0.2s;
+  transition: all ease 0.3s;
 }
 .left-container ul li:hover {
-  background-color: var(--bg2);
+  background-color:var(--bg2);
 }
 #link {
-  padding: 1.3rem 4.5rem 1.3rem 2rem;
+  padding: 1.2rem 4.5rem 1rem 2rem;
   width: 100%;
   display: inline-block;
   color: rgba(255, 255, 255, 0.603);
@@ -66,11 +66,12 @@ table {
   border-spacing: 0;
   color: var(--fontColor);
   font-weight: 600;
-  text-align: start;
+  text-align: center;
   padding: 1rem;
   border-radius: 5px;
   border: 1px rgba(255, 255, 255, 0.132) solid;
   cursor: pointer;
+  width: 100%;
 }
 th {
   font-family: "Courier New", Courier, monospace;
@@ -86,13 +87,15 @@ td {
 }
 tbody tr {
   background-color: #454545;
+  transition: all .1s linear;
+
 }
 
 tbody td i {
-  margin: 0 1rem;
+  margin: 0 1.5rem;
 }
-.c-container button,
-.sub-container button {
+#btnNew
+{
   padding: 0.8rem 2.5rem;
   border-radius: 5px;
   margin-bottom: 1rem;
@@ -100,12 +103,11 @@ tbody td i {
   align-items: center;
   color: var(--fontColor);
   background-color: #353535;
-  border: none;
   gap: 0.4rem;
   font-weight: 700;
   border: 1px rgba(255, 255, 255, 0.132) solid;
 }
-tbody tr:hover,button:hover{
+tbody tr:hover,#btnNew:hover{
   background-color:#424242 ;
 }
 thead th:first-child{
@@ -120,4 +122,16 @@ tbody tr:last-child td:first-child{
 tbody tr:last-child td:last-child{
   border-radius:0 0 5px 0;
 }
+
+#p-td{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+}
+#p-td img{
+  width: 40px;
+  border-radius: 50%;
+}
+
 /* ---TABLE--- */
