@@ -1,30 +1,70 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MidBox from "./MidBox";
+import { allCategory } from "../Function/Category";
+import { allSubCategory } from "../Function/SubCategory";
+const ProductPopup = ({ setOpen }) => {
+  const [category, setCategory] = useState();
+  const [subCategory, setSubCategory] = useState();
+  const [insetData,setInsertData] = useState(null)
 
-const ProductPopup = ({setOpen}) => {
+  useEffect(() => {
+    const fetching = async () => {
+      const cat = await allCategory();
+      const subCat = await allSubCategory();
+
+      setCategory(cat);
+      setSubCategory(subCat);
+    };
+    fetching();
+    console.log(insetData);
+  }, [insetData]);
+
+  const handleInput = (e) => {
+    setInsertData({...insetData,[e.target.name]:e.target.value})
+    
+  };
+
   return (
     <MidBox>
-      <div className="pro-container" >
+      <div className="pro-container">
         <h5>Insert Product you want to add</h5>
-        <input type="text" placeholder="Product name" />
-        <input type="text" placeholder="About" />
-        <input type="text" placeholder="Information"/>
-        <textarea rows="2"cols="89" placeholder="Description"/>
-        <input type="number" placeholder="Price"/>
-        <select>
-          <option>--Select Category--</option>
+        <input onChange={handleInput} type="text" name="title" placeholder="Product name" />
+        <input onChange={handleInput} type="text" name="about" placeholder="About" />
+        <input onChange={handleInput} type="text" name="info" placeholder="Information" />
+        <textarea  onChange={handleInput} rows="2" name="description" cols="89" placeholder="Description" />
+        <input onChange={handleInput}  type="number" name="price" placeholder="Price" />
+
+        <select onChange={handleInput} name="category"> 
+          <option disabled >--Select Category--</option>
+          {category?.map((cat) => (
+            <option key={cat._id} value={cat._id}>
+              {cat.name}
+            </option>
+          ))}
         </select>
-        <select>
-          <option>--Select SubCategory--</option>
+
+        <select onChange={handleInput} name="subs">  
+          <option disabled  >--Select SubCategory--</option>
+          {subCategory?.map((subCat) => (
+            <option key={subCat._id} value={subCat._id}>
+              {subCat.name}
+            </option>
+          ))}
         </select>
-        <input type="number" placeholder="Quantity"/>
-        <select>
-          <option>--Status--</option>
+
+        <input onChange={handleInput}  type="number" name="quantity" placeholder="Quantity" />
+
+        <select onChange={handleInput} name="status">  
+          <option disabled  >--Status--</option>
+          <option>Active</option>
+          <option>Disable</option>
         </select>
-        <input type="file" />
+        <input onChange={handleInput}  type="file" name="images" />
         <div id="btn-container">
-        <button onClick={()=>setOpen(false)} id="btn-left">Cancel</button>
-        <button id="btn-right">Submit</button>
+          <button onClick={() => setOpen(false)} id="btn-left">
+            Cancel
+          </button>
+          <button id="btn-right">Submit</button>
         </div>
       </div>
     </MidBox>

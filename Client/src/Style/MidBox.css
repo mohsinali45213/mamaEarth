@@ -133,4 +133,7 @@ select{
 button{
   cursor: pointer;
 }
+.pro-container textarea{
+  resize: none;
+}
 /* ---PRODUCT CONTAINER--- */

@@ -3,7 +3,7 @@ import axios from "axios";
 const createSubCategory = async (name, parent) => {
   try {
     const createSub = await axios.post(`http://localhost:3000/api/v1/sub`, {name, parent});
-    console.log(createSub.data);
+    // console.log(createSub.data);
     return createSub.data;  
   } catch (error) {
     console.log("SubCategory is not Created");
@@ -13,7 +13,7 @@ const createSubCategory = async (name, parent) => {
 const allSubCategory = async () => {
   try {
     const allSub = await axios.get(`http://localhost:3000/api/v1/subs`);
-    console.log(allSub.data);
+    // console.log(allSub.data);
     return allSub.data;
   } catch (error) {
     console.log("SubCategory Is not fetch");
@@ -23,7 +23,7 @@ const allSubCategory = async () => {
 const singleSubCategory = async (slug) => {
   try {
     const single = await axios.get(`http://localhost:3000/api/v1/sub/${slug}`);
-    console.log(single.data);
+    // console.log(single.data);
     return single.data;
   } catch (error) {
     console.log(" singleSubCategory is not get");
@@ -36,7 +36,7 @@ const updateSubCategory = async (slug,name,parent) => {
   console.log(parent);
   try {
     const updateSub = await axios.put(`http://localhost:3000/api/v1/sub/${slug}`,{name,parent});
-    console.log(updateSub.data);
+    // console.log(updateSub.data);
     return updateSub.data;
   } catch (error) {
     console.log("SubCategory is not Update");
@@ -46,7 +46,7 @@ const updateSubCategory = async (slug,name,parent) => {
 const removeSubCategory = async (slug) => {
   try {
     const remove = await axios.delete(`http://localhost:3000/api/v1/sub/${slug}`);
-    console.log(remove.data);
+    // console.log(remove.data);
     return remove.data;
   } catch (error) {
     console.log("SubCategory is not delete");

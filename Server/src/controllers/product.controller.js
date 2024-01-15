@@ -35,9 +35,9 @@ const allProduct = async (req, res) => {
     .populate('category')
     .populate('subs')
     .sort([['createdAt', 'desc']]);
-  res.json(products);
-};
+    res.json(products);
 
+};
 const removeProduct = async (req, res) => {
   try {
     const deleted = await Product.findOneAndDelete({
