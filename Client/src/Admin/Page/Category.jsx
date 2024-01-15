@@ -48,7 +48,10 @@ const Category = () => {
     category?
     
     <div className="c-container">
-      <button id='btnNew' onClick={()=>setIsInsUpPopup(true)}>
+      <button id='btnNew' onClick={()=>{
+        setIsInsUpPopup(true)
+        setSlug("")
+      }}>
         <i className="fa-solid fa-circle-plus"></i> New
       </button><br />
       <table>

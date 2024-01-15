@@ -24,7 +24,6 @@ const productSchema = new mongoose.Schema(
     },
     description: {
       type: String,
-      required: true,
       maxlength: 2000,
       text: true,
     },
@@ -42,26 +41,30 @@ const productSchema = new mongoose.Schema(
       type: ObjectId,
       ref: "SubCategory",
     },
-    quantity: Number,
-    sold: {
-      type: Number,
-      default: 0,
+    status:{
+      type:String,
+      enum:["Active","Disable"]
     },
+    quantity: Number,
+    // sold: {
+    //   type: Number,
+    //   default: 0,
+    // },
     images: {
       type: Array,
     },
-    shipping: {
-      type: String,
-      //  enum: ["Yes", "No"],
-    },
-    ratings: {
-      type: [
-        {
-          star: Number,
-          postedBy: { type: ObjectId, ref: "User" },
-        },
-      ],
-    },
+    // shipping: {
+    //   type: String,
+    //   //  enum: ["Yes", "No"],
+    // },
+    // ratings: {
+    //   type: [
+    //     {
+    //       star: Number,
+    //       postedBy: { type: ObjectId, ref: "User" },
+    //     },
+    //   ],
+    // },
   },
   { timestamps: true }
 );

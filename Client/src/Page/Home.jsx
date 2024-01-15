@@ -2,6 +2,7 @@ import React from 'react'
 import Cart from '../Components/Cart'
 import "../Style/Home.css"
 const Home = () => {
+  
   const product ={
     img:"/src/assets/Images/1.jpg",
     description:"Onion Hair Oil for Hair Regrowth and Hair Fall Control, 250ml",

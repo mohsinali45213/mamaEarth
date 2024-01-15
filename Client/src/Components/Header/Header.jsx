@@ -3,26 +3,33 @@ import { useNavigate, Link, useLocation, Outlet } from "react-router-dom";
 import "./Header.css";
 import AddCart from "../../Page/AddCart";
 import { allCategory } from "../../Function/Category.js";
+import { getSubs } from "../../Function/Category.js";
 const Header = () => {
   const location = useLocation();
 
   const [isOpen1, setIsOpen1] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
   const [isOpen3, setIsOpen3] = useState(false);
+  const [subCat,setSubCat] = useState();
 
 
   const [categories, setCategories] = useState([]);
+  
+  const fetchCategories = async () => {
+    try {
+      const categoriesData = await allCategory();
+      setCategories(categoriesData);
+    } catch (error) {
+      console.log("getCategory Failed");
+    }
+  };
+
+  const getSubCat = async(id)=>{
+    const result = await getSubs(id)
+    setSubCat(result)
+  }
 
   useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const categoriesData = await allCategory();
-        setCategories(categoriesData);
-      } catch (error) {
-        console.log("getCategory Failed");
-      }
-    };
-
     fetchCategories();
   }, []);
 
@@ -73,7 +80,7 @@ const Header = () => {
         <div className="search">
           <input type="search-input" />
           <button>
-            <img id="search" src="src/assets/Images/search.png" alt="search" />
+          <i id="search" className="fa-solid fa-magnifying-glass"></i>
           </button>
         </div>
 
@@ -97,14 +104,31 @@ const Header = () => {
               <h5>9834342134</h5>
             </div>
           </div>
+
+
           <li><Link to="/" id="navItem">Home</Link></li>
+
+
           {categories?.map((category) => (
-            <li key={category._id}>
-              <Link id="navItem" to={`/category/${category.slug}`}>
+            <li id="cat" key={category._id} onMouseOver={()=>getSubCat(category._id)}>
+              <div className="dropdown" >
+              <Link id="navItem" to={`/product/${category.slug}`}>
                 {category.name}
               </Link>
+              <ul id="dropdown-item">
+                {
+                  subCat?.map((item)=>(
+                    <div key={item._id}>
+                    <li>{item.name}</li>
+                    </div>
+                  ))
+                }
+              </ul>
+              </div>
             </li>
           ))}
+
+
         </ul>
       </div>
 

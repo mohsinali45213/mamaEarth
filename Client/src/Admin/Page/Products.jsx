@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import DeletePopup from '../../Components/DeletePopup'
-
+import ProductPopup from '../../Components/ProductPopup'
 
 const Products = () => {
+  const [isProductPopup,setIsProductPopup]= useState(false)
 
   return (
-    <div className='p-container'>
-      <button id='btnNew'>
+    <div className='  '>
+      <button id='btnNew' onClick={()=>setIsProductPopup(true)}>
         <i className="fa-solid fa-circle-plus"></i> New
       </button>
       <table>
@@ -37,6 +38,7 @@ const Products = () => {
           </tr>
         </tbody>
       </table>
+      {isProductPopup && <ProductPopup setOpen={setIsProductPopup} />}
     </div>
   )
 }

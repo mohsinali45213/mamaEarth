@@ -2,12 +2,18 @@ import Product from '../models/product.models.js';
 import User from "../models/users.models.js"
 import slugify from 'slugify';
 
-const createProduct= async (req, res) => {
+// 
+const createProduct = async (req, res) => {
   try {
     console.log('Product Body=> ', req.body);
     req.body.slug = slugify(req.body.title);
-    // const photo = req.file;
-    const product = await new Product(req.body).save();
+    
+    const product = await Product.create(req.body);
+    
+    const { originalname } = req.file;
+    product.images = originalname;
+    await product.save();
+
     res.status(200).json({
       success: true,
       data: product,
@@ -22,6 +28,7 @@ const createProduct= async (req, res) => {
     });
   }
 };
+
 
 const allProduct = async (req, res) => {
   let products = await Product.find({})

@@ -61,7 +61,7 @@ const removeCategory = async (req, res) => {
 };
 
 const getSubs = async (req, res) => {
-  const subs = await SubCategory.find({ parent: req.params._id });
+  const subs = await SubCategory.find({ parent: req.params.id });
   res.json(subs);
 };
 

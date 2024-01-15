@@ -12,6 +12,7 @@
   align-items: center;
   background-color: rgba(31, 31, 31, 0.701);
   justify-content: center;
+  transition: all 1.3s linear;
   backdrop-filter: blur(2px);
 }
 .box-container {
@@ -97,3 +98,39 @@ select{
   border-radius: 5px;
 }
 /* ---CATEGORIES CONTAINER--- */
+
+/* ---PRODUCT CONTAINER--- */
+
+.pro-container{
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  width: 40rem;
+  /* height: 95vh; */
+  /* overflow-y: scroll; */
+  gap: 1rem;
+  margin: 0 auto;
+}
+.pro-container select,
+.pro-container input,
+.pro-container textarea,
+.pro-container button
+{
+  padding: .7rem;
+  width: 100%;
+  border: 1px solid rgb(152, 152, 152);
+  border-radius: 5px;
+}
+.pro-container button{
+  background-color: rgb(254, 68, 35);
+  color: white;
+  font-size: 1.1rem;
+}
+#btn-container{
+  display: flex;
+  gap: 1rem;
+}
+button{
+  cursor: pointer;
+}
+/* ---PRODUCT CONTAINER--- */

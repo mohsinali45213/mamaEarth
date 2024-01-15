@@ -7,5 +7,5 @@ categoryRoutes.get("/categories",listCategory);
 categoryRoutes.get("/category/:slug",readCategory);
 categoryRoutes.put("/category/:slug",updateCategory);
 categoryRoutes.delete("/category/:slug",removeCategory);
-categoryRoutes.get("/categories/subs/:_id",getSubs);
+categoryRoutes.get("/categories/subs/:id",getSubs);
 export default categoryRoutes;
