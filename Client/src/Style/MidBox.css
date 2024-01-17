@@ -76,7 +76,7 @@
   padding: 2rem;
   gap: 1rem;
 }
-.cat-container h5{
+.cat-container h5,.pro-container h5{
   color: rgba(15, 13, 13, 0.829);
 }
 .cat-container input{

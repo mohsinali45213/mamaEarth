@@ -1,7 +1,11 @@
 import axios from "axios";
 const createProduct = async (productDetail) => {
   try {
-    const product = await axios.post(`http://localhost:3000/api/v1/product`, productDetail);
+    const product = await axios.post(`http://localhost:3000/api/v1/product`, productDetail,{
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      }
+  })
     return product.data;
     // console.log(product.data);
   } catch (error) {
@@ -11,7 +15,13 @@ const createProduct = async (productDetail) => {
 
 const updateProduct = async (slug, productDetail) => {
   try {
-    const update = await axios.post(`http://localhost:3000/api/v1/product/${slug}`, productDetail);
+
+    console.log(productDetail);
+  //   const product = await axios.put(`http://localhost:3000/api/v1/product/${slug}`, productDetail,{
+  //     headers: {
+  //       'Content-Type': 'multipart/form-data',
+  //     }
+  // })
     return update.data;
     // console.log(update.data);
   } catch (error) {
@@ -35,7 +45,7 @@ const singleProduct = async (slug) => {
     return singleProduct.data;
     // console.log(singleProduct.data);
   } catch (error) {
-    console.log("Product Is not Created");
+    console.log("Product Is not Get");
   }
 };
 

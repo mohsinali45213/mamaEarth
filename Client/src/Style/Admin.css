@@ -42,7 +42,7 @@
   transition: all ease 0.3s;
 }
 .left-container ul li:hover {
-  background-color:var(--bg2);
+  background-color: var(--bg2);
 }
 #link {
   padding: 1.2rem 4.5rem 1rem 2rem;
@@ -66,7 +66,7 @@ table {
   border-spacing: 0;
   color: var(--fontColor);
   font-weight: 600;
-  text-align: center;
+  text-align: start;
   padding: 1rem;
   border-radius: 5px;
   border: 1px rgba(255, 255, 255, 0.132) solid;
@@ -75,7 +75,8 @@ table {
 }
 th {
   font-family: "Courier New", Courier, monospace;
-  padding: 1rem 0;
+  padding: 1rem;
+  text-align: start;
 }
 thead tr {
   background-color: #282828;
@@ -87,15 +88,13 @@ td {
 }
 tbody tr {
   background-color: #454545;
-  transition: all .1s linear;
-
+  transition: all 0.1s linear;
 }
 
-tbody td i {
-  margin: 0 1.5rem;
+td:last-child i:last-child {
+  margin-left: 2rem;
 }
-#btnNew
-{
+#btnNew {
   padding: 0.8rem 2.5rem;
   border-radius: 5px;
   margin-bottom: 1rem;
@@ -107,29 +106,32 @@ tbody td i {
   font-weight: 700;
   border: 1px rgba(255, 255, 255, 0.132) solid;
 }
-tbody tr:hover,#btnNew:hover{
-  background-color:#424242 ;
+tbody tr:hover,
+#btnNew:hover {
+  background-color: #424242;
 }
-thead th:first-child{
+thead th:first-child {
   border-radius: 5px 0 0 0;
+  padding-left: 2.5rem;
 }
-thead th:last-child{
-  border-radius:0 5px 0 0;
+thead th:last-child {
+  border-radius: 0 5px 0 0;
 }
-tbody tr:last-child td:first-child{
+tbody tr:last-child td:first-child {
   border-radius: 0 0 0 5px;
 }
-tbody tr:last-child td:last-child{
-  border-radius:0 0 5px 0;
+tbody tr:last-child td:last-child {
+  border-radius: 0 0 5px 0;
 }
 
-#p-td{
+#p-td {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: .5rem;
+  /* justify-content: center; */
+  gap: 1rem;
+  padding-left: 2rem;
 }
-#p-td img{
+#p-td img {
   width: 40px;
   border-radius: 50%;
 }

@@ -1,23 +1,54 @@
 import React, { useEffect, useState } from "react";
 import DeletePopup from "../../Components/DeletePopup";
 import ProductPopup from "../../Components/ProductPopup";
-import { allProduct } from "../../Function/Product";
+import { allProduct, createProduct, removeProduct, updateProduct } from "../../Function/Product";
 
 const Products = () => {
   const [isProductPopup, setIsProductPopup] = useState(false);
   const [isDeletePopup,setIsDeletePopup] = useState(false)
   const [productList, setProductList] = useState();
+  const [updateData,setUpdateData] = useState();
+  const [slug,setSlug] = useState();
+
+  useEffect(() => {
+    fetchProduct();
+  }, []);
 
   const fetchProduct = async () => {
     const result = await allProduct();
     setProductList(result);
   };
-  useEffect(() => {
+
+  const insertProduct=async(insertData)=>{
+    const formData = new FormData()
+    for (const key in insertData) {
+      formData.append(key, insertData[key]);
+    }
+    const result = await createProduct(insertData)
+    setIsProductPopup(false)
+    fetchProduct()
+  }
+
+  const deleteProduct=async(slug)=>{
+    const result = await removeProduct(slug);
+    if(result){
+      setIsDeletePopup(false)
+    }
+    fetchProduct()
+    
+  }
+
+  const putProduct=async(slug,data)=>{
+    const result = await updateProduct(slug,data)
     fetchProduct();
-  }, []);
+    setIsProductPopup(false)
+  }
+
   return (
-    <div className="  ">
-      <button id="btnNew" onClick={() => setIsProductPopup(true)}>
+    <div className="">
+      <button id="btnNew" onClick={() =>{
+        setUpdateData("")
+        setIsProductPopup(true)}}>
         <i className="fa-solid fa-circle-plus"></i> New
       </button>
       <table>
@@ -43,15 +74,21 @@ const Products = () => {
               <td>${product.price}</td>
               <td>{product.status}</td>
               <td>
-                <i className="fa-solid fa-pen-to-square"></i>
-                <i onClick={()=>setIsDeletePopup(true)} className="fa-solid fa-trash"></i>
+                <i onClick={()=>{
+                  setUpdateData(product)
+                  setIsProductPopup(true)
+                }} className="fa-solid fa-pen-to-square" ></i>
+                <i onClick={()=>{
+                  setIsDeletePopup(true)
+                  setSlug(product.slug)
+                }} className="fa-solid fa-trash"></i>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      {isProductPopup && <ProductPopup setOpen={setIsProductPopup} />}
-      {isDeletePopup && <DeletePopup  setOpen={setIsDeletePopup} />}
+      {isProductPopup && <ProductPopup setOpen={setIsProductPopup} insertProduct={insertProduct} putProduct={putProduct} updateData={updateData} />}
+      {isDeletePopup && <DeletePopup  setOpen={setIsDeletePopup} slug={slug}  deleteCategory={deleteProduct}/>}
     </div>
   );
 };

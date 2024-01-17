@@ -24,7 +24,7 @@ const SubCategoriesPopup = ({ setOpen,insertCategory,putSubCategory,slug,setSlug
           <input type="text" value={categoryName} onChange={(e)=>setCategoryName(e.target.value)} />
 
           <select value={parentId} onChange={(e)=>setParentId(e.target.value)}>
-          <option value="" disabled>Select a category</option>
+          <option value="" disabled>--Select category--</option>
             {category?.map((cat) => (
               <option key={cat._id} value={cat._id}>
                 {cat.name}
