@@ -9,23 +9,21 @@ const createProduct = async (productDetail) => {
     return product.data;
     // console.log(product.data);
   } catch (error) {
-    console.log("Product ?Is not Created");
+    console.log("Product Is not Created");
   }
 };
 
 const updateProduct = async (slug, productDetail) => {
   try {
-
-    console.log(productDetail);
-  //   const product = await axios.put(`http://localhost:3000/api/v1/product/${slug}`, productDetail,{
-  //     headers: {
-  //       'Content-Type': 'multipart/form-data',
-  //     }
-  // })
-    return update.data;
-    // console.log(update.data);
+    const product = await axios.put(`http://localhost:3000/api/v1/product/${slug}`, productDetail,{
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      }
+  })
+    return product.data;
+    // console.log(product.data);  
   } catch (error) {
-    console.log("Product Is not Updated");
+    console.log("Product Is not Updated",error);
   }
 };
 

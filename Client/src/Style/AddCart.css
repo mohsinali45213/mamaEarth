@@ -22,6 +22,10 @@
 .container.open{
   width: 420px;
 }
+.container #h4{
+  /* background-color:lightgray; */
+  padding: .5rem 0 0 .5rem;
+}
 .head-container{
   display: flex;
   align-items: center;

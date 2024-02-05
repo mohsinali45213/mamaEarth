@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import DeletePopup from "../../Components/DeletePopup";
 import ProductPopup from "../../Components/ProductPopup";
 import { allProduct, createProduct, removeProduct, updateProduct } from "../../Function/Product";
+import Loading from "../../Page/Loading";
 
 const Products = () => {
   const [isProductPopup, setIsProductPopup] = useState(false);
@@ -40,11 +41,12 @@ const Products = () => {
 
   const putProduct=async(slug,data)=>{
     const result = await updateProduct(slug,data)
-    fetchProduct();
     setIsProductPopup(false)
+    fetchProduct();
   }
 
   return (
+    productList?
     <div className="">
       <button id="btnNew" onClick={() =>{
         setUpdateData("")
@@ -66,7 +68,7 @@ const Products = () => {
           {productList?.map((product) => (
             <tr key={product._id}>
               <td id="p-td">
-                <img src="/src/assets/Images/1.jpg" alt="" />
+                <img src={product?.images} alt="" />
                 <h5>{product?.title}</h5>
               </td>
               <td>{product?.subs?.name}</td>
@@ -89,7 +91,7 @@ const Products = () => {
       </table>
       {isProductPopup && <ProductPopup setOpen={setIsProductPopup} insertProduct={insertProduct} putProduct={putProduct} updateData={updateData} />}
       {isDeletePopup && <DeletePopup  setOpen={setIsDeletePopup} slug={slug}  deleteCategory={deleteProduct}/>}
-    </div>
+    </div>:<><Loading/></>
   );
 };
 

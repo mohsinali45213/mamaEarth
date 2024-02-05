@@ -9,16 +9,22 @@ import Customer from "./Admin/Page/Customer";
 import Header from "./Components/Header/Header";
 import Home from "./Page/Home";
 import { allCategory } from "./Function/Category";
+import { allSubCategory } from "./Function/SubCategory";
+import Login from "./Page/Login";
+import Register from "./Page/Register";
+import Contact from "./Page/Contact";
 const App = () => {
   const [catName, setCatName] = useState();
-
+  const [subCatName,setSubCatName] =useState()
   useEffect(() => {
     getCategory();
   }, []);
 
   const getCategory = async () => {
-    const result = await allCategory();
-    setCatName(result);
+    const result1 = await allCategory();
+    const result2 = await allSubCategory()
+    setCatName(result1);
+    setSubCatName(result2)
     // console.log("Result",result);
   };
   return (
@@ -35,13 +41,24 @@ const App = () => {
             }
           >
             <Route index  element={<Home />} />
+            <Route path="/login"  element={<Login />} />
+            <Route path="/register"  element={<Register />} />
+            <Route path="/contact-us"  element={<Contact />} />
             {catName?.map((category) => (
               <Route
                 key={category.slug}
                 path={`/product/:category`}
                 element={<Home />}
               />
-            ))}
+              ))}
+            {
+              subCatName?.map((subCategory)=>(
+                <Route
+                  key={subCategory.slug}
+                  path={`/product/:category`}
+                  element={<Home />}
+                />))
+            }
           </Route>
 
           {/* ---ADMIN ROUTES--- */}
@@ -62,3 +79,21 @@ const App = () => {
 };
 
 export default App;
+
+
+// import React from 'react'
+// import Register from './Page/Register'
+// import Login from './Page/Login'
+// import Contact from './Page/Contact'
+
+// const App = () => {
+//   return (
+//     <div>
+//       {/* <Register/> */}
+//       {/* <Login/> */}
+//       {/* <Contact/> */}
+//     </div>
+//   )
+// }
+
+// export default App

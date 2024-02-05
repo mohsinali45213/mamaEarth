@@ -17,7 +17,7 @@
 }
 .box-container {
   height: fit-content;
-  width: fit-content;
+  width: min-content;
   background-color: rgb(255, 255, 255);
   border: 1px solid #a78f8f89;
   border-radius: 10px;
@@ -30,7 +30,7 @@
   flex-direction: column;
 }
 .delete-container div:first-child {
-  width: 100%;
+  width: 358px;
   display: flex;
   align-items: center;
   color: rgb(1, 183, 255);

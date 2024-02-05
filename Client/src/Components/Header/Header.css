@@ -166,6 +166,10 @@ div.open {
 .order-detail ul li span {
   text-wrap: nowrap;
 }
+#AccLink{
+  text-decoration: none;
+  color: black;
+}
 @media screen and (max-width: 720px) {
   p {
     display: none;

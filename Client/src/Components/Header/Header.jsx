@@ -4,17 +4,17 @@ import "./Header.css";
 import AddCart from "../../Page/AddCart";
 import { allCategory } from "../../Function/Category.js";
 import { getSubs } from "../../Function/Category.js";
+import Login from "../../Page/Login.jsx";
+import Register from "../../Page/Register.jsx";
 const Header = () => {
   const location = useLocation();
 
   const [isOpen1, setIsOpen1] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
   const [isOpen3, setIsOpen3] = useState(false);
-  const [subCat,setSubCat] = useState();
-
-
+  const [subCat, setSubCat] = useState();
   const [categories, setCategories] = useState([]);
-  
+
   const fetchCategories = async () => {
     try {
       const categoriesData = await allCategory();
@@ -24,10 +24,10 @@ const Header = () => {
     }
   };
 
-  const getSubCat = async(id)=>{
-    const result = await getSubs(id)
-    setSubCat(result)
-  }
+  const getSubCat = async (id) => {
+    const result = await getSubs(id);
+    setSubCat(result);
+  };
 
   useEffect(() => {
     fetchCategories();
@@ -66,7 +66,6 @@ const Header = () => {
     setIsOpen3(false);
   }, [location.pathname]);
 
-  
   return (
     <div className="header">
       <div className="header-top">
@@ -80,7 +79,7 @@ const Header = () => {
         <div className="search">
           <input type="search-input" />
           <button>
-          <i id="search" className="fa-solid fa-magnifying-glass"></i>
+            <i id="search" className="fa-solid fa-magnifying-glass"></i>
           </button>
         </div>
 
@@ -105,30 +104,32 @@ const Header = () => {
             </div>
           </div>
 
-
-          <li><Link to="/" id="navItem">Home</Link></li>
-
+          <li>
+            <Link to="/" id="navItem">
+              Home
+            </Link>
+          </li>
 
           {categories?.map((category) => (
-            <li id="cat" key={category._id} onMouseOver={()=>getSubCat(category._id)}>
-              <div className="dropdown" >
-              <Link id="navItem" to={`/product/${category.slug}`}>
-                {category.name}
-              </Link>
-              <ul id="dropdown-item">
-                {
-                  subCat?.map((item)=>(
+            <li
+              id="cat"
+              key={category._id}
+              onMouseOver={() => getSubCat(category._id)}
+            >
+              <div className="dropdown">
+                <Link id="navItem" to={`/product/${category.slug}`}>
+                  {category.name}
+                </Link>
+                <ul id="dropdown-item">
+                  {subCat?.map((item) => (
                     <div key={item._id}>
-                    <li>{item.name}</li>
+                     <Link id="AccLink" to={`/product/${item.slug}`}> <li>{item.name}</li></Link>
                     </div>
-                  ))
-                }
-              </ul>
+                  ))}
+                </ul>
               </div>
             </li>
           ))}
-
-
         </ul>
       </div>
 
@@ -150,14 +151,24 @@ const Header = () => {
               <i className="fa-solid fa-store"></i>
               <span>Your Order</span>
             </li>
+            <Link id="AccLink" to="/contact-us">
             <li>
               <i className="fa-solid fa-phone"></i>
               <span>Contact Us</span>
             </li>
+            </Link>
+             <Link id="AccLink" to="/login">
             <li>
               <i className="fa-solid fa-right-to-bracket"></i>
               <span>Login</span>
             </li>
+             </Link>
+             <Link id="AccLink" to="/register">
+            <li>
+             <i className="fa-solid fa-right-to-bracket"></i>
+              <span>Register</span>
+            </li>
+             </Link>
             <li>
               <i className="fa-solid fa-right-from-bracket"></i>
               <span>Logout</span>

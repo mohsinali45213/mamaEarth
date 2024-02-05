@@ -16,6 +16,7 @@ const AddCart = ({ slide ,setSlide,}) => {
         <i onClick={()=>setSlide(false)} className="fa-solid fa-arrow-left"></i>
         <h3>My Cart</h3>
       </div>
+        <h4 id="h4">Order Summary</h4>
       <div className="cart-container">
         <img src="/src/assets/Images/1.jpg" alt="" />
         <div className="info-container">

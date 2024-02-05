@@ -1,6 +1,8 @@
 import Product from '../models/product.models.js';
 import User from "../models/users.models.js"
 import slugify from 'slugify';
+import uploadOnCloudinary from '../utils/Cloudinary.js';
+
 
 // 
 const createProduct = async (req, res) => {
@@ -9,9 +11,9 @@ const createProduct = async (req, res) => {
     req.body.slug = slugify(req.body.title);
     
     const product = await Product.create(req.body);
-    
-    const { originalname } = req.file;
-    product.images = originalname;
+
+    const result = await uploadOnCloudinary(req.file.path)
+    product.images = result.url;
     await product.save();
 
     res.status(200).json({

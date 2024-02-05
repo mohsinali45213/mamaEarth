@@ -47,6 +47,7 @@ const SubCategory = () => {
     }
   };
   return (
+    subCategory?
     <div className="c-container">
       <button id='btnNew' onClick={()=>{
         setIsInsUpPopup(true)
@@ -87,7 +88,7 @@ const SubCategory = () => {
       {isInsUpPopup&&<SubCategoriesPopup setOpen={setIsInsUpPopup} insertCategory={insertSubCategory} putSubCategory={putSubCategory} slug={slug}parents={parentId} setSlug={setSlug} name={subCategoryName}
       title={{one:"1",two:"2"}}
       />}
-    </div>
+    </div>:<><Loading/></>
   );
 };
 

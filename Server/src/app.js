@@ -13,10 +13,9 @@ dotenv.config({
   path: "../.env",
 });
 
-app.use(cors())
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
-
 
 //Database Connection call
 connectDB()
@@ -28,7 +27,6 @@ connectDB()
   .catch((err) => {
     console.log("MongoDB Connection Failed", err);
   });
-
 
 //Routes
 app.use("/api/v1/users", userRoutes);

@@ -1,3 +1,4 @@
+
 #loading {
   position: absolute;
   width: 30px;
@@ -16,4 +17,84 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+
+/* ---Login && Register--- */
+.login-container,.register-container{
+  padding: 2rem 0;
+  text-align: center;
+  width: 500px;
+}
+.login-container h2,.register-container h2{
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+.login-container input,.login-container button,.register-container input,.register-container button{
+  width: 80%;
+  padding: .7rem;
+  border-radius: 5px;
+  border: 1px solid gray;
+  margin-top: 1rem;
+}
+.login-container button{
+  background-color:rgb(66, 201, 255);
+  border: none;
+  font-size: 1rem;
+  color: white;
+}
+#btn-submit{
+  background-color: rgb(36, 183, 241);
+  color: white;
+}
+#btn-cancel{
+  background-color: rgb(228, 228, 228);
+}
+.login-container,.register-container{
+  /* position: absolute; */
+ 
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 5px;
+}
+
+/* ---Login && Register--- */
+
+/* ---Contact Us--- */
+
+.contact-container{
+  padding: 3rem 20rem;
+}
+.contact-container h2{
+  text-align: center;
+}
+.contact-container input,.contact-container textarea{
+  padding: .7rem;
+  width: 100%;
+  resize: none;
+  margin-top: 1rem;
+  border-radius: 5px;
+  border: 1px solid rgb(154, 154, 154);
+}
+.contact-container button{
+  border: 1px solid rgb(154, 154, 154);
+  background-color: rgb(30, 179, 238);
+  padding: .8rem 3rem;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+}
+
+.login-wrapper{
+  background-color: red;
+  position: fixed;
+  inset:115px 0 0 0;
+  display: flex;
+  align-items: center ;
+  justify-content: center;
+}
+
+/* ---Contact Us--- */
+
+@media screen and (max-width: 1000px) {
+
 }
