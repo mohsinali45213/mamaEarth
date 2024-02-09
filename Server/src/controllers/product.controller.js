@@ -55,10 +55,24 @@ const readProduct = async (req, res) => {
   const product = await Product.findOne({ slug: req.params.slug }).populate('category').populate('subs');
   res.json(product);
 };
+const catProducts = async(req,res) =>{
+  const catPro = await Product.find({category:req.params.id})
+  res.json(catPro)
+}
+const subCatProducts =async(req,res) =>{
+  const subCatPro = await Product.find({subs:req.params.id})
+  res.json(subCatPro)
+}
 const updateProduct = async (req, res) => {
   try {
     if (req.body.title) {
       req.body.slug = slugify(req.body.title);
+    }
+    if(req.file){
+      const result = await uploadOnCloudinary(req.file.path)
+      req.body.images=result.url;
+      // updated.images = result.url;
+      // await updated.save();
     }
     const updated = await Product.findByIdAndUpdate(req.body._id, req.body, { new: true }).exec();
     console.log('Product...', updated);
@@ -248,5 +262,7 @@ export{
   searchFilters,
   readProduct,
   productsCount,
-  listRelated
+  listRelated,
+  catProducts,
+  subCatProducts
 }

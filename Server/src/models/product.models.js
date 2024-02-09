@@ -7,7 +7,7 @@ const productSchema = new mongoose.Schema(
       type: String,
       trim: true,
       required: true,
-      maxlength: 35,
+      maxlength: 55,
       text: true,
     },
     slug: {

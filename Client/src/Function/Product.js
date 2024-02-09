@@ -56,10 +56,31 @@ const allProduct = async (slug) => {
     console.log("Product Is not Find");
   }
 };
+
+const catProduct = async(id)=>{
+  try {
+    const catPro = await axios.get(`http://localhost:3000/api/v1/catPro/${id}`);
+    return catPro.data;
+  } catch (error) {
+    console.log("Product Is not Get");
+  }
+}
+
+const subCatProduct = async(id)=>{
+  try {
+    const sunCatPro = await axios.get(`http://localhost:3000/api/v1/subCatPro/${id}`);
+    return sunCatPro.data;
+    // console.log(singleProduct.data);
+  } catch (error) {
+    console.log("Product Is not Get");
+  }
+}
 export {
   updateProduct,
   removeProduct,
   createProduct,
   allProduct,
   singleProduct,
+  catProduct,
+  subCatProduct
 };

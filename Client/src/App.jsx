@@ -13,6 +13,8 @@ import { allSubCategory } from "./Function/SubCategory";
 import Login from "./Page/Login";
 import Register from "./Page/Register";
 import Contact from "./Page/Contact";
+import ProductList from "./Page/ProductList";
+import SingleProduct from "./Page/SingleProduct";
 const App = () => {
   const [catName, setCatName] = useState();
   const [subCatName,setSubCatName] =useState()
@@ -44,19 +46,20 @@ const App = () => {
             <Route path="/login"  element={<Login />} />
             <Route path="/register"  element={<Register />} />
             <Route path="/contact-us"  element={<Contact />} />
+            <Route path="/product/:product"  element={<SingleProduct />} />
             {catName?.map((category) => (
-              <Route
+              <Route 
                 key={category.slug}
-                path={`/product/:category`}
-                element={<Home />}
+                path={`/product/:category/:categoryId`}
+                element={<ProductList />}
               />
               ))}
             {
               subCatName?.map((subCategory)=>(
                 <Route
                   key={subCategory.slug}
-                  path={`/product/:category`}
-                  element={<Home />}
+                  path={`/product/:category/:categoryId`}
+                  element={<ProductList />}
                 />))
             }
           </Route>

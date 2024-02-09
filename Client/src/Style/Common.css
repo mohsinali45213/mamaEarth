@@ -84,8 +84,7 @@
   font-size: 1rem;
 }
 
-.login-wrapper{
-  background-color: red;
+.login-wrapper,.register-wrapper{
   position: fixed;
   inset:115px 0 0 0;
   display: flex;

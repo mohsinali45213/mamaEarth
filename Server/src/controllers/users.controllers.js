@@ -81,4 +81,28 @@ const profileImage = async (req, res) => {
   }
 };
 
-export { registerUser, loginUser ,profileImage};
+const getUser =async(req,res)=>{
+  try {
+    const user = await User.find({})
+    console.log(user);
+    res.json(user)
+    console.log("User Get Successful...");
+  } catch (error) {
+    // res.json({error:"Not get user"}).status(404)
+    console.log("User Is not Get",error);
+    
+  }
+}
+
+const getSingleUser = async(req,res)=>{
+  try{
+    const user=await User.findById(req.params.id)
+    res.json(user)
+    console.log("Success...");
+  }
+  catch(error){
+    console.log("UnSuccess...",error);
+  }
+}
+
+export { registerUser, loginUser ,profileImage,getUser,getSingleUser};

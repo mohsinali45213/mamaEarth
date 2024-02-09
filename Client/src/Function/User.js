@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/api/v1/users"
+const API_URL = "http://localhost:3000/api/v1/users";
 
 const register = async (registerDetail) => {
   try {
@@ -31,4 +31,14 @@ const uploadImage = async (image, userId) => {
     console.log("Image Upload Failed::", error);
   }
 };
-export { login, register, uploadImage };
+
+const getUsers = async () => {
+  try {
+    const users = await axios.get(`http://localhost:3000/api/v1/users`);
+    console.log("Get successful...");
+    return users.data
+  } catch (error) {
+    console.log("Not Get...");
+  }
+};
+export { login, register, uploadImage ,getUsers};

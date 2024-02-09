@@ -14,10 +14,11 @@
 /* ---HEADER--- */
 
 .main-container {
+  height: 100vh;
   display: flex;
 }
 #title {
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-align: center;
   padding: 0.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.181);
@@ -26,7 +27,6 @@
 .left-container {
   letter-spacing: 1px;
   background-color: var(--bg1);
-  height: 100vh;
   font-weight: 600;
   width: fit-content;
   text-transform: uppercase;
@@ -34,7 +34,7 @@
   border-right: 1px solid rgba(255, 255, 255, 0.082);
 }
 .left-container ul {
-  font-size: 1.1rem;
+  font-size: .80rem;
 }
 .left-container ul li {
   list-style: none;
@@ -55,6 +55,7 @@
   width: 100%;
   padding: 1rem 1rem 0 1rem;
   background-color: var(--bg1);
+  overflow-y: scroll;
 }
 
 /* ---HEADER--- */
@@ -72,7 +73,7 @@ table {
   border: 1px rgba(255, 255, 255, 0.132) solid;
   cursor: pointer;
   width: 100%;
-  font-size: 1.2rem;
+  font-size: .95rem;
 }
 th {
   font-family: "Courier New", Courier, monospace;
@@ -105,6 +106,7 @@ td:last-child i:last-child {
   background-color: #353535;
   gap: 0.4rem;
   font-weight: 700;
+  font-size:.80rem;
   border: 1px rgba(255, 255, 255, 0.132) solid;
 }
 tbody tr:hover,
@@ -133,8 +135,8 @@ tbody tr:last-child td:last-child {
   padding-left: 2rem;
 }
 #p-td img {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 }
 

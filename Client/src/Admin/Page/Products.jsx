@@ -73,7 +73,7 @@ const Products = () => {
               </td>
               <td>{product?.subs?.name}</td>
               <td>{product.quantity}</td>
-              <td>${product.price}</td>
+              <td>₹{product.price}</td>
               <td>{product.status}</td>
               <td>
                 <i onClick={()=>{

@@ -1,0 +1,15 @@
+.single-main{
+  padding: 2rem;
+}
+.single-sub{
+  display: flex;
+}
+.single-sub .info{
+  padding: .2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.single-sub .info .sub-title{
+  color:  rgb(109, 177, 109);
+}

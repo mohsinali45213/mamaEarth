@@ -9,7 +9,9 @@ import {
   allProduct,
   readProduct,
   productsCount,
-  listRelated
+  listRelated,
+  catProducts,
+  subCatProducts
 } from "../controllers/product.controller.js";
 const productRoutes = Router();
 
@@ -23,5 +25,7 @@ productRoutes.put("/product/:slug", upload.single('images'),updateProduct);
 productRoutes.post("/products", list);
 productRoutes.get("/products/related/:productId", listRelated);
 productRoutes.post("/search/filters", searchFilters);
+productRoutes.get("/catPro/:id",catProducts)
+productRoutes.get("/subCatPro/:id",subCatProducts)
 
 export default productRoutes

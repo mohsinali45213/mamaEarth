@@ -117,13 +117,13 @@ const Header = () => {
               onMouseOver={() => getSubCat(category._id)}
             >
               <div className="dropdown">
-                <Link id="navItem" to={`/product/${category.slug}`}>
+                <Link id="navItem" to={`/product/${category.slug}/${category._id}`}>
                   {category.name}
                 </Link>
                 <ul id="dropdown-item">
                   {subCat?.map((item) => (
                     <div key={item._id}>
-                     <Link id="AccLink" to={`/product/${item.slug}`}> <li>{item.name}</li></Link>
+                     <Link id="AccLink" to={`/product/${item.slug}/${item._id}`}> <li>{item.name}</li></Link>
                     </div>
                   ))}
                 </ul>

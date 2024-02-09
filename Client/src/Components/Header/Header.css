@@ -46,7 +46,7 @@ li {
 }
 .icons p {
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.90rem;
   font-family: var(--font);
 }
 .icons span {
@@ -116,6 +116,7 @@ li {
   overflow: hidden;
   font-family: var(--font);
   transition: all 0.5s;
+  font-size: .85rem;
 }
 div.open {
   width: 320px;
@@ -157,7 +158,6 @@ div.open {
   padding: 1rem;
   border-bottom: 1px solid lightgray;
   gap: 0.5rem;
-  font-size: small;
 }
 .order-detail ul li i {
   font-size: 1rem;
@@ -308,7 +308,7 @@ div.open {
   padding-right: 4rem;
   color: rgb(92, 92, 92);
   transition: all .5s;
-  font-size: .8em;
+  font-size: .75em;
 }
 #dropdown-item li:hover{
   background-color: rgb(235, 235, 235);
