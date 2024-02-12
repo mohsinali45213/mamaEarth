@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getUsers } from '../../Function/User'
+import Loading from '../../Page/Loading';
 const Customer = () => {
   const [user,setUser] = useState();
   useEffect(()=>{
@@ -13,7 +14,9 @@ const Customer = () => {
   console.log(user);
   return (
     <div>
-      <table>
+      {
+        user?
+        <table>
         <thead>
         <tr>
           <th>Name</th>
@@ -34,7 +37,8 @@ const Customer = () => {
           ))
         }
         </tbody>
-      </table>
+      </table>:<Loading/>
+      }
     </div>
   )
 }

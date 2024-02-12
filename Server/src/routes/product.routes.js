@@ -24,7 +24,7 @@ productRoutes.get("/product/:slug", readProduct);
 productRoutes.put("/product/:slug", upload.single('images'),updateProduct);
 productRoutes.post("/products", list);
 productRoutes.get("/products/related/:productId", listRelated);
-productRoutes.post("/search/filters", searchFilters);
+productRoutes.post("/search/filter", searchFilters);
 productRoutes.get("/catPro/:id",catProducts)
 productRoutes.get("/subCatPro/:id",subCatProducts)
 

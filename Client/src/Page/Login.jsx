@@ -12,6 +12,7 @@ const Login = () => {
     event.preventDefault();
     const result= await login({email,password})
     if(result){
+      localStorage.setItem("user",JSON.stringify(result))
       navigate("/")
     }
   };

@@ -2,7 +2,7 @@ import React from 'react'
 import "../Style/Common.css"
 const Contact = () => {
   return (
-    <div>
+    <div className='contact-wrapper'>
       <form className='contact-container'>
         <h2>Contact Us</h2>
         <input type="text" placeholder='Your Name'/>

@@ -1,29 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Style/Cart.css";
 import { Link } from "react-router-dom";
 
-const Cart = ({ img, about, info, price,slug }) => {
+const Cart = ({ product }) => {
 
-  // console.log(img,about,info,price);
-  // console.log(slug);
-  const addToCart = ()=>{
-    const newItem = {img,about,info,price}
-    const allItemInCart = JSON.parse(localStorage.getItem("cartItem")) || []
-    localStorage.setItem("cartItem",JSON.stringify([...allItemInCart,newItem]))
+  const addToCart =()=>{
+    
   }
+
+  const sliceAbout = (about) => {
+    if (about?.length > 50) {
+      return about?.slice(0, 50) + " ...";
+    }
+    return about?.trim();
+  };
+
+  const sliceInfo = (info) => {
+    if (info?.length > 32) {
+      return info?.slice(0, 32) + " ...";
+    }
+    return info?.trim();
+  };
 
   return (
     <div className="product-cart">
-     <Link to={`/product/${slug}`}>
-      {/* <img src={`${img}`} alt="" /> */}
-      <img id="product-img" src="/src/assets/Images/1.jpg" alt="" />
-      <h3>{about}</h3>
-      <h4>{info}</h4>
-      <h5>Review</h5>
-      <p id="price">₹{price}</p>
-     </Link>
-      <button onClick={addToCart}>ADD TO CART</button> 
-      
+      <Link id="pro-link" to={`/product/${product?.slug}`}>
+        <img id="product-img" src={product?.images} alt="" />
+        <h3>{sliceAbout(product?.about)}</h3>
+        <h4>{sliceInfo(product?.info)}</h4>
+        <h5>Review</h5>
+        <p id="price">₹{product?.price}</p>
+      </Link>
+      <button onClick={addToCart}>ADD TO CART</button>
     </div>
   );
 };

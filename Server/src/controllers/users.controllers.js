@@ -52,7 +52,7 @@ const loginUser = async (req, res) => {
       if (!isMatch) {
         res.status(400).json({ error: "Invalid login detail" });
       } else {
-        res.json({ Success: "user Login successful..." });
+        res.json({userLogin});
       }
     } else {
       res.status(400).json({ error: "Invalid login detail" });
@@ -84,7 +84,7 @@ const profileImage = async (req, res) => {
 const getUser =async(req,res)=>{
   try {
     const user = await User.find({})
-    console.log(user);
+    // console.log(user);
     res.json(user)
     console.log("User Get Successful...");
   } catch (error) {

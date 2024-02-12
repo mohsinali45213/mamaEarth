@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, Link, useLocation, Outlet } from "react-router-dom";
+import { Link, useLocation, Outlet } from "react-router-dom";
 import "./Header.css";
 import AddCart from "../../Page/AddCart";
 import { allCategory } from "../../Function/Category.js";
+import { searchProduct } from "../../Function/Product.js";
 import { getSubs } from "../../Function/Category.js";
-import Login from "../../Page/Login.jsx";
-import Register from "../../Page/Register.jsx";
 const Header = () => {
   const location = useLocation();
-
+  const [totalCartItem, setTotalCartItem] = useState(0);
   const [isOpen1, setIsOpen1] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
   const [isOpen3, setIsOpen3] = useState(false);
@@ -22,6 +21,13 @@ const Header = () => {
     } catch (error) {
       console.log("getCategory Failed");
     }
+  };
+
+  const search = async (e) => {
+    const query = e.target.value;
+    const result = await searchProduct(query);
+    localStorage.setItem("searchData",JSON.stringify(result));
+    // console.log(result);
   };
 
   const getSubCat = async (id) => {
@@ -64,6 +70,7 @@ const Header = () => {
     setIsOpen1(false);
     setIsOpen2(false);
     setIsOpen3(false);
+    setTotalCartItem(JSON.parse(localStorage.getItem("cartItem"))?.length || 0);
   }, [location.pathname]);
 
   return (
@@ -77,7 +84,7 @@ const Header = () => {
         />
         <img id="logo" src="src/assets/Images/mamaearth_logo.png" alt="logo" />
         <div className="search">
-          <input type="search-input" />
+          <input type="search-input" onChange={search} />
           <button>
             <i id="search" className="fa-solid fa-magnifying-glass"></i>
           </button>
@@ -87,6 +94,7 @@ const Header = () => {
           <span id="btnCart" onClick={() => setIsOpen3(!isOpen3)}>
             <i id="icon" className="fa-solid fa-cart-shopping"></i>
             <p>Cart</p>
+            <span id="count-cart">{totalCartItem}</span>
           </span>
           <span id="btnAccount" onClick={() => setIsOpen2(!isOpen2)}>
             <i id="icon" className="fa-regular fa-user"></i>
@@ -117,13 +125,22 @@ const Header = () => {
               onMouseOver={() => getSubCat(category._id)}
             >
               <div className="dropdown">
-                <Link id="navItem" to={`/product/${category.slug}/${category._id}`}>
+                <Link
+                  id="navItem"
+                  to={`/product/${category.slug}/${category._id}`}
+                >
                   {category.name}
                 </Link>
                 <ul id="dropdown-item">
                   {subCat?.map((item) => (
                     <div key={item._id}>
-                     <Link id="AccLink" to={`/product/${item.slug}/${item._id}`}> <li>{item.name}</li></Link>
+                      <Link
+                        id="AccLink"
+                        to={`/product/${item.slug}/${item._id}`}
+                      >
+                        {" "}
+                        <li>{item.name}</li>
+                      </Link>
                     </div>
                   ))}
                 </ul>
@@ -143,32 +160,34 @@ const Header = () => {
         </div>
         <div className="order-detail">
           <ul>
+          <Link id="AccLink" to="/user">
             <li>
               <i className="fa-regular fa-user"></i>
               <span>Your Profile</span>
             </li>
+          </Link>
             <li>
               <i className="fa-solid fa-store"></i>
               <span>Your Order</span>
             </li>
             <Link id="AccLink" to="/contact-us">
-            <li>
-              <i className="fa-solid fa-phone"></i>
-              <span>Contact Us</span>
-            </li>
+              <li>
+                <i className="fa-solid fa-phone"></i>
+                <span>Contact Us</span>
+              </li>
             </Link>
-             <Link id="AccLink" to="/login">
-            <li>
-              <i className="fa-solid fa-right-to-bracket"></i>
-              <span>Login</span>
-            </li>
-             </Link>
-             <Link id="AccLink" to="/register">
-            <li>
-             <i className="fa-solid fa-right-to-bracket"></i>
-              <span>Register</span>
-            </li>
-             </Link>
+            <Link id="AccLink" to="/login">
+              <li>
+                <i className="fa-solid fa-right-to-bracket"></i>
+                <span>Login</span>
+              </li>
+            </Link>
+            <Link id="AccLink" to="/register">
+              <li>
+                <i className="fa-solid fa-right-to-bracket"></i>
+                <span>Register</span>
+              </li>
+            </Link>
             <li>
               <i className="fa-solid fa-right-from-bracket"></i>
               <span>Logout</span>
@@ -177,7 +196,6 @@ const Header = () => {
         </div>
       </div>
       <AddCart slide={isOpen3} setSlide={setIsOpen3} />
-     
     </div>
   );
 };

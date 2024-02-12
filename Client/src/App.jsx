@@ -15,6 +15,7 @@ import Register from "./Page/Register";
 import Contact from "./Page/Contact";
 import ProductList from "./Page/ProductList";
 import SingleProduct from "./Page/SingleProduct";
+import Profile from "./Page/Profile";
 const App = () => {
   const [catName, setCatName] = useState();
   const [subCatName,setSubCatName] =useState()
@@ -45,6 +46,7 @@ const App = () => {
             <Route index  element={<Home />} />
             <Route path="/login"  element={<Login />} />
             <Route path="/register"  element={<Register />} />
+            <Route path="/user"  element={<Profile />} />
             <Route path="/contact-us"  element={<Contact />} />
             <Route path="/product/:product"  element={<SingleProduct />} />
             {catName?.map((category) => (

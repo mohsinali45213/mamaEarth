@@ -40,25 +40,13 @@ const ProductList = () => {
       {cPro &&
         cPro?.map((item) => (
           <div key={item._id}>
-            <Cart
-              img={item.images}
-              info={sliceInfo(item.info)}
-              about={sliceAbout(item.about)}
-              price={item.price}
-              slug={item.slug}
-            />
+            <Cart product={item} />
           </div>
         ))}
       {sCPro &&
         sCPro?.map((item) => (
           <div key={item._id}>
-            <Cart
-              img={item.images}
-              info={sliceInfo(item.info)}
-              about={sliceAbout(item.about)}
-              price={item.price}
-              slug={item.slug}
-            />
+            <Cart product={item} />
           </div>
         ))}
     </div>

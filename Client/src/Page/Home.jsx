@@ -1,30 +1,33 @@
-import React from 'react'
-import Cart from '../Components/Cart'
-import "../Style/Home.css"
+import React, { useEffect, useState } from "react";
+import Cart from "../Components/Cart";
+import "../Style/Home.css";
+import { allProduct } from "../Function/Product";
+import Loading from "./Loading";
 const Home = () => {
-  
-  const product ={
-    img:"/src/assets/Images/1.jpg",
-    about:"Onion Hair Oil for Hair Regrowth and Hair Fall Control, 250ml",
-    info:"Boosts Hair Growth | Adds Strength & Shine",
-    price:"349.00"
-  }
-  return (
-    <div className='allProduct'>
-      <Cart  img={product.img} about={product.about} info={product.info} price={product.price} />
-      <Cart  img={product.img} about={product.about} info={product.info} price={product.price} />
-      <Cart  img={product.img} about={product.about} info={product.info} price={product.price} />
-      <Cart  img={product.img} about={product.about} info={product.info} price={product.price} />
-      <Cart  img={product.img} about={product.about} info={product.info} price={product.price} />
-      <Cart  img={product.img} about={product.about} info={product.info} price={product.price} />
-      <Cart  img={product.img} about={product.about} info={product.info} price={product.price} />
-      <Cart  img={product.img} about={product.about} info={product.info} price={product.price} />
-      <Cart  img={product.img} about={product.about} info={product.info} price={product.price} />
-      <Cart  img={product.img} about={product.about} info={product.info} price={product.price} />
-      <Cart  img={product.img} about={product.about} info={product.info} price={product.price} />
-      <Cart  img={product.img} about={product.about} info={product.info} price={product.price} />
-    </div>
-  )
-}
+  const [products, setProducts] = useState();
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await allProduct();
+      setProducts(result);
+    };
+    fetchData();
+  }, []);
 
-export default Home
+  return (
+    <>
+      {products ? (
+        <div className="allProduct">
+          {products?.map((item) => (
+            <div key={item._id}>
+              <Cart product={item} />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <Loading />
+      )}
+    </>
+  );
+};
+
+export default Home;

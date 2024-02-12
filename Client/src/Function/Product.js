@@ -75,6 +75,15 @@ const subCatProduct = async(id)=>{
     console.log("Product Is not Get");
   }
 }
+
+const searchProduct = async(query)=>{
+  try {
+    const result = await axios.post(`http://localhost:3000/api/v1/search/filter`,{query})
+    return result.data
+  } catch (error) {
+    console.log("Product is not search");
+  }
+}
 export {
   updateProduct,
   removeProduct,
@@ -82,5 +91,6 @@ export {
   allProduct,
   singleProduct,
   catProduct,
-  subCatProduct
+  subCatProduct,
+  searchProduct
 };

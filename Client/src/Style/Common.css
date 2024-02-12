@@ -62,7 +62,8 @@
 /* ---Contact Us--- */
 
 .contact-container{
-  padding: 3rem 20rem;
+  /* padding: 3rem 20rem; */
+  width: 60%;
 }
 .contact-container h2{
   text-align: center;
@@ -84,7 +85,7 @@
   font-size: 1rem;
 }
 
-.login-wrapper,.register-wrapper{
+.login-wrapper,.register-wrapper,.contact-wrapper{
   position: fixed;
   inset:115px 0 0 0;
   display: flex;
@@ -94,6 +95,30 @@
 
 /* ---Contact Us--- */
 
-@media screen and (max-width: 1000px) {
-
+@media screen and (max-width: 720px) {
+  .login-container,.register-container{
+    border: none;
+  }
+  .login-wrapper,.register-wrapper{
+    top: 0;
+    font-size: .8rem;
+  }
+  .login-container input,.register-container input,.login-container button,.register-container button{
+    font-size: .7rem;
+  }
+  .contact-container textarea{
+    height: 7em;
+  }
+  .contact-container{
+    width: 85%;
+  }
+  .contact-container h2{
+    font-size: 1.2rem;
+  }
+  .contact-container input,.contact-container textarea{
+    font-size: .7rem;
+  }
+  .contact-container button{
+     font-size: .8rem;
+  }
 }
