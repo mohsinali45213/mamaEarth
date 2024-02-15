@@ -8,7 +8,7 @@ const Profile = () => {
   const [updateData, setUpdateData] = useState();
   const [userImage, setUserImage] = useState();
   useEffect(() => {
-    // setUserId(JSON.parse(localStorage.getItem("user")));
+    // setUserId(JSON.parse(localStorage.getItem("user")) ||[]);
     // getUserData();
   }, [userId,toggle]);
 
@@ -16,6 +16,8 @@ const Profile = () => {
     const result = await singleUser(userId._id);
     setUser(result);
   };
+ 
+  console.log(userId?._id);
 
   const handleInput = (e) => {
     if (e.target.type === "file") {
