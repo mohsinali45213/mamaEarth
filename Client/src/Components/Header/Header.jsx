@@ -79,10 +79,10 @@ const Header = () => {
         <img
           onClick={() => setIsOpen1(!isOpen1)}
           id="openNav"
-          src="src/assets/Images/menu-burger.png"
+          src="/src/assets/Images/menu-burger.png"
           alt=""
         />
-        <img id="logo" src="src/assets/Images/mamaearth_logo.png" alt="logo" />
+        <img id="logo" src="http://res.cloudinary.com/mohsin45213/image/upload/v1707748702/behxns8zai3pb8ro8hyi.png" alt="logo" />
         <div className="search">
           <input type="search-input" onChange={search} />
           <button>

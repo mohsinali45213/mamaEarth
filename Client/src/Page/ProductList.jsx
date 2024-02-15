@@ -3,6 +3,7 @@ import { catProduct } from "../Function/Product";
 import { subCatProduct } from "../Function/Product";
 import { useLocation, useParams } from "react-router-dom";
 import Cart from "../Components/Cart";
+import Loading from "./Loading";
 const ProductList = () => {
   const [cPro, setCPro] = useState();
   const [sCPro, setSCPro] = useState();
@@ -37,18 +38,24 @@ const ProductList = () => {
   // console.log("Sub", sCPro);
   return (
     <div className="allProduct">
-      {cPro &&
+      {cPro ? (
         cPro?.map((item) => (
           <div key={item._id}>
             <Cart product={item} />
           </div>
-        ))}
-      {sCPro &&
+        ))
+      ) : (
+        <Loading />
+      )}
+      {sCPro ? (
         sCPro?.map((item) => (
           <div key={item._id}>
             <Cart product={item} />
           </div>
-        ))}
+        ))
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 };

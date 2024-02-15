@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import "../Style/Common.css"
 import { register } from '../Function/User'
 import { useNavigate } from 'react-router-dom'
-const Register = ({setOpen}) => {
+const Register = () => {
 
   const [data,setData] =useState()
   const navigate = useNavigate()
@@ -14,7 +14,6 @@ const Register = ({setOpen}) => {
   const handleSubmit = async(e) =>{
     e.preventDefault();
     const  result = await register(data)
-    setOpen(false)
     navigate("/login")
   }
   console.log(data);

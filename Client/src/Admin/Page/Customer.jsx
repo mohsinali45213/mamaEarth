@@ -29,7 +29,10 @@ const Customer = () => {
         {
           user?.map((item)=>(
         <tr>
-            <td>{item?.username}</td>
+            <td id='p-td'>
+              <img src={item.userImage}  alt="" />
+              <p>{item?.username}</p>
+            </td>
             <td>{item?.email}</td>
             <td>{item?.role}</td>
             <td>{item?.phone}</td>

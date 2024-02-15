@@ -22,9 +22,13 @@ const login = async (loginDetail) => {
   }
 };
 
-const uploadImage = async (image, userId) => {
+const uploadImage = async (userId,userImage) => {
   try {
-    const upload = await axios.post(`${API_URL}/upload/${userId}`, image);
+    const upload = await axios.post(`${API_URL}/upload/${userId}`, {userImage},{
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      }
+    });
     console.log("Image Is Uploaded");
     return upload.data;
   } catch (error) {
@@ -41,4 +45,22 @@ const getUsers = async () => {
     console.log("Not Get...");
   }
 };
-export { login, register, uploadImage ,getUsers};
+
+const singleUser =async(id)=>{
+  try {
+    const user = await axios.get(`http://localhost:3000/api/v1/users/${id}`)
+    return user.data
+  } catch (error) {
+    console.log("user not fetch");
+  }
+}
+
+const userUpdate = async(id,userData)=>{
+  try {
+    const user =await axios.post(`http://localhost:3000/api/v1/users/${id}`,userData)
+    return user.data
+  } catch (error) {
+    console.log("user not update",error);
+  }
+}
+export { login, register, uploadImage ,getUsers,singleUser,userUpdate};
