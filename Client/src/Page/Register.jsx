@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import "../Style/Common.css"
 import { register } from '../Function/User'
 import { useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
 const Register = () => {
 
   const [data,setData] =useState()
@@ -14,7 +15,12 @@ const Register = () => {
   const handleSubmit = async(e) =>{
     e.preventDefault();
     const  result = await register(data)
-    navigate("/login")
+    if (result) {
+      navigate("/login")
+      toast.success("Register Successful")
+    }else{
+      toast.error("Register failed")
+    }
   }
   console.log(data);
   return (

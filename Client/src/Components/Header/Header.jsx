@@ -5,6 +5,8 @@ import AddCart from "../../Page/AddCart";
 import { allCategory } from "../../Function/Category.js";
 import { searchProduct } from "../../Function/Product.js";
 import { getSubs } from "../../Function/Category.js";
+import { singleUser } from "../../Function/User.js";
+import { useSelector } from "react-redux";
 const Header = () => {
   const location = useLocation();
   const [totalCartItem, setTotalCartItem] = useState(0);
@@ -13,6 +15,10 @@ const Header = () => {
   const [isOpen3, setIsOpen3] = useState(false);
   const [subCat, setSubCat] = useState();
   const [categories, setCategories] = useState([]);
+  const [userId, setUserId] = useState();
+  const [user, setUser] = useState();
+
+  const cartItems= useSelector(state => state.cartItems);
 
   const fetchCategories = async () => {
     try {
@@ -21,6 +27,11 @@ const Header = () => {
     } catch (error) {
       console.log("getCategory Failed");
     }
+  };
+
+  const getUserData = async () => {
+    const result = await singleUser(userId);
+    setUser(result);
   };
 
   const search = async (e) => {
@@ -36,10 +47,12 @@ const Header = () => {
   };
 
   useEffect(() => {
-    fetchCategories();
-  }, []);
+    setUserId(JSON.parse(localStorage.getItem("user")));
+    getUserData(userId);
+  }, [userId,isOpen2]);
 
   useEffect(() => {
+    fetchCategories();
     const clickHandler = (event) => {
       if (
         !event.target.closest("#openNav") &&
@@ -66,13 +79,18 @@ const Header = () => {
     };
   }, []);
 
+  
+  
   useEffect(() => {
     setIsOpen1(false);
     setIsOpen2(false);
     setIsOpen3(false);
-    setTotalCartItem(JSON.parse(localStorage.getItem("cartItem"))?.length || 0);
   }, [location.pathname]);
 
+  useEffect(()=>{
+    setTotalCartItem(JSON.parse(localStorage.getItem("cart"))?.length || 0);
+  },[localStorage.getItem("cart")])
+  
   return (
     <div className="header">
       <div className="header-top">
@@ -94,7 +112,7 @@ const Header = () => {
           <span id="btnCart" onClick={() => setIsOpen3(!isOpen3)}>
             <i id="icon" className="fa-solid fa-cart-shopping"></i>
             <p>Cart</p>
-            <span id="count-cart">{totalCartItem}</span>
+            <span id="count-cart">{cartItems.length}</span>
           </span>
           <span id="btnAccount" onClick={() => setIsOpen2(!isOpen2)}>
             <i id="icon" className="fa-regular fa-user"></i>
@@ -152,10 +170,10 @@ const Header = () => {
 
       <div className={`account-detail ${isOpen2 ? "open" : ""}`}>
         <div className="user-info">
-          <img id="avatar" src="src/assets/Images/1.jpg" alt="" />
+          <img id="avatar" src={user?.userImage} alt="" />
           <div className="user-name">
-            <h4>Harry Potter</h4>
-            <h5>9834342134</h5>
+            <h4>{user?.username}</h4>
+            <h5>{user?.phone}</h5>
           </div>
         </div>
         <div className="order-detail">

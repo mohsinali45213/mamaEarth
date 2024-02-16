@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { login } from "../Function/User";
 import { useNavigate } from "react-router-dom";
 import "../Style/Common.css";
+import toast from "react-hot-toast";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,14 +15,12 @@ const Login = () => {
     if (result) {
       localStorage.setItem(
         "user",
-        JSON.stringify({
-          _id:result._id,
-          name:result.username,
-          img:result.userImage,
-          phone:result.phone
-        })
+        JSON.stringify(result._id)
       );
       navigate("/");
+      toast.success("Login Successful")
+    }else{
+      toast.error("Login Failed")
     }
   };
 

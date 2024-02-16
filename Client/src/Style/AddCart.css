@@ -36,6 +36,14 @@
   box-shadow: 0 0 5px gray;
   margin-bottom: .2rem;
 }
+.cart-wrapper{
+  overflow-y: scroll;
+  height: 500px;
+  scrollbar-width: 1px;
+}
+.cart-wrapper::-webkit-scrollbar{
+  width: 0px;
+}
 .cart-container{
   margin: .5rem;
   border-radius: 5px;

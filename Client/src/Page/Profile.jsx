@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from "react";
 import "../Style/Profile.css";
+import toast from "react-hot-toast";
 import { singleUser, uploadImage, userUpdate } from "../Function/User";
+import { useLocation } from "react-router-dom";
 const Profile = () => {
   const [toggle, setToggle] = useState(false);
   const [userId, setUserId] = useState();
   const [user, setUser] = useState();
   const [updateData, setUpdateData] = useState();
   const [userImage, setUserImage] = useState();
+  const location = useLocation()
   useEffect(() => {
-    // setUserId(JSON.parse(localStorage.getItem("user")) ||[]);
-    // getUserData();
-  }, [userId,toggle]);
+    setUserId(JSON.parse(localStorage.getItem("user")));
+    getUserData();
+  }, [userId,toggle,location.pathname]);
 
   const getUserData = async () => {
-    const result = await singleUser(userId._id);
+    const result = await singleUser(userId);
     setUser(result);
   };
  
-  console.log(userId?._id);
 
   const handleInput = (e) => {
     if (e.target.type === "file") {
@@ -40,6 +42,7 @@ const Profile = () => {
     const result = await userUpdate(user._id, updateData);
     if (result) {
       setToggle(false);
+      toast.success("Update Successful")
     }
   };
 

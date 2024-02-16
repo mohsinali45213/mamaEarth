@@ -3,12 +3,14 @@ import { useLocation, useParams } from "react-router-dom";
 import { singleProduct } from "../Function/Product";
 import "../Style/SinglePro.css";
 import Loading from "./Loading";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cartSlicer";
 const SingleProduct = () => {
   const { product } = useParams();
   const [pro, setPro] = useState();
   const location = useLocation();
   const [count,setCount] = useState(1)
-
+  const dispatch = useDispatch()
   useEffect(() => {
     const getData = async () => {
       const result = await singleProduct(product);
@@ -17,6 +19,9 @@ const SingleProduct = () => {
     getData();
   }, [location.pathname]);
 
+  const handleAddToCart = (product) => {
+    dispatch(addToCart({ product }));
+  };
 
   const increment =()=>{
     setCount(count+1)
@@ -28,9 +33,9 @@ const SingleProduct = () => {
   }
   return (
       pro?
-      <div className="single-main">
+      <div key={pro._id} className="single-main">
       <div className="single-sub">
-        <img src="/src/assets/Images/1.jpg" alt="" />
+        <img src={pro?.images} alt="img" loading="lazy"/>
 
         <div className="info">
           <h3 className="title">{pro?.about}</h3>
@@ -45,7 +50,7 @@ const SingleProduct = () => {
           <h5>₹{pro?.price}</h5>
           <div className="btnContainer">
             <button>Buy Now</button>
-            <button>Add TO Cart</button>
+            <button onClick={()=>handleAddToCart(pro)}>Add TO Cart</button>
           </div>
         </div>
       </div>
