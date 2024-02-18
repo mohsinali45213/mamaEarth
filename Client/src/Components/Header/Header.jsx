@@ -94,6 +94,7 @@ const Header = () => {
     setTotalCartItem(JSON.parse(localStorage.getItem("cart"))?.length || 0);
   }, [localStorage.getItem("cart")]);
 
+
   return (
     <div className="header">
       <div className="header-top">
@@ -203,10 +204,10 @@ const Header = () => {
                 <span>Contact Us</span>
               </li>
             </Link>
-            {user?.roll === "Admin" && (
-              <Link id="AccLink" to="/admin/product">
+            {user?.role === "Admin" && (
+              <Link id="AccLink" to="/admin/products">
                 <li>
-                  <i className="fa-solid fa-phone"></i>
+                <i className="fa-solid fa-wand-magic-sparkles"></i>
                   <span>Dashboard</span>
                 </li>
               </Link>

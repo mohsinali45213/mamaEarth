@@ -13,7 +13,7 @@ export const store = configureStore({
 
 store.subscribe(() => {
     const state = store.getState();
-    localStorage.setItem("localCart", JSON.stringify(state.cart.cartItems));
+    localStorage.setItem("localCart", JSON.stringify({cartItems:state.cart.cartItems,total:state.cart.total}));
   });
   
   const loadCartFromLocalStorage = () => {

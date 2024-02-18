@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
 import "../Style/AddCart.css";
 import { useDispatch, useSelector } from "react-redux";
 import { decrementCartItem, incrementCartItem } from "../redux/CartSlicer";
 const AddCart = ({ slide, setSlide }) => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
+  const total = useSelector((state) => state.cart.total);
   const increment = (product) => {
     dispatch(incrementCartItem({ product }));
   };
@@ -53,7 +53,7 @@ const AddCart = ({ slide, setSlide }) => {
             <div  className="summary-container">
               <div id="inner">
                 <p>Order Total</p>
-                <span>₹1843.00</span>
+                <span>₹{total}</span>
               </div>
               <div id="inner">
                 <p>Shipping</p>
@@ -61,7 +61,7 @@ const AddCart = ({ slide, setSlide }) => {
               </div>
               <div id="inner">
                 <p>Grand Total</p>
-                <span>₹1843.00</span>
+                <span>₹{total}</span>
               </div>
             </div>
           </div>
@@ -70,7 +70,7 @@ const AddCart = ({ slide, setSlide }) => {
               <i className="fa-solid fa-cart-shopping"></i>
               <div className="total-count">
                 <h5>{cartItems.length} Items</h5>
-                <h5></h5>
+                <h5>₹{total}</h5>
               </div>
             </div>
             <button className="btnContinue">CONTINUE</button>
