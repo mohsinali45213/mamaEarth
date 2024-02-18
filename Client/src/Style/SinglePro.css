@@ -70,7 +70,11 @@
 .description h3{
   padding-bottom: 1rem;
 }
-
+.description h4{
+  letter-spacing: .5px;
+  word-spacing: 1px;
+  line-height: 20px;
+}
 @media screen and (max-width:1000px) {
   .title{
     font-size: 1rem;

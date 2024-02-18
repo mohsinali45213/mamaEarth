@@ -18,7 +18,7 @@ const Header = () => {
   const [userId, setUserId] = useState();
   const [user, setUser] = useState();
 
-  const cartItems= useSelector(state => state.cartItems);
+  const cartItems= useSelector(state => state.cart.cartItems);
 
   const fetchCategories = async () => {
     try {
@@ -85,6 +85,11 @@ const Header = () => {
     setIsOpen1(false);
     setIsOpen2(false);
     setIsOpen3(false);
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }, [location.pathname]);
 
   useEffect(()=>{

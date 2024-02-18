@@ -4,15 +4,19 @@ import { login } from "../Function/User";
 import { useNavigate } from "react-router-dom";
 import "../Style/Common.css";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { userLogin } from "../redux/UserSlice";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch()
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const result = await login({ email, password });
     if (result) {
+      // dispatch(userLogin(result))
       localStorage.setItem(
         "user",
         JSON.stringify(result._id)

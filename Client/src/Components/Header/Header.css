@@ -159,6 +159,9 @@ div.open {
   overflow: hidden;
   flex-grow: 1;
 }
+.user-name h5{
+  color:  black;
+}
 .user-info h4 {
   margin-bottom: 0.2rem;
 }

@@ -23,18 +23,7 @@ const ProductList = () => {
     getSubProduct();
   }, [location.pathname]);
 
-  const sliceAbout = (about) => {
-    if (about.length > 50) {
-      return about.slice(0, 50) + " ...";
-    }
-    return about.trim();
-  };
-  const sliceInfo = (info) => {
-    if (info.length > 32) {
-      return info.slice(0, 32) + " ...";
-    }
-    return info.trim();
-  };
+
   // console.log("Sub", sCPro);
   return (
     <div className="allProduct">

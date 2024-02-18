@@ -29,8 +29,10 @@ export const cartReducer = createSlice({
       const existItem = currentCart.filter((item) => item._id === product._id);
       if (existingItemIndex != -1) {
         state.cartItems[existingItemIndex].qty += 1;
+        state.cartItems[existingItemIndex].totalProPrice+= product.price;
+
       } else {
-        const updatedItem = { ...product, qty: 1 };
+        const updatedItem = { ...product, qty: 1 ,totalProPrice:product.price};
         state.cartItems.push(updatedItem);
         toast.success("add to cart");
       }
@@ -40,7 +42,7 @@ export const cartReducer = createSlice({
       const existingItem = state.cartItems.find(item => item._id === product._id);
       if (existingItem) {
         existingItem.qty += 1;
-        existingItem.price += product.price;
+        existingItem.totalProPrice += product.price;
         if (existingItem.qty === 0) {
           // toast.success("remove to cart");
           state.cartItems = state.cartItems.filter(item => item._id !== product._id);
@@ -54,7 +56,7 @@ export const cartReducer = createSlice({
       const existingItem = state.cartItems.find(item => item._id === product._id);
       if (existingItem) {
         existingItem.qty -= 1;
-        existingItem.price -= product.price;
+        existingItem.totalProPrice -= product.price;
         if (existingItem.qty === 0) {
           state.cartItems = state.cartItems.filter(item => item._id !== product._id);
         }

@@ -8,6 +8,7 @@
   gap: 1em;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  border-bottom:1px solid  rgb(235, 233, 233) ;
 }
 @media screen and (max-width: 1150px) {
   .allProduct {

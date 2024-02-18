@@ -7,7 +7,7 @@ import { addToCart } from "../redux/CartSlicer";
 
 const Cart = ({ product }) => {
   const dispatch = useDispatch();
-  const cartItems = useSelector(state => state.cartItems);
+  const cartItems = useSelector(state => state.cart.cartItems);
   // console.log(cartItems)
   const handleAddToCart = () => {
     dispatch(addToCart({ product }));

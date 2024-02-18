@@ -16,6 +16,11 @@ import Contact from "./Page/Contact";
 import ProductList from "./Page/ProductList";
 import SingleProduct from "./Page/SingleProduct";
 import Profile from "./Page/Profile";
+import Footer from "./Page/Footer";
+import PrivacyPolicy from "./Page/PrivacyPolicy";
+import TermCondition from "./Page/TermCondition";
+import TermConditionCashBack from "./Page/TermConditionCashBack";
+import AboutUs from "./Page/AboutUs";
 const App = () => {
   const [catName, setCatName] = useState();
   const [subCatName,setSubCatName] =useState()
@@ -40,6 +45,7 @@ const App = () => {
               <>
                 <Header />
                 <Outlet />
+                <Footer/>
               </>
             }
           >
@@ -49,6 +55,10 @@ const App = () => {
             <Route path="/user"  element={<Profile />} />
             <Route path="/contact-us"  element={<Contact />} />
             <Route path="/product/:product"  element={<SingleProduct />} />
+            <Route path="/privacy-policy"  element={<PrivacyPolicy />} />
+            <Route path="/terms-and-conditions"  element={<TermCondition />} />
+            <Route path="/terms-and-conditions-cashback"  element={<TermConditionCashBack />} />
+            <Route path="/about-us"  element={<AboutUs />} />
             {catName?.map((category) => (
               <Route 
                 key={category.slug}
@@ -85,20 +95,3 @@ const App = () => {
 
 export default App;
 
-
-// import React from 'react'
-// import Register from './Page/Register'
-// import Login from './Page/Login'
-// import Contact from './Page/Contact'
-
-// const App = () => {
-//   return (
-//     <div>
-//       {/* <Register/> */}
-//       {/* <Login/> */}
-//       {/* <Contact/> */}
-//     </div>
-//   )
-// }
-
-// export default App
