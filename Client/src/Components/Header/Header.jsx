@@ -124,7 +124,7 @@ const Header = () => {
           </span>
           <span id="btnAccount" onClick={() => setIsOpen2(!isOpen2)}>
             <i id="icon" className="fa-regular fa-user"></i>
-            <p>Account</p>
+            <p>{user ? user?.username : "Account"}</p>
           </span>
         </div>
       </div>
@@ -138,7 +138,7 @@ const Header = () => {
             </div>
           </div>
 
-          <li>
+          <li> 
             <Link to="/" id="navItem">
               Home
             </Link>
@@ -177,7 +177,7 @@ const Header = () => {
       </div>
 
       <div className={`account-detail ${isOpen2 ? "open" : ""}`}>
-        <Link to="/user" style={{ textDecoration: "none" }}>
+        <Link to="/user" style={{ textDecoration: "none",color:"black" }}>
           <div className="user-info">
             <img id="avatar" src={user?.userImage} alt="" />
             <div className="user-name">

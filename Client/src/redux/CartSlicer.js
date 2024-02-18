@@ -5,6 +5,7 @@ const initialState = {
   loading: true,
   cartItems: [],
   total: 0,
+  discount:0,
 };
 
 export const cartReducer = createSlice({
@@ -14,6 +15,7 @@ export const cartReducer = createSlice({
     setCartFromLocalStorage: (state, action) => {
       state.cartItems = [...state.cartItems, ...action.payload.cartItems];
       state.total = action.payload.total
+      state.discount = action.payload.discount
 
     },
     addToCart: (state, action) => {
@@ -36,6 +38,7 @@ export const cartReducer = createSlice({
         toast.success("add to cart");
       }
       state.total = state.cartItems.reduce((total, item) => total + item.totalProPrice, 0);
+      state.discount = state.total*5/100
     },
 
     incrementCartItem: (state, action) => {
@@ -55,6 +58,7 @@ export const cartReducer = createSlice({
         toast.success("Cart updated");
       }
       state.total = state.cartItems.reduce((total, item) => total + item.totalProPrice, 0);
+      state.discount = state.total*5/100
     },
     decrementCartItem: (state, action) => {
       const { product } = action.payload;
@@ -73,6 +77,7 @@ export const cartReducer = createSlice({
         toast.success("Cart updated");
       }
       state.total = state.cartItems.reduce((total, item) => total + item.totalProPrice, 0);
+      state.discount = state.total*5/100
     },
   },
 });

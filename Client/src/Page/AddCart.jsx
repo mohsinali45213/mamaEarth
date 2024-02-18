@@ -5,6 +5,7 @@ const AddCart = ({ slide, setSlide }) => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
   const total = useSelector((state) => state.cart.total);
+  const discount = useSelector((state) => state.cart.discount);
   const increment = (product) => {
     dispatch(incrementCartItem({ product }));
   };
@@ -60,17 +61,21 @@ const AddCart = ({ slide, setSlide }) => {
                 <span>Free</span>
               </div>
               <div id="inner">
+                <p>5% Discount</p>
+                <span>-₹{discount}</span>
+              </div>
+              <div id="inner">
                 <p>Grand Total</p>
-                <span>₹{total}</span>
+                <span>₹{total-discount}</span>
               </div>
             </div>
           </div>
           <div className="total-cartItems">
             <div className="total-count-container">
-              <i className="fa-solid fa-cart-shopping"></i>
+              <i style={{color:"rgb(28,28,28)"}} className="fa-solid fa-cart-shopping"></i>
               <div className="total-count">
                 <h5>{cartItems.length} Items</h5>
-                <h5>₹{total}</h5>
+                <h5 style={{color:"rgb(68,68,68)"}}>₹{total-discount}</h5>
               </div>
             </div>
             <button className="btnContinue">CONTINUE</button>

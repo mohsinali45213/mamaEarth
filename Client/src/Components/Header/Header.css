@@ -118,8 +118,12 @@ li {
   font-size: 0.75rem;
   font-family: var(--font);
   text-transform: uppercase;
+  transition: color .3s linear;
 }
-
+#navItem:hover{
+  color: rgb(28, 191, 255);
+  border-bottom: 2px solid rgb(28, 191, 255);
+}
 /*Account information*/
 .account-detail {
   position: absolute;
