@@ -1,5 +1,5 @@
 import {combineReducers, combineSlices, configureStore} from '@reduxjs/toolkit';
-import  cartReducer  from './redux/CartSlicer';
+import  cartReducer, { setCartFromLocalStorage }  from './redux/CartSlicer';
 import userReducer  from './redux/UserSlice';
 
 
@@ -10,3 +10,17 @@ const rootReducer = combineReducers({
 export const store = configureStore({
     reducer:rootReducer
 })
+
+store.subscribe(() => {
+    const state = store.getState();
+    localStorage.setItem("localCart", JSON.stringify(state.cart.cartItems));
+  });
+  
+  const loadCartFromLocalStorage = () => {
+    const storedCart = localStorage.getItem("localCart");
+    if (storedCart) {
+      const parsedCart = JSON.parse(storedCart);
+      store.dispatch(setCartFromLocalStorage(parsedCart));
+    }
+  };
+  loadCartFromLocalStorage();

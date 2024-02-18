@@ -107,7 +107,28 @@
   align-items: center;
   gap: .6rem;
 }
-
+.summary-container{
+  margin-top: 1rem;
+}
+#inner{
+  justify-content: space-between;
+  width: 100%;
+  color: rgb(110, 110, 110);
+  padding:.8rem .5rem ;
+  border-top:rgb(237, 237, 237) 1px solid;
+  display: flex;
+}
+#inner:last-child{
+  border-top: gray 1px solid;
+}
+#inner span{
+  color: green;
+}
+@media screen and (max-width: 720px) {
+  #inner p{
+    display: block;
+  }
+}
 @media screen and (max-width: 420px) {
   .container.container.open{
     width: 100%;

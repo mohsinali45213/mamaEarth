@@ -2,26 +2,18 @@ import { createSlice } from "@reduxjs/toolkit";
 import toast from "react-hot-toast";
 
 const initialState = {
-  loading: false,
+  loading: true,
   cartItems: [],
-  subtotal: 0,
-  tax: 0,
-  shippingCharges: 0,
-  discount: 0,
   total: 0,
-  shippingInfo: {
-    address: "",
-    city: "",
-    state: "",
-    country: "",
-    pinCode: "",
-  },
 };
 
 export const cartReducer = createSlice({
   name: "cartReducer",
   initialState,
   reducers: {
+    setCartFromLocalStorage: (state, action) => {
+      state.cartItems = [...state.cartItems,...action.payload]
+    },
     addToCart: (state, action) => {
       const { product } = action.payload;
       const currentCart = state.cartItems;
@@ -103,7 +95,8 @@ export const {
   saveShippingInfo,
   incrementCartItem,
   resetCart,
-  decrementCartItem
+  decrementCartItem,
+  setCartFromLocalStorage
 } = cartReducer.actions;
 
 export default cartReducer.reducer;

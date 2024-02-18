@@ -18,7 +18,7 @@ const Header = () => {
   const [userId, setUserId] = useState();
   const [user, setUser] = useState();
 
-  const cartItems= useSelector(state => state.cart.cartItems);
+  const cartItems = useSelector((state) => state.cart.cartItems);
 
   const fetchCategories = async () => {
     try {
@@ -37,7 +37,7 @@ const Header = () => {
   const search = async (e) => {
     const query = e.target.value;
     const result = await searchProduct(query);
-    localStorage.setItem("searchData",JSON.stringify(result));
+    localStorage.setItem("searchData", JSON.stringify(result));
     // console.log(result);
   };
 
@@ -49,7 +49,7 @@ const Header = () => {
   useEffect(() => {
     setUserId(JSON.parse(localStorage.getItem("user")));
     getUserData(userId);
-  }, [userId,isOpen2]);
+  }, [userId, isOpen2]);
 
   useEffect(() => {
     fetchCategories();
@@ -79,8 +79,6 @@ const Header = () => {
     };
   }, []);
 
-  
-  
   useEffect(() => {
     setIsOpen1(false);
     setIsOpen2(false);
@@ -88,14 +86,14 @@ const Header = () => {
     window.scroll({
       top: 0,
       left: 0,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   }, [location.pathname]);
 
-  useEffect(()=>{
+  useEffect(() => {
     setTotalCartItem(JSON.parse(localStorage.getItem("cart"))?.length || 0);
-  },[localStorage.getItem("cart")])
-  
+  }, [localStorage.getItem("cart")]);
+
   return (
     <div className="header">
       <div className="header-top">
@@ -105,7 +103,11 @@ const Header = () => {
           src="/src/assets/Images/menu-burger.png"
           alt=""
         />
-        <img id="logo" src="http://res.cloudinary.com/mohsin45213/image/upload/v1707748702/behxns8zai3pb8ro8hyi.png" alt="logo" />
+        <img
+          id="logo"
+          src="http://res.cloudinary.com/mohsin45213/image/upload/v1707748702/behxns8zai3pb8ro8hyi.png"
+          alt="logo"
+        />
         <div className="search">
           <input type="search-input" onChange={search} />
           <button>
@@ -174,21 +176,23 @@ const Header = () => {
       </div>
 
       <div className={`account-detail ${isOpen2 ? "open" : ""}`}>
-        <div className="user-info">
-          <img id="avatar" src={user?.userImage} alt="" />
-          <div className="user-name">
-            <h4>{user?.username}</h4>
-            <h5>{user?.phone}</h5>
+        <Link to="/user" style={{ textDecoration: "none" }}>
+          <div className="user-info">
+            <img id="avatar" src={user?.userImage} alt="" />
+            <div className="user-name">
+              <h4>{user?.username}</h4>
+              <h5>{user?.phone}</h5>
+            </div>
           </div>
-        </div>
+        </Link>
         <div className="order-detail">
           <ul>
-          <Link id="AccLink" to="/user">
-            <li>
-              <i className="fa-regular fa-user"></i>
-              <span>Your Profile</span>
-            </li>
-          </Link>
+            <Link id="AccLink" to="/user">
+              <li>
+                <i className="fa-regular fa-user"></i>
+                <span>Your Profile</span>
+              </li>
+            </Link>
             <li>
               <i className="fa-solid fa-store"></i>
               <span>Your Order</span>
@@ -199,6 +203,14 @@ const Header = () => {
                 <span>Contact Us</span>
               </li>
             </Link>
+            {user?.roll === "Admin" && (
+              <Link id="AccLink" to="/admin/product">
+                <li>
+                  <i className="fa-solid fa-phone"></i>
+                  <span>Dashboard</span>
+                </li>
+              </Link>
+            )}
             <Link id="AccLink" to="/login">
               <li>
                 <i className="fa-solid fa-right-to-bracket"></i>

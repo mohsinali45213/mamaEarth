@@ -13,7 +13,6 @@ const Cart = ({ product }) => {
     dispatch(addToCart({ product }));
   };
 
-  const existingItem = cartItems.find(item => item.id === product.id);
 
   const sliceAbout = (about) => {
     if (about?.length > 50) {

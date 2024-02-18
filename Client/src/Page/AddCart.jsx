@@ -5,7 +5,6 @@ import { decrementCartItem, incrementCartItem } from "../redux/CartSlicer";
 const AddCart = ({ slide, setSlide }) => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
-  // console.log(cartItems)
   const increment = (product) => {
     dispatch(incrementCartItem({ product }));
   };
@@ -28,42 +27,56 @@ const AddCart = ({ slide, setSlide }) => {
         ></i>
         <h3>My Cart</h3>
       </div>
-    {
-      cartItems.length !== 0 &&
-      <>
-        <div className="cart-wrapper">
-      <h4 id="h4">Order Summary</h4>
-        {cartItems?.map((item) => (
-          <div key={item._id} className="cart-container">
-            <img src={item?.images} alt="" />
-            <div className="info-container">
-              <h5>{sliceAbout(item?.about)}</h5>
-              <div className="price-container">
-                <span>₹{item?.totalProPrice}</span>
-                <div className="count-container">
-                  <button id="minus" onClick={() => decrement(item)}>
-                    -
-                  </button>
-                  <h4>{item?.qty}</h4>
-                  <button onClick={() => increment(item)}>+</button>
+      {cartItems.length !== 0 && (
+        <>
+          <div className="cart-wrapper">
+            <h4 id="h4">Order Summary</h4>
+            {cartItems?.map((item) => (
+              <div key={item._id} className="cart-container">
+                <img src={item?.images} alt="" />
+                <div className="info-container">
+                  <h5>{sliceAbout(item?.about)}</h5>
+                  <div className="price-container">
+                    <span>₹{item?.totalProPrice}</span>
+                    <div className="count-container">
+                      <button id="minus" onClick={() => decrement(item)}>
+                        -
+                      </button>
+                      <h4>{item?.qty}</h4>
+                      <button onClick={() => increment(item)}>+</button>
+                    </div>
+                  </div>
                 </div>
+              </div>
+            ))}
+            <h4 id="h4">Price Summary</h4>
+            <div  className="summary-container">
+              <div id="inner">
+                <p>Order Total</p>
+                <span>₹1843.00</span>
+              </div>
+              <div id="inner">
+                <p>Shipping</p>
+                <span>Free</span>
+              </div>
+              <div id="inner">
+                <p>Grand Total</p>
+                <span>₹1843.00</span>
               </div>
             </div>
           </div>
-        ))}
-      </div>
-      <div className="total-cartItems">
-        <div className="total-count-container">
-        <i className="fa-solid fa-cart-shopping"></i>
-         <div className="total-count">
-          <h5>4 Items</h5>
-          <h5>₹1748</h5>
-         </div>
-        </div>
-        <button className="btnContinue">CONTINUE</button>
-      </div>
-      </>
-    }
+          <div className="total-cartItems">
+            <div className="total-count-container">
+              <i className="fa-solid fa-cart-shopping"></i>
+              <div className="total-count">
+                <h5>{cartItems.length} Items</h5>
+                <h5></h5>
+              </div>
+            </div>
+            <button className="btnContinue">CONTINUE</button>
+          </div>
+        </>
+      )}
     </div>
   );
 };
