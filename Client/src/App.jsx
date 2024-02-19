@@ -21,6 +21,7 @@ import PrivacyPolicy from "./Page/PrivacyPolicy";
 import TermCondition from "./Page/TermCondition";
 import TermConditionCashBack from "./Page/TermConditionCashBack";
 import AboutUs from "./Page/AboutUs";
+import Orders from "./Page/Orders";
 const App = () => {
   const [catName, setCatName] = useState();
   const [subCatName,setSubCatName] =useState()
@@ -59,6 +60,7 @@ const App = () => {
             <Route path="/terms-and-conditions"  element={<TermCondition />} />
             <Route path="/terms-and-conditions-cashback"  element={<TermConditionCashBack />} />
             <Route path="/about-us"  element={<AboutUs />} />
+            <Route path="/orders"  element={<Orders/>} />
             {catName?.map((category) => (
               <Route 
                 key={category.slug}

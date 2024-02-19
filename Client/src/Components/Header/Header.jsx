@@ -194,10 +194,12 @@ const Header = () => {
                 <span>Your Profile</span>
               </li>
             </Link>
+            <Link id="AccLink" to="/orders">
             <li>
               <i className="fa-solid fa-store"></i>
               <span>Your Order</span>
             </li>
+            </Link>
             <Link id="AccLink" to="/contact-us">
               <li>
                 <i className="fa-solid fa-phone"></i>
