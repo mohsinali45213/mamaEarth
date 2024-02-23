@@ -57,7 +57,16 @@
   background-color: var(--bg1);
   overflow-y: scroll;
 }
-
+.search-container input{
+  width: 100%;
+  padding: .7rem;
+  margin-bottom: .5rem;
+  border-radius:5px ;
+  background-color: #424242;
+  /* background-color: transparent; */
+  border: 1px rgba(255, 255, 255, 0.132) solid;
+  color: white;
+}
 /* ---HEADER--- */
 
 /* ---TABLE--- */

@@ -34,7 +34,7 @@ const Cart = ({ product }) => {
         <img id="product-img" src={product?.images} alt="" loading="lazy" />
         <h3>{sliceAbout(product?.about)}</h3>
         <h4>{sliceInfo(product?.info)}</h4>
-        <h5>Review</h5>
+        {/* <h5>Review</h5> */}
         <p id="price">₹{product?.price}</p>
       </Link>
       <button onClick={handleAddToCart}>ADD TO CART</button>

@@ -84,6 +84,11 @@ const searchProduct = async(query)=>{
     console.log("Product is not search");
   }
 }
+
+const payment = async(cart)=>{
+  const pay = await axios.post(`http://localhost:3000/api/v1/payment-intent`,{cart})
+  return pay.data
+}
 export {
   updateProduct,
   removeProduct,
@@ -92,5 +97,6 @@ export {
   singleProduct,
   catProduct,
   subCatProduct,
-  searchProduct
+  searchProduct,
+  payment
 };

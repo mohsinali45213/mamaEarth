@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, Outlet } from "react-router-dom";
+import { Link, useLocation, Outlet, useNavigate } from "react-router-dom";
 import "./Header.css";
 import AddCart from "../../Page/AddCart";
 import { allCategory } from "../../Function/Category.js";
 import { searchProduct } from "../../Function/Product.js";
 import { getSubs } from "../../Function/Category.js";
-import { singleUser } from "../../Function/User.js";
+import { logout, singleUser } from "../../Function/User.js";
 import { useSelector } from "react-redux";
 const Header = () => {
   const location = useLocation();
@@ -17,6 +17,7 @@ const Header = () => {
   const [categories, setCategories] = useState([]);
   const [userId, setUserId] = useState();
   const [user, setUser] = useState();
+  const navigator = useNavigate()
 
   const cartItems = useSelector((state) => state.cart.cartItems);
 
@@ -37,7 +38,8 @@ const Header = () => {
   const search = async (e) => {
     const query = e.target.value;
     const result = await searchProduct(query);
-    localStorage.setItem("searchData", JSON.stringify(result));
+    console.log(result);
+    // localStorage.setItem("searchData", JSON.stringify(result));
     // console.log(result);
   };
 
@@ -46,10 +48,25 @@ const Header = () => {
     setSubCat(result);
   };
 
+  const userLogout = async () => {
+    if(localStorage.getItem("user")){
+       const id = JSON.parse(localStorage.getItem("user"))
+       const user = await logout(id);
+       setIsOpen2(false)
+    }
+  };
+
+  const userAuth = ()=>{
+    if (!localStorage.getItem("user")) {
+      navigator("/login")
+      setIsOpen2(false)
+    }
+  }
+
   useEffect(() => {
     setUserId(JSON.parse(localStorage.getItem("user")));
     getUserData(userId);
-  }, [userId, isOpen2]);
+  }, [userId, isOpen2,localStorage.getItem("user ")]);
 
   useEffect(() => {
     fetchCategories();
@@ -90,11 +107,6 @@ const Header = () => {
     });
   }, [location.pathname]);
 
-  useEffect(() => {
-    setTotalCartItem(JSON.parse(localStorage.getItem("cart"))?.length || 0);
-  }, [localStorage.getItem("cart")]);
-
-
   return (
     <div className="header">
       <div className="header-top">
@@ -122,7 +134,10 @@ const Header = () => {
             <p>Cart</p>
             <span id="count-cart">{cartItems.length}</span>
           </span>
-          <span id="btnAccount" onClick={() => setIsOpen2(!isOpen2)}>
+          <span id="btnAccount" onClick={() =>{
+             setIsOpen2(!isOpen2)
+             userAuth()
+          }}>
             <i id="icon" className="fa-regular fa-user"></i>
             <p>{user ? user?.username : "Account"}</p>
           </span>
@@ -138,7 +153,7 @@ const Header = () => {
             </div>
           </div>
 
-          <li> 
+          <li>
             <Link to="/" id="navItem">
               Home
             </Link>
@@ -177,7 +192,7 @@ const Header = () => {
       </div>
 
       <div className={`account-detail ${isOpen2 ? "open" : ""}`}>
-        <Link to="/user" style={{ textDecoration: "none",color:"black" }}>
+        <Link to="/user" style={{ textDecoration: "none", color: "black" }}>
           <div className="user-info">
             <img id="avatar" src={user?.userImage} alt="" />
             <div className="user-name">
@@ -195,10 +210,10 @@ const Header = () => {
               </li>
             </Link>
             <Link id="AccLink" to="/orders">
-            <li>
-              <i className="fa-solid fa-store"></i>
-              <span>Your Order</span>
-            </li>
+              <li>
+                <i className="fa-solid fa-store"></i>
+                <span>Your Order</span>
+              </li>
             </Link>
             <Link id="AccLink" to="/contact-us">
               <li>
@@ -209,12 +224,12 @@ const Header = () => {
             {user?.role === "Admin" && (
               <Link id="AccLink" to="/admin/products">
                 <li>
-                <i className="fa-solid fa-wand-magic-sparkles"></i>
+                  <i className="fa-solid fa-wand-magic-sparkles"></i>
                   <span>Dashboard</span>
                 </li>
               </Link>
             )}
-            <Link id="AccLink" to="/login">
+            {/* <Link id="AccLink" to="/login">
               <li>
                 <i className="fa-solid fa-right-to-bracket"></i>
                 <span>Login</span>
@@ -225,8 +240,8 @@ const Header = () => {
                 <i className="fa-solid fa-right-to-bracket"></i>
                 <span>Register</span>
               </li>
-            </Link>
-            <li>
+            </Link> */}
+            <li onClick={userLogout}>
               <i className="fa-solid fa-right-from-bracket"></i>
               <span>Logout</span>
             </li>

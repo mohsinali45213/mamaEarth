@@ -7,6 +7,7 @@ import Loading from "./Loading";
 const ProductList = () => {
   const [cPro, setCPro] = useState();
   const [sCPro, setSCPro] = useState();
+  const [search,setSearch] = useState("")
   const { categoryId } = useParams();
   const location = useLocation();
   const getProduct = async () => {
@@ -18,11 +19,20 @@ const ProductList = () => {
     setSCPro(result);
   };
 
+  // const handleSearch = (event) => {
+  //   setSearch(event.target.value);
+  // };
+
+  // const filteredData = user?.filter((item) => {
+  //   return item.username.toLowerCase().includes(searchTerm.toLowerCase());
+  // });
+
+
+
   useEffect(() => {
     getProduct();
     getSubProduct();
   }, [location.pathname]);
-
 
   // console.log("Sub", sCPro);
   return (

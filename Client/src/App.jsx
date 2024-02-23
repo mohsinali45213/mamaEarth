@@ -22,6 +22,9 @@ import TermCondition from "./Page/TermCondition";
 import TermConditionCashBack from "./Page/TermConditionCashBack";
 import AboutUs from "./Page/AboutUs";
 import Orders from "./Page/Orders";
+import PageNotFund from "./Page/PageNotFund";
+import Success from "./Page/Success";
+import Failed from "./Page/Failed";
 const App = () => {
   const [catName, setCatName] = useState();
   const [subCatName,setSubCatName] =useState()
@@ -61,6 +64,7 @@ const App = () => {
             <Route path="/terms-and-conditions-cashback"  element={<TermConditionCashBack />} />
             <Route path="/about-us"  element={<AboutUs />} />
             <Route path="/orders"  element={<Orders/>} />
+            
             {catName?.map((category) => (
               <Route 
                 key={category.slug}
@@ -80,7 +84,7 @@ const App = () => {
 
           {/* ---ADMIN ROUTES--- */}
 
-          <Route path="/admin" element={<Head />}>
+          <Route path="/" element={<Head />}>
             <Route path="/admin/products" element={<Products />} />
             <Route path="/admin/category" element={<Category />} />
             <Route path="/admin/sub-Category" element={<SubCategory />} />
@@ -88,6 +92,9 @@ const App = () => {
             <Route path="/admin/customer" element={<Customer />} />
           </Route>
 
+          <Route path="*" element={<PageNotFund/>}/>
+          <Route path="/success" element={<Success/>}/>
+          <Route path="/failed" element={<Failed/>}/>
           {/* ---ADMIN ROUTES--- */}
         </Routes>
       </BrowserRouter>

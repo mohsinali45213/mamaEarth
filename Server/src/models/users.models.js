@@ -42,14 +42,14 @@ const userSchema = new mongoose.Schema(
       type: String,
     },
     address: {
-      name: String,
+      fname: String,
+      lname: String,
       email: String,
       number: String,
-      address1: String,
-      address2: String,
+      address: String,
       state: String,
       city: String,
-      zipcode: String,
+      pincode: String,
     },
     tokens: [
       {

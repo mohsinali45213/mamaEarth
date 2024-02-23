@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import "../Style/Orders.css";
 import { useDispatch, useSelector } from "react-redux";
 import { decrementCartItem, incrementCartItem } from "../redux/CartSlicer";
+import {loadStripe} from "@stripe/stripe-js"
+import { payment } from "../Function/Product";
 const Orders = () => {
-  const [paymentMethod, setPaymentMethod] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState("upi");
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
   const total = useSelector((state) => state.cart.total);
@@ -25,8 +27,14 @@ const Orders = () => {
     e.preventDefault();
   };
 
-  console.log(paymentMethod);
+  const payments = async()=>{
+    const stripe = await loadStripe("pk_test_51OEqcMSILGLLt0ZXzFfwjmLN7qqAnWU956fZ2o4o9ca4aa5KyYtjHmGQcod1BQer8djhPi8AglGzZXpQmnowLbPN00Ts8B7EdP")
+    await payment(cartItems)
 
+    // const result = stripe.redirectToCheckout({
+    //   sessionId:session.id
+    // })
+  }
   return (
     <div className="order-wrapper">
       <div className="payment-container">
@@ -119,7 +127,7 @@ const Orders = () => {
                     <input type="text" placeholder="Number Of The Cart"/>
                   </div>
                   </div>
-                  <button className="place-order">PLACE ORDER</button>
+                  <button className="place-order" onClick={payments}>PLACE ORDER</button>
                   <div className="security pay">
                     <img src="https://images.mamaearth.in/wysiwyg/noun_trusted_27146262x_6Ekja92.png?auto=format" />
                     <h6>100% Payment Protection, Easy Return Policy</h6>
@@ -132,7 +140,7 @@ const Orders = () => {
                     <img src="https://images.mamaearth.in/wysiwyg/net_banking2x.png?auto=format" />
                   </div>
                   <div className="checkbox">
-                    <input type="checkbox" checked />
+                    <input type="checkbox" defaultChecked />
                     <h6>
                       By placing this order, you agree to Mamaearth's{" "}
                       <b>Terms & Condition</b> and <b>Privacy Policy</b>
@@ -142,7 +150,24 @@ const Orders = () => {
               ) : paymentMethod == "nb" ? (
                 <div className="netBanking-container">
                    <h4 className="payment-name">Pay Using Online Wallets</h4>
-                 
+                    <div className="nb-img">
+                      <div>
+                      <img src="https://images.mamaearth.in/wysiwyg/hdfc-logo.png?auto=format"/>
+                      <h5>HDFC</h5>
+                      </div>
+                      <div>
+                      <img src="https://images.mamaearth.in/wysiwyg/sbi-logo.png?auto=format"/>
+                      <h5>SBI</h5>
+                      </div>
+                      <div>
+                      <img src="https://images.mamaearth.in/wysiwyg/icici-logo.png?auto=format"/>
+                      <h5>ICICI</h5>
+                      </div>
+                      <div>
+                      <img src="https://images.mamaearth.in/wysiwyg/axis-logo.png?auto=format"/>
+                      <h5>AXIS</h5>
+                      </div>
+                    </div>
                   <button className="place-order">PLACE ORDER</button>
                   <div className="security pay">
                     <img src="https://images.mamaearth.in/wysiwyg/noun_trusted_27146262x_6Ekja92.png?auto=format" />
@@ -156,7 +181,7 @@ const Orders = () => {
                     <img src="https://images.mamaearth.in/wysiwyg/net_banking2x.png?auto=format" />
                   </div>
                   <div className="checkbox">
-                    <input type="checkbox" checked />
+                    <input type="checkbox" defaultChecked />
                     <h6>
                       By placing this order, you agree to Mamaearth's{" "}
                       <b>Terms & Condition</b> and <b>Privacy Policy</b>
@@ -185,7 +210,7 @@ const Orders = () => {
                     <img src="https://images.mamaearth.in/wysiwyg/net_banking2x.png?auto=format" />
                   </div>
                   <div className="checkbox">
-                    <input type="checkbox" checked />
+                    <input type="checkbox" defaultChecked />
                     <h6>
                       By placing this order, you agree to Mamaearth's{" "}
                       <b>Terms & Condition</b> and <b>Privacy Policy</b>
@@ -213,7 +238,7 @@ const Orders = () => {
                     <img src="https://images.mamaearth.in/wysiwyg/net_banking2x.png?auto=format" />
                   </div>
                   <div className="checkbox">
-                    <input type="checkbox" checked />
+                    <input type="checkbox" defaultChecked />
                     <h6>
                       By placing this order, you agree to Mamaearth's{" "}
                       <b>Terms & Condition</b> and <b>Privacy Policy</b>
@@ -221,53 +246,37 @@ const Orders = () => {
                   </div>
                 </div>
               ) : (
-                <div>5</div>
+                <div className="upi-container">
+                  <h4 className="payment-name">Pay using UPI ID</h4>
+                  <h4 className="payment-name">Enter UPI ID  (Google Pay, BHIM, PhonePe & more)</h4>
+                  <input type="text"  placeholder="Enter your UPI ID"/>
+                  <button className="place-order">PLACE ORDER</button>
+                  <div className="security pay">
+                    <img src="https://images.mamaearth.in/wysiwyg/noun_trusted_27146262x_6Ekja92.png?auto=format" />
+                    <h6>100% Payment Protection, Easy Return Policy</h6>
+                  </div>
+                  <div className="payment-img">
+                    <img src="https://images.mamaearth.in/wysiwyg/visa2x.png?auto=format" />
+                    <img src="https://images.mamaearth.in/wysiwyg/master_card2x.png?auto=format" />
+                    <img src="https://images.mamaearth.in/wysiwyg/american_express2x.png?auto=format" />
+                    <img src="https://images.mamaearth.in/wysiwyg/rupay2x.png?auto=format" />
+                    <img src="https://images.mamaearth.in/wysiwyg/net_banking2x.png?auto=format" />
+                  </div>
+                  <div className="checkbox">
+                    <input type="checkbox" defaultChecked />
+                    <h6>
+                      By placing this order, you agree to Mamaearth's{" "}
+                      <b>Terms & Condition</b> and <b>Privacy Policy</b>
+                    </h6>
+                  </div>
+                </div>
               )}
             </div>
           </div>
         </form>
       </div>
       <div className="order-container">
-        {/* <div className="cart-wrapper">
-          <h4 id="h4">Order Summary</h4>
-          {cartItems?.map((item) => (
-            <div key={item._id} className="cart-container">
-              <img src={item?.images} alt="" />
-              <div className="info-container">
-                <h5>{sliceAbout(item?.about)}</h5>
-                <div className="price-container">
-                  <span>₹{item?.totalProPrice}</span>
-                  <div className="count-container">
-                    <button id="minus" onClick={() => decrement(item)}>
-                      -
-                    </button>
-                    <h4>{item?.qty}</h4>
-                    <button onClick={() => increment(item)}>+</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-          <h4 id="h4">Price Summary</h4>
-          <div className="summary-container">
-            <div id="inner">
-              <p>Order Total</p>
-              <span>₹{total}</span>
-            </div>
-            <div id="inner">
-              <p>Shipping</p>
-              <span>Free</span>
-            </div>
-            <div id="inner">
-              <p>5% Discount</p>
-              <span>-₹{discount}</span>
-            </div>
-            <div id="inner">
-              <p>Grand Total</p>
-              <span>₹{total - discount}</span>
-            </div>
-          </div>
-        </div> */}
+       
       </div>
     </div>
   );

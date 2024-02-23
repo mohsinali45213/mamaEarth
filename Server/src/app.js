@@ -7,6 +7,7 @@ import userRoutes from "./routes/users.routes.js";
 import categoryRoutes from "./routes/category.routes.js";
 import subCategoryRoutes from "./routes/subcategory.routes.js";
 import productRoutes from "./routes/product.routes.js";
+import session from 'express-session';
 const app = express();
 //.env configuration
 dotenv.config({

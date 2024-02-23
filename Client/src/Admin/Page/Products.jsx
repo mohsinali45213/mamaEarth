@@ -3,6 +3,7 @@ import DeletePopup from "../../Components/DeletePopup";
 import ProductPopup from "../../Components/ProductPopup";
 import { allProduct, createProduct, removeProduct, updateProduct } from "../../Function/Product";
 import Loading from "../../Page/Loading";
+import Search from "../../Components/Search";
 
 const Products = () => {
   const [isProductPopup, setIsProductPopup] = useState(false);
@@ -10,6 +11,7 @@ const Products = () => {
   const [productList, setProductList] = useState();
   const [updateData,setUpdateData] = useState();
   const [slug,setSlug] = useState();
+  const [searchTerm, setSearchTerm] = useState('');       
 
   useEffect(() => {
     fetchProduct();
@@ -45,9 +47,20 @@ const Products = () => {
     fetchProduct();
   }
 
+    
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+  
+  const filteredData = productList?.filter((item) => {
+    return item.title.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
+
   return (
     productList?
-    <div className="">
+    <div className="p-container">
+      <Search handleSearch={handleSearch} searchTerm={searchTerm} />
       <button id="btnNew" onClick={() =>{
         setUpdateData("")
         setIsProductPopup(true)}}>
@@ -65,7 +78,7 @@ const Products = () => {
           </tr>
         </thead>
         <tbody>
-          {productList?.map((product) => (
+          {filteredData?.map((product) => (
             <tr key={product._id}>
               <td id="p-td">
                 <img src={product?.images} alt="" />

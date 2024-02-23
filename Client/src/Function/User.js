@@ -63,4 +63,16 @@ const userUpdate = async(id,userData)=>{
     console.log("user not update",error);
   }
 }
-export { login, register, uploadImage ,getUsers,singleUser,userUpdate};
+
+const logout =async(id)=>{
+  try {
+    const user=await axios.get(`http://localhost:3000/api/v1/users/logout/${id}`)
+    if (user) {
+      console.log("Logout.....");
+      localStorage.removeItem("user")
+    }
+  } catch (error) {
+    console.log("Logout Failed...");
+  }
+}
+export { login, register, uploadImage ,getUsers,singleUser,userUpdate,logout};

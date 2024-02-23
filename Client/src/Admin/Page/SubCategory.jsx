@@ -8,6 +8,7 @@ import {
 import Loading from "../../Page/Loading";
 import DeletePopup from "../../Components/DeletePopup";
 import SubCategoriesPopup from "../../Components/SubCategoriesPopup";
+import Search from "../../Components/Search";
 
 const SubCategory = () => {
   const [subCategory, setSubCategory] = useState();
@@ -16,6 +17,7 @@ const SubCategory = () => {
   const [parentId,setParentId] = useState("")
   const [slug,setSlug] = useState("")
   const [subCategoryName,setSubCategoryName] = useState("")
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     fetchSubCategory();
@@ -46,9 +48,23 @@ const SubCategory = () => {
       setIsDeletePopup(false)
     }
   };
+
+
+  
+  
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+  
+  const filteredData = subCategory?.filter((item) => {
+    return item.name.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
+
   return (
     subCategory?
     <div className="c-container">
+      <Search handleSearch={handleSearch} searchTerm={searchTerm} />
       <button id='btnNew' onClick={()=>{
         setIsInsUpPopup(true)
         setSubCategoryName("")
@@ -64,7 +80,7 @@ const SubCategory = () => {
           </tr>
         </thead>
         <tbody>
-          {subCategory?.map((cat, i) => (
+          {filteredData?.map((cat, i) => (
             <tr key={cat?._id}>
               <td>{i + 1}</td>
               <td>{cat?.name}</td>

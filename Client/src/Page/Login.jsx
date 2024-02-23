@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import MidBox from "../Components/MidBox";
 import { login } from "../Function/User";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../Style/Common.css";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
@@ -19,7 +19,7 @@ const Login = () => {
       // dispatch(userLogin(result))
       localStorage.setItem(
         "user",
-        JSON.stringify(result._id)
+        JSON.stringify(result.userId)
       );
       navigate("/");
       toast.success("Login Successful")
@@ -34,17 +34,18 @@ const Login = () => {
       <form className="login-container" onSubmit={handleSubmit}>
         <h2>Sign In</h2>
         <input
-          type="text"
+          type="email"
           placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
           required
         />
         <input
-          type="text"
+          type="password"
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+        <h5>Not have an account?<Link to="/register">Sign Up</Link></h5>
         <button>Sign In</button>
       </form>
     </div>

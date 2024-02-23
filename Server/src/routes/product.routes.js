@@ -13,6 +13,7 @@ import {
   catProducts,
   subCatProducts
 } from "../controllers/product.controller.js";
+import { payment } from "../controllers/Order.controller.js";
 const productRoutes = Router();
 
 productRoutes.post("/product", upload.single('images'), createProduct);
@@ -27,5 +28,5 @@ productRoutes.get("/products/related/:productId", listRelated);
 productRoutes.post("/search/filter", searchFilters);
 productRoutes.get("/catPro/:id",catProducts)
 productRoutes.get("/subCatPro/:id",subCatProducts)
-
+productRoutes.post('/payment-intent',payment)
 export default productRoutes

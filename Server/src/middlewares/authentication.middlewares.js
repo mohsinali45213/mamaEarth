@@ -14,7 +14,7 @@ const authCheck = async (req,res,next)=>{
     req.UserId = rootUser._id
 
     
-  } catch (error) {
+  } catch (error) { 
     res.status(401).json({error:"Unauthorize user"})
     console.log(error);
   }

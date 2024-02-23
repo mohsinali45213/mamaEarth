@@ -8,6 +8,7 @@ import {
 import DeletePopup from "../../Components/DeletePopup";
 import Loading from "../../Page/Loading";
 import CatPopup from "../../Components/CatPopup";
+import Search from "../../Components/Search";
 
 const Category = () => {
   const [category, setCategory] = useState();
@@ -15,6 +16,7 @@ const Category = () => {
   const [isInsUpPopup,setIsInsUpPopup] = useState(false)
   const [slug,setSlug] = useState("")
   const [name,setName] =useState("")
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     fetchCategory();
@@ -44,10 +46,21 @@ const Category = () => {
     }
   };  
 
+
+  
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+  
+  const filteredData = category?.filter((item) => {
+    return item.name.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
   return (
     category?
     
     <div className="c-container">
+      <Search handleSearch={handleSearch} searchTerm={searchTerm} />
       <button id='btnNew' onClick={()=>{
         setIsInsUpPopup(true)
         setSlug("")
@@ -63,7 +76,7 @@ const Category = () => {
           </tr>
         </thead>
         <tbody>
-          {category?.map((cat, i) => (
+          {filteredData?.map((cat, i) => (
             <tr key={cat?._id}>
               <td>{i + 1}</td>
               <td>{cat?.name}</td>
