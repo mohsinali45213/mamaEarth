@@ -33,17 +33,18 @@ const SingleProduct = () => {
   }
 
   const handleOrder = ()=>{
-    console.log(pro);
-     dispatch(orderInfo({
-      product:{
-        cartItems:[
-          {...pro,qty:count,totalProPrice:pro.price},
-        ],
-        total:pro.price*count,
-        discount:pro.price*count*5/100
-       
-      }
-    }))
+     if (pro) {
+      dispatch(orderInfo({
+        product:{
+          cartItems:[
+            {...pro,qty:count,totalProPrice:pro.price},
+          ],
+          total:pro.price*count,
+          discount:pro.price*count*5/100
+         
+        }
+      }))
+     }
   }
   return (
       pro?

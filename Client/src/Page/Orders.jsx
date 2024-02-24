@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "../Style/Orders.css";
 import { useDispatch, useSelector } from "react-redux";
-import { decrementCartItem, incrementCartItem } from "../redux/CartSlicer";
 import { loadStripe } from "@stripe/stripe-js";
 import { payment } from "../Function/Product";
+import toast from "react-hot-toast";
 const Orders = () => {
   const [paymentMethod, setPaymentMethod] = useState("upi");
   const order_items = useSelector((state) => state.cart.orderItems);
@@ -23,12 +23,19 @@ const Orders = () => {
     const stripe = await loadStripe(
       "pk_test_51OEqcMSILGLLt0ZXzFfwjmLN7qqAnWU956fZ2o4o9ca4aa5KyYtjHmGQcod1BQer8djhPi8AglGzZXpQmnowLbPN00Ts8B7EdP"
     );
-    await payment(order_items);
+
+    const session = await payment(order_items);
+    console.log(session);
+    if (!session) {
+      toast.error("Order Failed")
+    }
     localStorage.removeItem("localCart");
 
-    // const result = stripe.redirectToCheckout({
-    //   sessionId:session.id
-    // })
+    if (session) {
+      const result = stripe.redirectToCheckout({
+        sessionId: session.id,
+      });
+    }
   };
   return (
     <div className="order-wrapper">
@@ -165,7 +172,9 @@ const Orders = () => {
                       <h5>AXIS</h5>
                     </div>
                   </div>
-                  <button className="place-order">PLACE ORDER</button>
+                  <button className="place-order" onClick={payments}>
+                    PLACE ORDER
+                  </button>
                   <div className="security pay">
                     <img src="https://images.mamaearth.in/wysiwyg/noun_trusted_27146262x_6Ekja92.png?auto=format" />
                     <h6>100% Payment Protection, Easy Return Policy</h6>
@@ -194,7 +203,9 @@ const Orders = () => {
                     <img src="https://images.mamaearth.in/cs-static/honasa/freecharge.png" />
                     <img src="https://images.mamaearth.in/cs-static/honasa/mobikwik.png" />
                   </div>
-                  <button className="place-order">PLACE ORDER</button>
+                  <button className="place-order" onClick={payments}>
+                    PLACE ORDER
+                  </button>
                   <div className="security pay">
                     <img src="https://images.mamaearth.in/wysiwyg/noun_trusted_27146262x_6Ekja92.png?auto=format" />
                     <h6>100% Payment Protection, Easy Return Policy</h6>
@@ -222,7 +233,9 @@ const Orders = () => {
                     everyone’s safety, we advise paying online to limit contact
                     and help stop the spread of the virus.
                   </h6>
-                  <button className="place-order">PLACE ORDER</button>
+                  <button className="place-order" onClick={payments}>
+                    PLACE ORDER
+                  </button>
                   <div className="security pay">
                     <img src="https://images.mamaearth.in/wysiwyg/noun_trusted_27146262x_6Ekja92.png?auto=format" />
                     <h6>100% Payment Protection, Easy Return Policy</h6>
@@ -249,7 +262,9 @@ const Orders = () => {
                     Enter UPI ID (Google Pay, BHIM, PhonePe & more)
                   </h4>
                   <input type="text" placeholder="Enter your UPI ID" />
-                  <button className="place-order">PLACE ORDER</button>
+                  <button className="place-order" onClick={payments}>
+                    PLACE ORDER
+                  </button>
                   <div className="security pay">
                     <img src="https://images.mamaearth.in/wysiwyg/noun_trusted_27146262x_6Ekja92.png?auto=format" />
                     <h6>100% Payment Protection, Easy Return Policy</h6>

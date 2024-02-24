@@ -152,3 +152,41 @@
      font-size: .8rem;
   }
 }
+
+
+/* ---Payment Success--- */
+
+.popup-wrapper{
+  width: 100vw;
+  display: grid;
+  place-content:  center;
+  height: 100vh;
+  /* background-color: aliceblue; */
+}
+.popup-container{
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  justify-content: center;
+  background-color: white;
+  align-items: center;
+  box-shadow: 0 0 5px rgb(168, 189, 173);
+}
+.popup-container img{
+  width: 50px;
+}
+.popup-container button{
+  padding: .8rem 1.5rem;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(19, 205, 68);
+  color: white;
+}
+.popup-container :where(h5,h4){
+  color: rgb(75, 75, 75);
+  font-family: sans-serif;
+}
+
+/* ---Payment Success--- */

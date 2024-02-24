@@ -10,30 +10,33 @@ const payment = async (req, res) => {
     }
 
 
-    const listItem = cart.order_Product.cartItems?.map((item) => ({
+    const lineItem = cart.order_Product.cartItems?.map((item) => ({
       price_data: {
-        currency: "usd",
+        currency: "inr",
         product_data: {
           name: item.title,
           images: item.images,
         },
-        unit_amount: Math.round(item.totalProPrice), // Make sure price is in cents
+        unit_amount: Math.round(item.totalProPrice*100), // Make sure price is in cents
       },
       quantity: item.qty || 1
     }));
 
+    console.log(lineItem);
+
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
-      line_items: listItem,
+      line_items: lineItem,
       mode: "payment",
       success_url: "http://localhost:5173/success",
       cancel_url: "http://localhost:5173/failed",
     });
 
-    console.log(session.total_details);
+    console.log(session);
 
-    res.json({ id: session.id });
+
+    res.json({ id: session.id,url:session.url });
   } catch (error) {
     console.error("Error in payment function",error);
     res.status(500).json({ error: "Internal server error" });
