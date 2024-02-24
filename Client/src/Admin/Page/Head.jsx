@@ -6,7 +6,11 @@ const Header = () => {
       <div className='main-container'>
         <div className='left-container'>
         <div>
-          <h1 id="title">Dashboard</h1>
+          
+          <h1 id="title"><Link to="/"><i className="fa-solid fa-arrow-left" style={{
+            color:"white",
+            marginLeft:"-10px"
+          }}></i></Link>   Dashboard</h1>
         </div>
         <ul>
           <li><Link to="/admin/products" id='link'>Products</Link></li>

@@ -4,6 +4,9 @@ import toast from "react-hot-toast";
 const initialState = {
   loading: true,
   cartItems: [],
+  orderItems:{
+    order_Product:[],
+  },
   total: 0,
   discount:0,
 };
@@ -16,6 +19,7 @@ export const cartReducer = createSlice({
       state.cartItems = [...state.cartItems, ...action.payload.cartItems];
       state.total = action.payload.total
       state.discount = action.payload.discount
+      state.orderItems =action.payload.orderItems
 
     },
     addToCart: (state, action) => {
@@ -79,6 +83,14 @@ export const cartReducer = createSlice({
       state.total = state.cartItems.reduce((total, item) => total + item.totalProPrice, 0);
       state.discount = state.total*5/100
     },
+
+    orderInfo:(state,action)=>{
+      if (action.payload.product) {
+        state.orderItems.order_Product=action.payload.product
+        state.orderItems.order_Price = state.orderItems.order_Product.total - state.orderItems.order_Product.discounts
+      }
+      // state.orderItems.order_Price =action.payload.price
+    }
   },
 });
 
@@ -88,6 +100,7 @@ export const {
   incrementCartItem,
   decrementCartItem,
   setCartFromLocalStorage,
+  orderInfo
 } = cartReducer.actions;
 
 export default cartReducer.reducer;

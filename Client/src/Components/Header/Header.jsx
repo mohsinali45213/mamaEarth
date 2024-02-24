@@ -3,13 +3,11 @@ import { Link, useLocation, Outlet, useNavigate } from "react-router-dom";
 import "./Header.css";
 import AddCart from "../../Page/AddCart";
 import { allCategory } from "../../Function/Category.js";
-import { searchProduct } from "../../Function/Product.js";
 import { getSubs } from "../../Function/Category.js";
 import { logout, singleUser } from "../../Function/User.js";
 import { useSelector } from "react-redux";
-const Header = () => {
+const Header = ({handleSearch}) => {
   const location = useLocation();
-  const [totalCartItem, setTotalCartItem] = useState(0);
   const [isOpen1, setIsOpen1] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
   const [isOpen3, setIsOpen3] = useState(false);
@@ -33,14 +31,6 @@ const Header = () => {
   const getUserData = async () => {
     const result = await singleUser(userId);
     setUser(result);
-  };
-
-  const search = async (e) => {
-    const query = e.target.value;
-    const result = await searchProduct(query);
-    console.log(result);
-    // localStorage.setItem("searchData", JSON.stringify(result));
-    // console.log(result);
   };
 
   const getSubCat = async (id) => {
@@ -121,11 +111,13 @@ const Header = () => {
           src="http://res.cloudinary.com/mohsin45213/image/upload/v1707748702/behxns8zai3pb8ro8hyi.png"
           alt="logo"
         />
-        <div className="search">
-          <input type="search-input" onChange={search} />
+       <div className="search">
+       <Link to="/search">
+          <input type="search-input" onChange={handleSearch} />
           <button>
             <i id="search" className="fa-solid fa-magnifying-glass"></i>
           </button>
+       </Link>
         </div>
 
         <div className="icons">
@@ -209,7 +201,7 @@ const Header = () => {
                 <span>Your Profile</span>
               </li>
             </Link>
-            <Link id="AccLink" to="/orders">
+            <Link id="AccLink">
               <li>
                 <i className="fa-solid fa-store"></i>
                 <span>Your Order</span>

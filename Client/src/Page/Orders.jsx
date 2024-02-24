@@ -2,20 +2,12 @@ import React, { useState } from "react";
 import "../Style/Orders.css";
 import { useDispatch, useSelector } from "react-redux";
 import { decrementCartItem, incrementCartItem } from "../redux/CartSlicer";
-import {loadStripe} from "@stripe/stripe-js"
+import { loadStripe } from "@stripe/stripe-js";
 import { payment } from "../Function/Product";
 const Orders = () => {
   const [paymentMethod, setPaymentMethod] = useState("upi");
-  const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cart.cartItems);
-  const total = useSelector((state) => state.cart.total);
-  const discount = useSelector((state) => state.cart.discount);
-  const increment = (product) => {
-    dispatch(incrementCartItem({ product }));
-  };
-  const decrement = (product) => {
-    dispatch(decrementCartItem({ product }));
-  };
+  const order_items = useSelector((state) => state.cart.orderItems);
+
   const sliceAbout = (about) => {
     if (about?.length > 80) {
       return about?.slice(0, 80) + " ...";
@@ -27,14 +19,17 @@ const Orders = () => {
     e.preventDefault();
   };
 
-  const payments = async()=>{
-    const stripe = await loadStripe("pk_test_51OEqcMSILGLLt0ZXzFfwjmLN7qqAnWU956fZ2o4o9ca4aa5KyYtjHmGQcod1BQer8djhPi8AglGzZXpQmnowLbPN00Ts8B7EdP")
-    await payment(cartItems)
+  const payments = async () => {
+    const stripe = await loadStripe(
+      "pk_test_51OEqcMSILGLLt0ZXzFfwjmLN7qqAnWU956fZ2o4o9ca4aa5KyYtjHmGQcod1BQer8djhPi8AglGzZXpQmnowLbPN00Ts8B7EdP"
+    );
+    await payment(order_items);
+    localStorage.removeItem("localCart");
 
     // const result = stripe.redirectToCheckout({
     //   sessionId:session.id
     // })
-  }
+  };
   return (
     <div className="order-wrapper">
       <div className="payment-container">
@@ -116,18 +111,20 @@ const Orders = () => {
                     Pay Using Credit Or Debit Cards
                   </h4>
                   <div className="cart-information">
-                  <div>
-                    <input type="text"  placeholder="Cart Number"/>
+                    <div>
+                      <input type="text" placeholder="Cart Number" />
+                    </div>
+                    <div>
+                      <input type="text" placeholder="MM/YY" />
+                      <input type="text" placeholder="CVV" />
+                    </div>
+                    <div>
+                      <input type="text" placeholder="Number Of The Cart" />
+                    </div>
                   </div>
-                  <div>
-                    <input type="text" placeholder="MM/YY"/>
-                    <input type="text" placeholder="CVV"/>
-                  </div>
-                  <div>
-                    <input type="text" placeholder="Number Of The Cart"/>
-                  </div>
-                  </div>
-                  <button className="place-order" onClick={payments}>PLACE ORDER</button>
+                  <button className="place-order" onClick={payments}>
+                    PLACE ORDER
+                  </button>
                   <div className="security pay">
                     <img src="https://images.mamaearth.in/wysiwyg/noun_trusted_27146262x_6Ekja92.png?auto=format" />
                     <h6>100% Payment Protection, Easy Return Policy</h6>
@@ -149,25 +146,25 @@ const Orders = () => {
                 </div>
               ) : paymentMethod == "nb" ? (
                 <div className="netBanking-container">
-                   <h4 className="payment-name">Pay Using Online Wallets</h4>
-                    <div className="nb-img">
-                      <div>
-                      <img src="https://images.mamaearth.in/wysiwyg/hdfc-logo.png?auto=format"/>
+                  <h4 className="payment-name">Pay Using Online Wallets</h4>
+                  <div className="nb-img">
+                    <div>
+                      <img src="https://images.mamaearth.in/wysiwyg/hdfc-logo.png?auto=format" />
                       <h5>HDFC</h5>
-                      </div>
-                      <div>
-                      <img src="https://images.mamaearth.in/wysiwyg/sbi-logo.png?auto=format"/>
-                      <h5>SBI</h5>
-                      </div>
-                      <div>
-                      <img src="https://images.mamaearth.in/wysiwyg/icici-logo.png?auto=format"/>
-                      <h5>ICICI</h5>
-                      </div>
-                      <div>
-                      <img src="https://images.mamaearth.in/wysiwyg/axis-logo.png?auto=format"/>
-                      <h5>AXIS</h5>
-                      </div>
                     </div>
+                    <div>
+                      <img src="https://images.mamaearth.in/wysiwyg/sbi-logo.png?auto=format" />
+                      <h5>SBI</h5>
+                    </div>
+                    <div>
+                      <img src="https://images.mamaearth.in/wysiwyg/icici-logo.png?auto=format" />
+                      <h5>ICICI</h5>
+                    </div>
+                    <div>
+                      <img src="https://images.mamaearth.in/wysiwyg/axis-logo.png?auto=format" />
+                      <h5>AXIS</h5>
+                    </div>
+                  </div>
                   <button className="place-order">PLACE ORDER</button>
                   <div className="security pay">
                     <img src="https://images.mamaearth.in/wysiwyg/noun_trusted_27146262x_6Ekja92.png?auto=format" />
@@ -248,8 +245,10 @@ const Orders = () => {
               ) : (
                 <div className="upi-container">
                   <h4 className="payment-name">Pay using UPI ID</h4>
-                  <h4 className="payment-name">Enter UPI ID  (Google Pay, BHIM, PhonePe & more)</h4>
-                  <input type="text"  placeholder="Enter your UPI ID"/>
+                  <h4 className="payment-name">
+                    Enter UPI ID (Google Pay, BHIM, PhonePe & more)
+                  </h4>
+                  <input type="text" placeholder="Enter your UPI ID" />
                   <button className="place-order">PLACE ORDER</button>
                   <div className="security pay">
                     <img src="https://images.mamaearth.in/wysiwyg/noun_trusted_27146262x_6Ekja92.png?auto=format" />
@@ -276,7 +275,45 @@ const Orders = () => {
         </form>
       </div>
       <div className="order-container">
-       
+        <h4 id="h4">Order Summary</h4>
+        {order_items?.order_Product?.cartItems?.map((item) => (
+          <div key={item._id} className="order-item-container">
+            <img src={item?.images} alt="" />
+            <div className="order-info-container">
+              <h5>{sliceAbout(item?.about)}</h5>
+              <div className="order-price-container">
+                <span>₹{item?.totalProPrice}</span>
+                <h5>{`Quantity:${item?.qty}`}</h5>
+              </div>
+            </div>
+          </div>
+        ))}
+        <h4 id="h4">Price Summary</h4>
+        <div
+          className="summary-container"
+          style={{ padding: "0 .5rem 0 .5rem" }}
+        >
+          <div id="inner">
+            <p>Order Total</p>
+            <span>₹{order_items?.order_Product?.total}</span>
+          </div>
+          <div id="inner">
+            <p>Shipping</p>
+            <span>Free</span>
+          </div>
+          <div id="inner">
+            <p>5% Discount</p>
+            <span>-₹{order_items?.order_Product?.discount}</span>
+          </div>
+          <div id="inner">
+            <p>Grand Total</p>
+            <span>
+              ₹
+              {order_items?.order_Product?.total -
+                order_items?.order_Product?.discount}
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );

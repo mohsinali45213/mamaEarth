@@ -239,3 +239,47 @@
   gap: 1rem;
 }
 /* ---UPI--- */
+
+/* ---Order-Container--- */
+
+.order-container{
+  border: var(--borderColor);
+  background-color: rgb(237, 254, 233);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  width: 40%;
+}
+.order-item-container>img{
+  width: 85px;
+  border-radius: 5px;
+  border: var(--borderColor);
+}
+.order-container>h4{
+  padding:1rem 0 0 1rem ;
+}
+.order-item-container{
+  border-bottom: 1px solid rgb(234, 233, 233);
+  display: flex;
+  gap: 1rem;
+  padding: .5rem 1rem;
+}
+.order-info-container{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.order-price-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order-price-container span{
+  font-weight: 900;
+  font-size: 1rem;
+}
+.order-price-container h5{
+  font-weight: 900;
+}
+/* ---Order-Container--- */

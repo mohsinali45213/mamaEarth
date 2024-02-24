@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { singleProduct } from "../Function/Product";
 import "../Style/SinglePro.css";
 import Loading from "./Loading";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../redux/cartSlicer";
+import { addToCart, orderInfo } from "../redux/cartSlicer";
 const SingleProduct = () => {
   const { product } = useParams();
   const [pro, setPro] = useState();
@@ -31,6 +31,20 @@ const SingleProduct = () => {
       setCount(count-1)
     }
   }
+
+  const handleOrder = ()=>{
+    console.log(pro);
+     dispatch(orderInfo({
+      product:{
+        cartItems:[
+          {...pro,qty:count,totalProPrice:pro.price},
+        ],
+        total:pro.price*count,
+        discount:pro.price*count*5/100
+       
+      }
+    }))
+  }
   return (
       pro?
       <div key={pro._id} className="single-main">
@@ -49,8 +63,8 @@ const SingleProduct = () => {
             </div>
           <h5>₹{pro?.price}</h5>
           <div className="btnContainer">
-            <button>Buy Now</button>
-            <button onClick={()=>handleAddToCart(pro)}>Add TO Cart</button>
+            <Link id="btnOrder" to="/checkout"><button onClick={handleOrder}>Buy Now</button></Link>
+            <button id="btnOrder" onClick={()=>handleAddToCart(pro)}>Add TO Cart</button>
           </div>
         </div>
       </div>

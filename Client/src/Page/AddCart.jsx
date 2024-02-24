@@ -1,6 +1,7 @@
 import "../Style/AddCart.css";
 import { useDispatch, useSelector } from "react-redux";
-import { decrementCartItem, incrementCartItem } from "../redux/CartSlicer";
+import { decrementCartItem, incrementCartItem, orderInfo } from "../redux/CartSlicer";
+import { Link } from "react-router-dom";
 const AddCart = ({ slide, setSlide }) => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
@@ -19,12 +20,16 @@ const AddCart = ({ slide, setSlide }) => {
     return about?.trim();
   };
 
+  const handleOrder = ()=>{
+    dispatch(orderInfo({product:{cartItems,total,discount}}))
+  }
+
   return (
     <div className={`container ${slide ? "open" : ""}`}>
       <div className="head-container">
         <i
           onClick={() => setSlide(false)}
-          className="fa-solid fa-arrow-left"
+          className="fa-solid fa-arrow-left"  
         ></i>
         <h3>My Cart</h3>
       </div>
@@ -78,7 +83,9 @@ const AddCart = ({ slide, setSlide }) => {
                 <h5 style={{color:"rgb(68,68,68)"}}>₹{total-discount}</h5>
               </div>
             </div>
-            <button className="btnContinue">CONTINUE</button>
+            <Link to="/checkout">
+            <button className="btnContinue" onClick={handleOrder}>CONTINUE</button>
+            </Link>
           </div>
         </>
       )}
