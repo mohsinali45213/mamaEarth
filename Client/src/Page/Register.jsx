@@ -22,7 +22,6 @@ const Register = () => {
       toast.error("Register failed")
     }
   }
-  console.log(data);
   return (
     
    <div className='register-wrapper'>

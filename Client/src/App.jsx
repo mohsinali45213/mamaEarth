@@ -34,6 +34,7 @@ import Success from "./Page/Success";
 import Failed from "./Page/Failed";
 import { singleUser } from "./Function/User";
 import Search from "./Page/Search";
+import YourOrder from "./Page/YourOrder";
 const App = () => {
   const [catName, setCatName] = useState();
   const [subCatName, setSubCatName] = useState();
@@ -71,6 +72,7 @@ const App = () => {
 
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/your-order" element={<YourOrder />} />
 
             <Route path="/contact-us" element={<Contact />} />
             <Route path="/product/:product" element={<SingleProduct />} />
@@ -153,6 +155,7 @@ const ProtectedPage = ({ Cmp }) => {
 const ProtectedAdmin = ({ Cmp }) => {
   const navigator = useNavigate();
   const [user, setUser] = useState();
+  const location = useLocation()
 
   const getUserData = async () => {
     const id = JSON.parse(localStorage.getItem("user"));
@@ -162,7 +165,7 @@ const ProtectedAdmin = ({ Cmp }) => {
       if (!user) {
         navigator("/login");
       }
-      if (user?.role !== "Admin") {
+      if (user.role !== "Admin") {
         navigator("/");
       }
     }
@@ -170,7 +173,7 @@ const ProtectedAdmin = ({ Cmp }) => {
 
   useEffect(() => {
     getUserData();
-  }, [navigator]);
+  }, [location.pathname]);
 
   return <Cmp />;
 };

@@ -1,11 +1,15 @@
 import axios from "axios";
 const createProduct = async (productDetail) => {
   try {
-    const product = await axios.post(`http://localhost:3000/api/v1/product`, productDetail,{
-      headers: {
-        'Content-Type': 'multipart/form-data',
+    const product = await axios.post(
+      `http://localhost:3000/api/v1/product`,
+      productDetail,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       }
-  })
+    );
     return product.data;
     // console.log(product.data);
   } catch (error) {
@@ -15,21 +19,27 @@ const createProduct = async (productDetail) => {
 
 const updateProduct = async (slug, productDetail) => {
   try {
-    const product = await axios.put(`http://localhost:3000/api/v1/product/${slug}`, productDetail,{
-      headers: {
-        'Content-Type': 'multipart/form-data',
+    const product = await axios.put(
+      `http://localhost:3000/api/v1/product/${slug}`,
+      productDetail,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       }
-  })
+    );
     return product.data;
-    // console.log(product.data);  
+    // console.log(product.data);
   } catch (error) {
-    console.log("Product Is not Updated",error);
+    console.log("Product Is not Updated", error);
   }
 };
 
 const removeProduct = async (slug) => {
   try {
-    const remove = await axios.delete(`http://localhost:3000/api/v1/product/${slug}`);
+    const remove = await axios.delete(
+      `http://localhost:3000/api/v1/product/${slug}`
+    );
     return remove.data;
     // console.log(remove.data);
   } catch (error) {
@@ -39,7 +49,9 @@ const removeProduct = async (slug) => {
 
 const singleProduct = async (slug) => {
   try {
-    const singleProduct = await axios.get(`http://localhost:3000/api/v1/product/${slug}`);
+    const singleProduct = await axios.get(
+      `http://localhost:3000/api/v1/product/${slug}`
+    );
     return singleProduct.data;
     // console.log(singleProduct.data);
   } catch (error) {
@@ -57,38 +69,65 @@ const allProduct = async (slug) => {
   }
 };
 
-const catProduct = async(id)=>{
+const catProduct = async (id) => {
   try {
     const catPro = await axios.get(`http://localhost:3000/api/v1/catPro/${id}`);
     return catPro.data;
   } catch (error) {
     console.log("Product Is not Get");
   }
-}
+};
 
-const subCatProduct = async(id)=>{
+const subCatProduct = async (id) => {
   try {
-    const sunCatPro = await axios.get(`http://localhost:3000/api/v1/subCatPro/${id}`);
+    const sunCatPro = await axios.get(
+      `http://localhost:3000/api/v1/subCatPro/${id}`
+    );
     return sunCatPro.data;
     // console.log(singleProduct.data);
   } catch (error) {
     console.log("Product Is not Get");
   }
-}
+};
 
-const searchProduct = async(query)=>{
+const searchProduct = async (query) => {
   try {
-    const result = await axios.post(`http://localhost:3000/api/v1/search/filter`,{query})
-    return result.data
+    const result = await axios.post(
+      `http://localhost:3000/api/v1/search/filter`,
+      { query }
+    );
+    return result.data;
   } catch (error) {
     console.log("Product is not search");
   }
-}
+};
 
-const payment = async(cart)=>{
-  const pay = await axios.post(`http://localhost:3000/api/v1/payment-intent`,{cart})
-  return pay.data
-}
+const payment = async (cart) => {
+  const pay = await axios.post(`http://localhost:3000/api/v1/payment-intent`, {
+    cart,
+  });
+  return pay.data;
+};
+
+const orderInfo = async (id, addInfo) => {
+  const add = await axios.post(`http://localhost:3000/api/v1/add-info/${id}`, {
+    addInfo,
+  });
+};
+const orderProduct = async (id, orderInfo) => {
+  const add = await axios.post(`http://localhost:3000/api/v1/order-info`, {
+    id,
+    orderInfo,
+  });
+};
+const allOrders = async () => {
+  const add = await axios.get(`http://localhost:3000/api/v1/allorders`);
+  return add.data
+};
+const userOrders = async (userId) => {
+  const add = await axios.get(`http://localhost:3000/api/v1/userorders/${userId}`);
+  return add.data
+};
 export {
   updateProduct,
   removeProduct,
@@ -98,5 +137,9 @@ export {
   catProduct,
   subCatProduct,
   searchProduct,
-  payment
+  payment,
+  orderInfo,
+  orderProduct,
+  allOrders,
+  userOrders
 };

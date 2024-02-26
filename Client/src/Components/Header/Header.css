@@ -181,6 +181,9 @@ div.open {
   border-bottom: 1px solid lightgray;
   gap: 0.5rem;
 }
+.order-detail ul li:hover{
+  background-color:rgb(234, 246, 255);
+}
 .order-detail ul li i {
   font-size: 1rem;
   color: var(--color)

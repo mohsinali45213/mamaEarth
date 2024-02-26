@@ -69,6 +69,7 @@ const Products = () => {
       <table>
         <thead>
           <tr>
+            <th>Id</th>
             <th>Product</th>
             <th>Category</th>
             <th>Quantity</th>
@@ -78,8 +79,9 @@ const Products = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredData?.map((product) => (
+          {filteredData?.map((product,i) => (
             <tr key={product._id}>
+              <td>{i+1}</td>
               <td id="p-td">
                 <img src={product?.images} alt="" />
                 <h5>{product?.title}</h5>

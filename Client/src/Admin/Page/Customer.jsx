@@ -29,6 +29,7 @@ const Customer = () => {
         <table>
           <thead>
             <tr>
+              <th>Id</th>
               <th>Name</th>
               <th>Email</th>
               <th>Roll</th>
@@ -36,8 +37,9 @@ const Customer = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredData?.map((item) => (
+            {filteredData?.map((item,i) => (
               <tr key={item._id}>
+                <td>{i+1}</td>
                 <td id="p-td">
                   <img src={item.userImage} alt="" />
                   <p>{item?.username}</p>

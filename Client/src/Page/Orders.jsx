@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import "../Style/Orders.css";
 import { useDispatch, useSelector } from "react-redux";
 import { loadStripe } from "@stripe/stripe-js";
-import { payment } from "../Function/Product";
+import { orderInfo, orderProduct, payment } from "../Function/Product";
 import toast from "react-hot-toast";
 const Orders = () => {
   const [paymentMethod, setPaymentMethod] = useState("upi");
   const order_items = useSelector((state) => state.cart.orderItems);
+  const [add, setAdd] = useState([]);
 
   const sliceAbout = (about) => {
     if (about?.length > 80) {
@@ -15,51 +16,104 @@ const Orders = () => {
     return about?.trim();
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleInput = (e) => {
+    setAdd({ ...add, [e.target.name]: e.target.value });
   };
 
-  const payments = async () => {
+  const payments = async (e) => {
+    e.preventDefault();
+    const userId = JSON.parse(localStorage.getItem("user"));
+    const userAdd = await orderInfo(userId, add)
+
     const stripe = await loadStripe(
       "pk_test_51OEqcMSILGLLt0ZXzFfwjmLN7qqAnWU956fZ2o4o9ca4aa5KyYtjHmGQcod1BQer8djhPi8AglGzZXpQmnowLbPN00Ts8B7EdP"
-    );
-
-    const session = await payment(order_items);
-    console.log(session);
-    if (!session) {
-      toast.error("Order Failed")
-    }
-    localStorage.removeItem("localCart");
-
-    if (session) {
-      const result = stripe.redirectToCheckout({
-        sessionId: session.id,
-      });
+      );
+      
+      const session = await payment(order_items);
+      if (!session) {
+        toast.error("Order Failed");
+      }
+      const pro = order_items.order_Product.cartItems.map((item) => ({
+        id: item._id,
+        count: item.qty,
+      }));
+      const data = await orderProduct(userId, pro);
+      localStorage.removeItem("localCart");
+      if (session) {
+        const result = stripe.redirectToCheckout({
+          sessionId: session.id,
+        });
     }
   };
+
   return (
     <div className="order-wrapper">
       <div className="payment-container">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={payments}>
           <h4>Hi Mohsin, Welcome to Mamaearth</h4>
           <h3>New Delivery Address</h3>
           <div>
-            <input type="text" placeholder="First Name*" />
-            <input type="text" placeholder="Last Name*" />
+            <input
+              onChange={handleInput}
+              type="text"
+              placeholder="First Name*"
+              name="fname"
+              required
+            />
+            <input
+              onChange={handleInput}
+              type="text"
+              placeholder="Last Name*"
+              name="lname"
+              required
+            />
           </div>
           <div>
-            <input type="email" placeholder="Email ID*" />
-            <input type="tel" placeholder="Phone*" />
+            <input
+              onChange={handleInput}
+              type="email"
+              name="email"
+              placeholder="Email ID*"
+              required
+            />
+            <input
+              onChange={handleInput}
+              type="tel"
+              name="number"
+              placeholder="Phone*"
+              required
+            />
           </div>
           <div>
-            <input type="text" placeholder="Pin Code*" />
-            <input type="text" placeholder="City*" />
-            <input type="text" placeholder="State*" />
+            <input
+              onChange={handleInput}
+              type="text"
+              name="pincode"
+              placeholder="Pin Code*"
+              required
+            />
+            <input
+              onChange={handleInput}
+              type="text"
+              name="city"
+              placeholder="City*"
+              required
+            />
+            <input
+              onChange={handleInput}
+              type="text"
+              name="state"
+              placeholder="State*"
+              required
+            />
           </div>
           <div>
             <input
               type="text"
+              onChange={handleInput}
+              name="address"
               placeholder="Address (House No, Building, Street, Area)*"
+              required
             />
           </div>
           <h3>Choose payment method</h3>
@@ -129,7 +183,7 @@ const Orders = () => {
                       <input type="text" placeholder="Number Of The Cart" />
                     </div>
                   </div>
-                  <button className="place-order" onClick={payments}>
+                  <button type="submit" className="place-order">
                     PLACE ORDER
                   </button>
                   <div className="security pay">
@@ -172,7 +226,7 @@ const Orders = () => {
                       <h5>AXIS</h5>
                     </div>
                   </div>
-                  <button className="place-order" onClick={payments}>
+                  <button type="submit" className="place-order">
                     PLACE ORDER
                   </button>
                   <div className="security pay">
@@ -203,7 +257,7 @@ const Orders = () => {
                     <img src="https://images.mamaearth.in/cs-static/honasa/freecharge.png" />
                     <img src="https://images.mamaearth.in/cs-static/honasa/mobikwik.png" />
                   </div>
-                  <button className="place-order" onClick={payments}>
+                  <button type="submit" className="place-order">
                     PLACE ORDER
                   </button>
                   <div className="security pay">
@@ -233,7 +287,7 @@ const Orders = () => {
                     everyone’s safety, we advise paying online to limit contact
                     and help stop the spread of the virus.
                   </h6>
-                  <button className="place-order" onClick={payments}>
+                  <button type="submit" className="place-order">
                     PLACE ORDER
                   </button>
                   <div className="security pay">
@@ -262,7 +316,7 @@ const Orders = () => {
                     Enter UPI ID (Google Pay, BHIM, PhonePe & more)
                   </h4>
                   <input type="text" placeholder="Enter your UPI ID" />
-                  <button className="place-order" onClick={payments}>
+                  <button type="submit" className="place-order">
                     PLACE ORDER
                   </button>
                   <div className="security pay">

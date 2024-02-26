@@ -43,6 +43,7 @@ const Header = ({handleSearch}) => {
        const id = JSON.parse(localStorage.getItem("user"))
        const user = await logout(id);
        setIsOpen2(false)
+       navigator( "/login")
     }
   };
 
@@ -201,7 +202,7 @@ const Header = ({handleSearch}) => {
                 <span>Your Profile</span>
               </li>
             </Link>
-            <Link id="AccLink">
+            <Link id="AccLink" to="/your-order">
               <li>
                 <i className="fa-solid fa-store"></i>
                 <span>Your Order</span>

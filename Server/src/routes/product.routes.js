@@ -13,7 +13,7 @@ import {
   catProducts,
   subCatProducts
 } from "../controllers/product.controller.js";
-import { payment } from "../controllers/Order.controller.js";
+import { addInformation, getAllOrder, orderInformation, payment, userOrders } from "../controllers/Order.controller.js";
 const productRoutes = Router();
 
 productRoutes.post("/product", upload.single('images'), createProduct);
@@ -29,4 +29,8 @@ productRoutes.post("/search/filter", searchFilters);
 productRoutes.get("/catPro/:id",catProducts)
 productRoutes.get("/subCatPro/:id",subCatProducts)
 productRoutes.post('/payment-intent',payment)
+productRoutes.post("/add-info/:id",addInformation)
+productRoutes.post("/order-info",orderInformation)
+productRoutes.get("/allorders",getAllOrder)
+productRoutes.get("/userorders/:userId",userOrders)
 export default productRoutes
