@@ -1,0 +1,349 @@
+:root {
+  --font: Arial, Helvetica, sans-serif;
+  --color: rgb(0, 183, 255);
+}
+li {
+  cursor: pointer;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Header Top */
+#openNav {
+  width: 20px;
+  display: none;
+}
+.header {
+  box-shadow: 0 0 5px rgba(128, 128, 128, 0.7);
+  position: sticky;
+  z-index: 1;
+  background-color: white;
+  top: 0;
+}
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 15px;
+  border-bottom: 1px solid lightgray;
+}
+
+#logo {
+  width: 155px;
+}
+#icon {
+  width: 24px;
+  color: var(--color)
+}
+#search {
+  font-size: 1.45rem;
+}
+.icons {
+  display: flex;
+  gap: 1.5rem;
+}
+.icons p {
+  font-weight: 600;
+  font-size: 0.90rem;
+  font-family: var(--font);
+}
+.icons span {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  cursor: pointer;
+}
+#count-cart{
+  position: relative;
+  background-color: red;
+  color: white;
+  bottom: 10px;
+  padding: 2px;
+  font-size: 8px;
+  right: 52px;
+  border-radius: 50px;
+  width: 12px;
+  height: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search {
+  width: 60%;
+  padding-left: 2rem;
+}
+.search input,
+.search input:focus {
+  width: 70%;
+  padding: 9px;
+  border: 1px solid lightgray;
+  outline: none;
+  border-radius: 20px 0 0 20px;
+}
+.search button {
+  width: 5%;
+  padding: 6px 0 3px 0;
+  border: 1px solid lightgray;
+  border-left: none;
+  background-color: var(--color);
+  position: absolute;
+  font-size: 1.1rem;
+  border-radius: 0 20px 20px 0;
+}
+
+.account-detail {
+  height: 100vh;
+}
+/* Navbar */
+.nav-info {
+  display: none;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  padding: 0 100px;
+}
+li {
+  list-style: none;
+}
+
+#navItem {
+  text-decoration: none;
+  color: gray;
+  font-weight: 600;
+  font-size: 0.75rem;
+  font-family: var(--font);
+  text-transform: uppercase;
+  transition: color .3s linear;
+}
+#navItem:hover{
+  color: rgb(28, 191, 255);
+  border-bottom: 2px solid rgb(28, 191, 255);
+}
+/*Account information*/
+.account-detail {
+  position: absolute;
+  background-color: white;
+  right: 0;
+  top: 0;
+  border: none;
+  width: 0;
+  overflow: hidden;
+  font-family: var(--font);
+  transition: all 0.5s;
+  font-size: .85rem;
+}
+div.open {
+  width: 320px;
+}
+.account-detail.open {
+  width: 310px;
+  border: 1px solid lightgray;
+  border-bottom: none;
+}
+#avatar {
+  width: 80px;
+  border-radius: 50%;
+  border: 3px solid white;
+}
+.user-info {
+  display: flex;
+  border-bottom: 1px solid gray;
+  padding: 1rem;
+  gap: 1rem;
+  text-wrap: nowrap;
+  background-color: var(--color)
+}
+.user-name {
+  padding: 2rem 0 0 0;
+  overflow: hidden;
+  flex-grow: 1;
+}
+.user-name h5{
+  color:  black;
+}
+.user-info h4 {
+  margin-bottom: 0.2rem;
+}
+.order-detail ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.order-detail ul li {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid lightgray;
+  gap: 0.5rem;
+}
+.order-detail ul li:hover{
+  background-color:rgb(234, 246, 255);
+}
+.order-detail ul li i {
+  font-size: 1rem;
+  color: var(--color)
+}
+.order-detail ul li span {
+  text-wrap: nowrap;
+}
+#AccLink{
+  text-decoration: none;
+  color: black;
+}
+@media screen and (max-width: 720px) {
+  p {
+    display: none;
+    margin: 0;
+  }
+
+  #icon {
+    margin: -8px;
+  }
+  #count-cart{
+    bottom: 2px;
+    right:10px;
+  }
+  #openNav {
+    display: block;
+    margin-right: 0.8rem;
+  }
+  .nav-info {
+    display: flex;
+    gap: 1rem;
+    background-color: var(--color);
+    padding: 1rem;
+    text-wrap: nowrap;
+  }
+  .navbar ul {
+    top: 0;
+    left: -300px;
+    padding: 0;
+    justify-content: start;
+    align-items: start;
+    position: absolute;
+    background-color: white;
+    flex-direction: column;
+    height: 100vh;
+    gap: 0;
+    width: 0;
+    overflow: hidden;
+    transition: all 0.5s;
+  }
+  .navbar ul.open {
+    width: 300px;
+    left: 0;
+    border: 1px solid lightgray;
+  }
+  .navbar ul li {
+    border-bottom: 1px solid lightslategray;
+    width: 100%;
+    padding: 15px 30px;
+    text-align: start;
+    text-wrap: nowrap;
+  }
+  #navItem {
+    color: rgb(70, 70, 70);
+    padding-left: 1rem;
+  }
+}
+
+@media  screen and (max-width: 420px) {
+  .header-top {
+    justify-content: start;
+    gap: 1rem;
+    padding-top: 0.5em;
+    padding-bottom: 2.5rem;
+  }
+  #logo {
+    width: 105px;
+  }
+  #icon {
+    width: 20px;
+    justify-self: flex-end;
+  }
+  .icons {
+    margin-left: 30%;
+  }
+  #openNav {
+    width: 18px;
+  }
+  .search {
+    position: absolute;
+    top: 2rem;
+    width: 100%;
+    left: 0;
+    padding: 0 10px;
+  }
+  .search input:focus{
+    width: 100%;
+    padding: 5px;
+    border: 1px solid lightgray;
+    outline: none;
+    border-radius: 20px;
+    padding-left: 2rem;    
+  }
+  .search input {
+    width: 100%;
+    padding: 5px 0 5px 30px;
+    border-radius: 10px;
+  }
+  .search button {
+    position: absolute;
+    left: 1rem;
+    margin-top: 4px;
+    padding: 0;
+    background-color: white;
+    border: none;
+    border-radius: 10px 0 0 10px;
+  }
+  #search {
+    font-size: .9rem;
+    color: gray;
+  }
+  .navbar ul.open {
+    width: 250px;
+  }
+  .navbar ul li {
+    padding: 15px 0;
+  }
+  .account-detail.open {
+    width: 250px;
+  }
+}
+
+
+.dropdown{
+  padding: 15px 0;
+}
+
+#dropdown-item{
+  position: absolute;
+  border-top: 1px solid var(--color);
+  box-shadow: 0 0 2px gray;
+  display: flex;
+  padding: 0;
+  background-color: white;
+  flex-direction: column;
+  display: none;
+  top: 7.2rem;
+}
+#dropdown-item li{
+  padding: 1em;
+  padding-right: 4rem;
+  color: rgb(92, 92, 92);
+  transition: all .5s;
+  font-size: .75em;
+}
+#dropdown-item li:hover{
+  background-color: rgb(235, 235, 235);
+}
+
+.dropdown:hover #dropdown-item{
+  display: block;
+  background-color: white;
+}

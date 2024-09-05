@@ -1,0 +1,321 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --borderColor :1px solid lightgray;
+}
+.order-wrapper{
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 8rem;
+}
+.payment-container{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 60%;
+}
+.payment-container form{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.payment-container form>h4{
+  color: rgb(85, 84, 84);
+  font-weight: 100;
+}
+.payment-container form>h3{
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+.payment-container form>div{
+  display: flex;
+  gap: 1rem;
+}
+.payment-container form input{
+  width: 100%;
+  padding: .8rem;
+  color: rgb(71, 71, 71);
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}
+.payment-option{
+  width: 30%;
+  border-radius: 5px;
+}
+.payment-option>button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: .4rem;
+  padding:.5rem;
+  background-color: transparent;
+  border: none;
+  border-top:var(--borderColor);
+  border-left:var(--borderColor);
+  border-right:var(--borderColor);
+}
+.payment-option>button.isActive{
+  border-left: 3px solid rgb(0, 183, 255);
+  background-color:rgba(0, 183, 255, 0.07);
+  padding: .6rem .5rem;
+}
+.payment-option>button:first-child{
+  border-radius: 5px 5px 0 0;
+}
+.payment-option>button:last-child{
+  border-bottom: var(--borderColor);
+  border-radius: 0 0 5px 5px;
+}
+.payment-option>button>p{
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1px gray solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(239, 239, 239);
+}
+.payment-option>button.isActive>p p{
+  background-color: rgb(1, 157, 255);
+  width: 13px ;
+  height: 13px;
+  border-radius: 50%;
+}
+.payment-option>button span{
+  font-size: .8rem;
+  font-weight: 100;
+  color: rgb(30, 30, 30);
+  letter-spacing: .5px;
+}
+.payment-option>button.isActive>p{
+  width: 20px;
+  height: 20px;
+}
+.payment-option>button.isActive span{
+  margin-left: 3px;
+}
+.payment-info{
+  width: 70%;
+  border-radius: 5px;
+  border: var(--borderColor);
+  padding: 1rem;
+}
+/* ---Cash On Delivery--- */
+
+.cod-container{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.payment-name{
+  font-size: .8rem;
+  color: rgb(28, 28, 28);
+}
+.cod-container>h6{
+  border: 1px solid green;
+  margin-top: .5rem;
+  border-radius: 5px;
+  background-color: rgba(10, 255, 10, 0.096);
+  padding: .8rem;
+  color: rgba(27, 27, 27, 0.808);
+  font-weight: 600;
+}
+.place-order{
+  padding: .8rem;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(1, 183, 255);
+  color: white;
+}
+.security.pay{
+  display: flex;
+  justify-content: center;
+}
+.cod-container .security img{
+  width: 15px;
+}
+.payment-img{
+  display: flex;
+  gap: .5rem;
+  justify-content: center;
+}
+.payment-img img{
+  width: 3.4rem;
+}
+.checkbox{
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.checkbox input[type="checkbox"]{
+  width: 18px;
+  height: 18px;
+}
+.checkbox>h6{
+  font-size: .6rem;
+  font-weight: 100;
+}
+.checkbox>h6>b{
+  text-decoration: underline;
+}
+
+/* ---Cash On Delivery--- */
+
+/* ---wallets--- */
+
+.wallet-container{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.wallet-img{
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+.wallet-img img{
+  width: 6.5rem;
+  border:var(--borderColor);
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+/* ---wallets--- */
+
+/* ---Credit/Debit Cards--- */
+
+.CD-card-container{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.cart-information{
+  display: flex;
+  gap: .5rem;
+  flex-direction: column;
+}
+.cart-information>div{
+  display: flex;
+  gap: .5rem;
+}
+
+/* ---Credit/Debit Cards--- */
+
+/* ---Net Banking--- */
+
+.netBanking-container{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.nb-img{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.nb-img>div{
+  /* border: var(--borderColor); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+  border-radius: 5px;
+  padding: .5rem 2rem;
+}
+.nb-img img{
+  width: 30px;
+}
+
+/* ---Net Banking--- */
+
+/* ---UPI--- */
+
+.upi-container{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+/* ---UPI--- */
+
+/* ---Order-Container--- */
+
+.order-container{
+  border: var(--borderColor);
+  background-color: rgb(237, 254, 233);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  width: 40%;
+}
+.order-item-container>img{
+  width: 85px;
+  border-radius: 5px;
+  border: var(--borderColor);
+}
+.order-container>h4{
+  padding:1rem 0 0 1rem ;
+}
+.order-item-container{
+  border-bottom: 1px solid rgb(234, 233, 233);
+  display: flex;
+  gap: 1rem;
+  padding: .5rem 1rem;
+}
+.order-info-container{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.order-price-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order-price-container span{
+  font-weight: 900;
+  font-size: 1rem;
+}
+.order-price-container h5{
+  font-weight: 900;
+}
+/* ---Order-Container--- */
+
+@media screen and (max-width:1200px) {
+  .order-wrapper{
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 2rem;
+  }
+}
+@media screen and (max-width:1000px) {
+  .order-wrapper{
+    flex-direction: column-reverse;
+  }
+  .payment-container{
+    width: 100%;
+  }
+  .order-container{
+    width: 100%;
+  }
+}
+@media screen and (max-width:720px) {
+  .order-wrapper{
+    padding:.5rem;
+  }
+  .payment-container form>div {
+    flex-direction: column;
+  }
+  .payment-option{
+    width: 100%;
+  }
+  .payment-info{
+    width: 100%;
+  }
+  .payment-option>button>p>p{
+    display: block;
+  }
+}

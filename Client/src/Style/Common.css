@@ -1,0 +1,192 @@
+
+#loading {
+  position: absolute;
+  width: 30px;
+  height:30px;
+  border-radius: 50%;
+  border: 4px solid rgb(215, 215, 215);
+  border-right: 4px solid darkcyan;
+  animation: load 1.5s infinite linear;
+  top: 48%;
+  left: 48%;
+}
+@keyframes load {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* ---Login && Register--- */
+.login-container,.register-container{
+  padding: 2rem 0;
+  text-align: center;
+  width: 500px;
+}
+.login-container h2,.register-container h2{
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+.login-container input,.login-container button,.register-container input,.register-container button{
+  width: 80%;
+  padding: .7rem;
+  border-radius: 5px;
+  border: 1px solid gray;
+  margin-top: 1rem;
+}
+.login-container button{
+  background-color:rgb(66, 201, 255);
+  border: none;
+  font-size: 1rem;
+  color: white;
+}
+#btn-submit{
+  background-color: rgb(36, 183, 241);
+  color: white;
+}
+#btn-cancel{
+  background-color: rgb(228, 228, 228);
+}
+.login-container,.register-container{
+  /* position: absolute; */
+ 
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 5px;
+}
+.login-container h5,.register-container h5{
+  margin-top: .5rem;
+}
+/* ---Login && Register--- */
+
+/* ---Contact Us--- */
+
+.contact-container{
+  /* padding: 3rem 20rem; */
+  width: 60%;
+}
+.contact-container h2{
+  text-align: center;
+}
+.contact-container input,.contact-container textarea{
+  padding: .7rem;
+  width: 100%;
+  resize: none;
+  margin-top: 1rem;
+  border-radius: 5px;
+  border: 1px solid rgb(154, 154, 154);
+}
+.contact-container button{
+  border: 1px solid rgb(154, 154, 154);
+  background-color: rgb(30, 179, 238);
+  padding: .8rem 3rem;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+}
+
+.login-wrapper,.register-wrapper,.contact-wrapper{
+  display: flex;
+  align-items: center ;
+  justify-content: center;
+  border-bottom: 1px solid lightgray;
+  padding: 5.6rem 0;
+}
+
+
+/* ---Contact Us--- */
+/* Page Not Found */
+
+.notFound{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.notFound h1{
+  font-size: 15rem;
+  color: rgba(100, 99, 99, 0.207);
+}
+.notFound>div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#backToHome{
+  text-decoration: none;
+  color: white;
+  background-color: rgb(0, 182, 254);
+  padding: 1rem 2rem;
+  border-radius: 10px;
+}
+
+/* Page Not Found */
+@media screen and (max-width: 720px) {
+  .login-container,.register-container{
+    border: none;
+  }
+  .login-wrapper,.register-wrapper{
+    top: 0;
+    font-size: .8rem;
+  }
+  .login-container input,.register-container input,.login-container button,.register-container button{
+    font-size: .7rem;
+  }
+  .contact-container textarea{
+    height: 7em;
+  }
+  .contact-container{
+    width: 85%;
+  }
+  .contact-container h2{
+    font-size: 1.2rem;
+  }
+  .contact-container input,.contact-container textarea{
+    font-size: .7rem;
+  }
+  .contact-container button{
+     font-size: .8rem;
+  }
+}
+
+
+/* ---Payment Success--- */
+
+.popup-wrapper{
+  width: 100vw;
+  display: grid;
+  place-content:  center;
+  height: 100vh;
+  /* background-color: aliceblue; */
+}
+.popup-container{
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  justify-content: center;
+  background-color: white;
+  align-items: center;
+  box-shadow: 0 0 5px rgb(168, 189, 173);
+}
+.popup-container img{
+  width: 50px;
+}
+.popup-container button{
+  padding: .8rem 1.5rem;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(19, 205, 68);
+  color: white;
+}
+.popup-container :where(h5,h4){
+  color: rgb(75, 75, 75);
+  font-family: sans-serif;
+}
+
+/* ---Payment Success--- */

@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-weight: 600;
+}
+.box-wrapper {
+  position: fixed;
+  inset: 0 0 0 0;
+  display: flex;
+  align-items: center;
+  background-color: rgba(31, 31, 31, 0.701);
+  justify-content: center;
+  transition: all 1.3s linear;
+  backdrop-filter: blur(2px);
+}
+.box-container {
+  height: fit-content;
+  width: min-content;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #a78f8f89;
+  border-radius: 10px;
+}
+
+/* ---DELETE CONTAINER--- */
+
+.delete-container {
+  display: flex;
+  font-size: 1rem;
+  flex-direction: column;
+}
+.delete-container div:first-child {
+  width: 358px;
+  display: flex;
+  align-items: center;
+  color: rgb(1, 183, 255);
+  border-bottom: 1px solid lightgray;
+  gap: 0.6rem;
+  padding: 0.5rem;
+}
+.delete-container div:last-child {
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+}
+.delete-container h5 {
+  color: rgba(74, 73, 73, 0.675);
+  padding: 2rem 2rem 0 2rem;
+}
+#btn-left,
+#btn-right {
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  padding: 0.7rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+#btn-right {
+  background-color: rgb(254, 68, 35);
+  color: rgb(255, 255, 255);
+}
+#btn-left {
+  background-color: rgb(214, 214, 214);
+  color: black;
+}
+/* ---DELETE CONTAINER--- */
+
+/* ---CATEGORIES CONTAINER--- */
+
+.cat-container {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1rem;
+}
+.cat-container h5,.pro-container h5{
+  color: rgba(15, 13, 13, 0.829);
+}
+.cat-container input{
+  padding:.7rem .5rem;
+  border-radius: 5px;
+  /* border:none  ; */
+  border: 1px solid rgb(125, 125, 125);
+  outline: none
+  
+}
+.cat-container div {
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+  /* padding: 1rem 2rem; */
+}
+select{
+  padding: .7rem;
+  border-radius: 5px;
+}
+/* ---CATEGORIES CONTAINER--- */
+
+/* ---PRODUCT CONTAINER--- */
+
+.pro-container{
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  width: 40rem;
+  /* height: 95vh; */
+  /* overflow-y: scroll; */
+  gap: 1rem;
+  margin: 0 auto;
+}
+.pro-container select,
+.pro-container input,
+.pro-container textarea,
+.pro-container button
+{
+  padding: .7rem;
+  width: 100%;
+  border: 1px solid rgb(152, 152, 152);
+  border-radius: 5px;
+  font-size: .80rem;
+}
+.pro-container button{
+  background-color: rgb(254, 68, 35);
+  color: white;
+  font-size: 1.1rem;
+}
+#btn-container{
+  display: flex;
+  gap: 1rem;
+}
+button{
+  cursor: pointer;
+}
+.pro-container textarea{
+  resize: none;
+}
+/* ---PRODUCT CONTAINER--- */

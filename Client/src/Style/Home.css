@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.allProduct {
+  padding: 2rem 6rem;
+  gap: 1em;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom:1px solid  rgb(235, 233, 233) ;
+}
+@media screen and (max-width: 1150px) {
+  .allProduct {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 2rem ;
+  }
+}
+@media screen and (max-width: 720px) {
+  .allProduct {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1rem;
+    gap: .7rem;
+
+  }
+}
+@media screen and (max-width: 300px) {
+  .allProduct {
+    grid-template-columns: repeat(2, 1fr);
+    padding: .5rem;
+    gap: .5rem;
+  }
+}

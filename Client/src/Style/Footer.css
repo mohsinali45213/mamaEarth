@@ -1,0 +1,257 @@
+* {
+  --border: 0.5px solid rgb(238, 237, 237);
+  --fontColor1: rgb(69, 69, 69);
+  --fontColor2: rgb(131, 131, 131);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.footer-container {
+  /* border: var(--border); */
+  margin: 2rem 6rem;
+  display: flex;
+  flex-direction: column;
+  font-family: "Open Sans", sans-serif;
+}
+.footer-container > div {
+  border-top: var(--border);
+  border-left: var(--border);
+  border-right: var(--border);
+  width: 100%;
+}
+.footer-container h3 {
+  font-size: 0.9rem;
+  color: var(--fontColor1);
+}
+.footer-container h5 {
+  font-size: 0.8rem;
+  color: rgb(131, 131, 131);
+}
+.delivery {
+  display: flex;
+}
+.sc-container {
+  display: flex;
+}
+.shipping {
+  border-right: var(--border);
+}
+.shipping,
+.cod {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 2rem 5rem;
+}
+.shipping img,
+.cod img {
+  width: 50px;
+  display: revert;
+  height: 40px;
+}
+.query-container {
+  text-align: center;
+  flex-direction: column;
+  flex-grow: 1;
+
+  padding: 2em 0 0 5rem;
+}
+.query-container button {
+  /* width: 100px; */
+  margin-top: 15px;
+  padding: 0.8rem 2.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  border: 1px solid rgb(0, 183, 255);
+  color: rgb(69, 202, 255);
+  background-color: transparent;
+}
+.query-container button:hover {
+  background-color: rgb(0, 183, 255);
+  color: white;
+}
+.query-container h3 {
+  font-size: 1.2rem;
+}
+.payment {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem 4rem;
+  gap: 0.5rem;
+}
+.payment img {
+  width: 60%;
+}
+.security {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 0.6rem;
+}
+.security h3 {
+  color: rgb(101, 160, 6);
+  font-weight: 100;
+}
+.security img {
+  width: 20px;
+}
+.all-links {
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-around;
+}
+.all-links ul h3 {
+  font-size: 1.1rem;
+}
+.all-links ul li,
+#li {
+  list-style: none;
+  text-decoration: none;
+  cursor: pointer;
+  color: rgb(131, 131, 131);
+  font-size: 0.9rem;
+  margin-top: 1.8em;
+  font-weight: 300;
+}
+.all-links img {
+  width: 10rem;
+  height: 15rem;
+}
+.social-media-container {
+  padding: 2em;
+}
+.social-media {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 1.5rem;
+  color: var(--fontColor2);
+}
+.app-link {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.last-footer {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: var(--border);
+}
+@media screen and (max-width: 1150px) {
+  .footer-container {
+    margin: 2rem 2rem;
+  }
+  .footer-container h3 {
+    font-size: 0.8rem;
+    color: var(--fontColor1);
+  }
+  .footer-container h5 {
+    font-size: 0.7rem;
+    color: rgb(131, 131, 131);
+  }
+  .shipping img,
+  .cod img {
+    width: 40px;
+    display: revert;
+    height: 30px;
+  }
+  .all-links ul h3 {
+    font-size: 1rem;
+  }
+  .all-links ul li,
+  #li {
+    list-style: none;
+    text-decoration: none;
+    cursor: pointer;
+    color: rgb(131, 131, 131);
+    font-size: 0.8rem;
+    margin-top: 1.8em;
+    font-weight: 300;
+  }
+  .query-container{
+    padding:2rem 1rem;
+  }
+}
+
+@media screen and (max-width:900px) {
+  .delivery{
+    flex-direction: column;
+  }
+  .shipping,.cod{
+    width: 100%;
+    padding: 2rem 1rem;
+  }
+  .query-container{
+    border-top: var(--border);
+    padding-bottom:1.5rem ;
+  }
+  .payment{
+    padding: 1rem 2rem;
+  }
+  .payment img{
+    width: 70%;
+  }
+  .security img{
+    width: 12px;
+  }
+  .all-links img{
+    display: none;
+  }
+}
+@media screen and (max-width:450px) {
+  .shipping img,.cod img{
+    width: 30px;
+    height: 25px;
+  }
+  .delivery h3{
+    font-size: .7rem;
+  }
+  .delivery h5{
+    font-size: .6rem;
+  }
+  .query-container button{
+    padding: .8rem 2rem;
+    font-size: .7rem;
+  }
+  .payment img{
+    width: 100%;
+    height: 30px;
+  }
+  .security img{
+    width: 10px;
+    height: 15px;
+  }
+  .payment{
+    padding: .5rem ;
+  }
+  .payment h3{
+    font-size: .6rem;
+
+  }
+  .all-links{
+    flex-direction: column;
+  }
+  .all-links ul h3{
+    font-size: .8rem;
+    margin-left: .5rem;
+  }
+  .all-links ul li{
+    margin: 1em 0 ;
+    margin-left: .5rem;
+  }
+  .social-media-container{
+    padding: 1em;
+  }
+  .social-media{
+    font-size: 1.2rem;
+    gap: .7rem;
+  }
+  .app-link img{
+    width: 100px;
+  }
+}
