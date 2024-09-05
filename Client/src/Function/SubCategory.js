@@ -1,8 +1,9 @@
 import axios from "axios";
+const API_URL = `${import.meta.env.VITE_API_URL}`;
 
 const createSubCategory = async (name, parent) => {
   try {
-    const createSub = await axios.post(`https://mamaearth-xlme.onrender.com/api/v1/sub`, {name, parent});
+    const createSub = await axios.post(`${API_URL}/sub`, {name, parent});
     // console.log(createSub.data);
     return createSub.data;  
   } catch (error) {
@@ -12,7 +13,7 @@ const createSubCategory = async (name, parent) => {
 
 const allSubCategory = async () => {
   try {
-    const allSub = await axios.get(`https://mamaearth-xlme.onrender.com/api/v1/subs`);
+    const allSub = await axios.get(`${API_URL}/subs`);
     // console.log(allSub.data);
     return allSub.data;
   } catch (error) {
@@ -22,7 +23,7 @@ const allSubCategory = async () => {
 
 const singleSubCategory = async (slug) => {
   try {
-    const single = await axios.get(`https://mamaearth-xlme.onrender.com/api/v1/sub/${slug}`);
+    const single = await axios.get(`${API_URL}/sub/${slug}`);
     // console.log(single.data);
     return single.data;
   } catch (error) {
@@ -35,7 +36,7 @@ const updateSubCategory = async (slug,name,parent) => {
   console.log(name);
   console.log(parent);
   try {
-    const updateSub = await axios.put(`https://mamaearth-xlme.onrender.com/api/v1/sub/${slug}`,{name,parent});
+    const updateSub = await axios.put(`${API_URL}/sub/${slug}`,{name,parent});
     // console.log(updateSub.data);
     return updateSub.data;
   } catch (error) {
@@ -45,7 +46,7 @@ const updateSubCategory = async (slug,name,parent) => {
 
 const removeSubCategory = async (slug) => {
   try {
-    const remove = await axios.delete(`https://mamaearth-xlme.onrender.com/api/v1/sub/${slug}`);
+    const remove = await axios.delete(`${API_URL}/sub/${slug}`);
     // console.log(remove.data);
     return remove.data;
   } catch (error) {

@@ -5,15 +5,21 @@ import "../Style/SinglePro.css";
 import Loading from "./Loading";
 import { useDispatch } from "react-redux";
 import { addToCart, orderInfo } from "../redux/CartSlicer";
+import { useNavigate } from "react-router-dom";
 const SingleProduct = () => {
   const { product } = useParams();
-  const [pro, setPro] = useState();
+  const [pro, setPro] = useState("");
   const location = useLocation();
   const [count,setCount] = useState(1)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   useEffect(() => {
     const getData = async () => {
       const result = await singleProduct(product);
+      if (!result) {
+        navigate("/404");
+        return ;
+      }
       setPro(result);
     };
     getData();
@@ -31,6 +37,7 @@ const SingleProduct = () => {
       setCount(count-1)
     }
   }
+  
 
   const handleOrder = ()=>{
      if (pro) {
@@ -46,6 +53,11 @@ const SingleProduct = () => {
       }))
      }
   }
+
+  // if (pro === undefined) {
+  //   return <Navigate to="/404" />;
+  // }
+
   return (
       pro?
       <div key={pro._id} className="single-main">

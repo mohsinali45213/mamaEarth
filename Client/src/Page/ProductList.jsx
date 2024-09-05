@@ -4,12 +4,14 @@ import { subCatProduct } from "../Function/Product";
 import { useLocation, useParams } from "react-router-dom";
 import Cart from "../Components/Cart";
 import Loading from "./Loading";
+import { Navigate } from "react-router-dom";
 const ProductList = () => {
-  const [cPro, setCPro] = useState();
-  const [sCPro, setSCPro] = useState();
-  const [search,setSearch] = useState("")
+  const [cPro, setCPro] = useState(null);
+  const [sCPro, setSCPro] = useState(null);
+  const [search, setSearch] = useState("");
   const { categoryId } = useParams();
   const location = useLocation();
+
   const getProduct = async () => {
     const result = await catProduct(categoryId);
     setCPro(result);
@@ -19,6 +21,15 @@ const ProductList = () => {
     setSCPro(result);
   };
 
+  useEffect(() => {
+    getProduct();
+    getSubProduct();
+  }, [location.pathname]);
+
+  if (cPro === undefined && sCPro === undefined) {
+    return <Navigate to="/404" />;
+  }
+
   // const handleSearch = (event) => {
   //   setSearch(event.target.value);
   // };
@@ -26,13 +37,6 @@ const ProductList = () => {
   // const filteredData = user?.filter((item) => {
   //   return item.username.toLowerCase().includes(searchTerm.toLowerCase());
   // });
-
-
-
-  useEffect(() => {
-    getProduct();
-    getSubProduct();
-  }, [location.pathname]);
 
   // console.log("Sub", sCPro);
   return (

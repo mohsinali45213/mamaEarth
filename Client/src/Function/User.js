@@ -1,5 +1,8 @@
 import axios from "axios";
-const API_URL = `${import.meta.env.VITE_API_URL}/api/v1/users`;
+const API_URL = `${import.meta.env.VITE_API_URL}/users`;
+
+console.log(API_URL);
+
 
 const register = async (registerDetail) => {
   try {
@@ -37,7 +40,7 @@ const uploadImage = async (userId,userImage) => {
 
 const getUsers = async () => {
   try {
-    const users = await axios.get(`https://mamaearth-xlme.onrender.com/api/v1/users`);
+    const users = await axios.get(`${API_URL}`);
     console.log("Get successful...");
     return users.data
   } catch (error) {
@@ -47,7 +50,7 @@ const getUsers = async () => {
 
 const singleUser =async(id)=>{
   try {
-    const user = await axios.get(`https://mamaearth-xlme.onrender.com/api/v1/users/${id}`)
+    const user = await axios.get(`${API_URL}/${id}`)
     return user.data
   } catch (error) {
     console.log("user not fetch");
@@ -56,7 +59,7 @@ const singleUser =async(id)=>{
 
 const userUpdate = async(id,userData)=>{
   try {
-    const user =await axios.post(`https://mamaearth-xlme.onrender.com/api/v1/users/${id}`,userData)
+    const user =await axios.post(`${API_URL}/${id}`,userData)
     return user.data
   } catch (error) {
     console.log("user not update",error);
@@ -65,7 +68,7 @@ const userUpdate = async(id,userData)=>{
 
 const logout =async(id)=>{
   try {
-    const user=await axios.get(`https://mamaearth-xlme.onrender.com/api/v1/users/logout/${id}`)
+    const user=await axios.get(`${API_URL}/logout/${id}`)
     if (user) {
       console.log("Logout.....");
       localStorage.removeItem("user")

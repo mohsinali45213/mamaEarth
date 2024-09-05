@@ -15,8 +15,6 @@ import Order from "./Admin/Page/Order";
 import Customer from "./Admin/Page/Customer";
 import Header from "./Components/Header/Header";
 import Home from "./Page/Home";
-import { allCategory } from "./Function/Category";
-import { allSubCategory } from "./Function/SubCategory";
 import Login from "./Page/Login";
 import Register from "./Page/Register";
 import Contact from "./Page/Contact";
@@ -36,21 +34,6 @@ import { singleUser } from "./Function/User";
 import Search from "./Page/Search";
 import YourOrder from "./Page/YourOrder";
 const App = () => {
-  const [catName, setCatName] = useState();
-  const [subCatName, setSubCatName] = useState();
-
-  useEffect(() => {
-    getCategory();
-  },[]);
-
-  const getCategory = async () => {
-    const result1 = await allCategory();
-    const result2 = await allSubCategory();
-    setCatName(result1);
-    setSubCatName(result2);
-    // console.log("Result",result);
-  };
-
   return (
     <div>
       <BrowserRouter>
@@ -84,20 +67,10 @@ const App = () => {
             />
             <Route path="/about-us" element={<AboutUs />} />
 
-            {catName?.map((category) => (
-              <Route
-                key={category.slug}
-                path={`/product/:category/:categoryId`}
-                element={<ProductList />}
-              />
-            ))}
-            {subCatName?.map((subCategory) => (
-              <Route
-                key={subCategory.slug}
-                path={`/product/:category/:categoryId`}
-                element={<ProductList />}
-              />
-            ))}
+            <Route
+              path={`/product/:category/:categoryId`}
+              element={<ProductList />}
+            />
           </Route>
 
           {/* ---ADMIN ROUTES--- */}
@@ -126,9 +99,10 @@ const App = () => {
           </Route>
           <Route path="/search" element={<Search />} />
 
-          <Route path="*" element={<PageNotFund />} />
           <Route path="/success" element={<Success />} />
           <Route path="/failed" element={<Failed />} />
+          <Route path="*" element={<PageNotFund />} />
+          <Route path="/404" element={<PageNotFund />} />
           {/* ---ADMIN ROUTES--- */}
         </Routes>
       </BrowserRouter>
@@ -155,7 +129,7 @@ const ProtectedPage = ({ Cmp }) => {
 const ProtectedAdmin = ({ Cmp }) => {
   const navigator = useNavigate();
   const [user, setUser] = useState();
-  const location = useLocation()
+  const location = useLocation();
 
   const getUserData = async () => {
     const id = JSON.parse(localStorage.getItem("user"));

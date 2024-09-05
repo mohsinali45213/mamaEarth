@@ -1,8 +1,9 @@
 import axios from "axios";
+const API_URL = `${import.meta.env.VITE_API_URL}`;
 const createProduct = async (productDetail) => {
   try {
     const product = await axios.post(
-      `https://mamaearth-xlme.onrender.com/api/v1/product`,
+      `${API_URL}/product`,
       productDetail,
       {
         headers: {
@@ -20,7 +21,7 @@ const createProduct = async (productDetail) => {
 const updateProduct = async (slug, productDetail) => {
   try {
     const product = await axios.put(
-      `https://mamaearth-xlme.onrender.com/api/v1/product/${slug}`,
+      `${API_URL}/product/${slug}`,
       productDetail,
       {
         headers: {
@@ -38,7 +39,7 @@ const updateProduct = async (slug, productDetail) => {
 const removeProduct = async (slug) => {
   try {
     const remove = await axios.delete(
-      `https://mamaearth-xlme.onrender.com/api/v1/product/${slug}`
+      `${API_URL}/product/${slug}`
     );
     return remove.data;
     // console.log(remove.data);
@@ -50,7 +51,7 @@ const removeProduct = async (slug) => {
 const singleProduct = async (slug) => {
   try {
     const singleProduct = await axios.get(
-      `https://mamaearth-xlme.onrender.com/api/v1/product/${slug}`
+      `${API_URL}/product/${slug}`
     );
     return singleProduct.data;
     // console.log(singleProduct.data);
@@ -61,7 +62,7 @@ const singleProduct = async (slug) => {
 
 const allProduct = async (slug) => {
   try {
-    const allProduct = await axios.get(`https://mamaearth-xlme.onrender.com/api/v1/products`);
+    const allProduct = await axios.get(`${API_URL}/products`);
     // console.log(allProduct.data);
     return allProduct.data;
   } catch (error) {
@@ -71,7 +72,7 @@ const allProduct = async (slug) => {
 
 const catProduct = async (id) => {
   try {
-    const catPro = await axios.get(`https://mamaearth-xlme.onrender.com/api/v1/catPro/${id}`);
+    const catPro = await axios.get(`${API_URL}/catPro/${id}`);
     return catPro.data;
   } catch (error) {
     console.log("Product Is not Get");
@@ -81,7 +82,7 @@ const catProduct = async (id) => {
 const subCatProduct = async (id) => {
   try {
     const sunCatPro = await axios.get(
-      `https://mamaearth-xlme.onrender.com/api/v1/subCatPro/${id}`
+      `${API_URL}/subCatPro/${id}`
     );
     return sunCatPro.data;
     // console.log(singleProduct.data);
@@ -93,7 +94,7 @@ const subCatProduct = async (id) => {
 const searchProduct = async (query) => {
   try {
     const result = await axios.post(
-      `https://mamaearth-xlme.onrender.com/api/v1/search/filter`,
+      `${API_URL}/search/filter`,
       { query }
     );
     return result.data;
@@ -103,29 +104,29 @@ const searchProduct = async (query) => {
 };
 
 const payment = async (cart) => {
-  const pay = await axios.post(`https://mamaearth-xlme.onrender.com/api/v1/payment-intent`, {
+  const pay = await axios.post(`${API_URL}/payment-intent`, {
     cart,
   });
   return pay.data;
 };
 
 const orderInfo = async (id, addInfo) => {
-  const add = await axios.post(`https://mamaearth-xlme.onrender.com/api/v1/add-info/${id}`, {
+  const add = await axios.post(`${API_URL}/add-info/${id}`, {
     addInfo,
   });
 };
 const orderProduct = async (id, orderInfo) => {
-  const add = await axios.post(`https://mamaearth-xlme.onrender.com/api/v1/order-info`, {
+  const add = await axios.post(`${API_URL}/order-info`, {
     id,
     orderInfo,
   });
 };
 const allOrders = async () => {
-  const add = await axios.get(`https://mamaearth-xlme.onrender.com/api/v1/allorders`);
+  const add = await axios.get(`${API_URL}/allorders`);
   return add.data
 };
 const userOrders = async (userId) => {
-  const add = await axios.get(`https://mamaearth-xlme.onrender.com/api/v1/userorders/${userId}`);
+  const add = await axios.get(`${API_URL}/userorders/${userId}`);
   return add.data
 };
 export {
