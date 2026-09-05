@@ -1,8 +1,6 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/mohsinali45213/mamaEarth/main/Client/public/mamaearth_logo.png" alt="MamaEarth Logo" width="240" />
 
-  # mamaEarth 🌿
-
   > A full-stack E-commerce web application inspired by MamaEarth, providing natural beauty & personal care products with seamless shopping, cart management, Stripe payments, dynamic filters, and admin management.
 
   [![Live Demo](https://img.shields.io/badge/Live_Demo-mama--earth--1jml.vercel.app-brightgreen?style=for-the-badge&logo=vercel)](https://mama-earth-1jml.vercel.app)
