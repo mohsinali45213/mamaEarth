@@ -19,9 +19,9 @@
 
 🚀 **Live Demo:** [https://mama-earth-1jml.vercel.app](https://mama-earth-1jml.vercel.app)
 
-| Homepage & Product Catalog | Application Preview |
+| Homepage & Product Catalog | Shopping Cart & Checkout |
 | :---: | :---: |
-| ![Homepage Preview](https://raw.githubusercontent.com/mohsinali45213/mamaEarth/main/Client/public/preview-home.png) | [![Live Demo Preview](https://img.shields.io/badge/Visit-Live_Demo-brightgreen?style=for-the-badge&logo=vercel)](https://mama-earth-1jml.vercel.app) |
+| ![Homepage Preview](https://raw.githubusercontent.com/mohsinali45213/mamaEarth/main/Client/public/preview-home.png) | ![Cart Preview](https://raw.githubusercontent.com/mohsinali45213/mamaEarth/main/Client/public/preview-cart.png) |
 
 ---
 
