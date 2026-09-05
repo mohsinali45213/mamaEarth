@@ -27,14 +27,14 @@
 
 ## ✨ Features
 
-- 🔐 **User Authentication**: Secure registration, login, JWT token verification, and persistent user sessions.
-- 🛍️ **Product Catalog**: Explore personal care products organized by categories and sub-categories.
-- 🔍 **Search & Advanced Filtering**: Filter products dynamically by categories, sub-categories, price range, and search terms.
-- 🛒 **Cart & Redux State**: Real-time shopping cart management powered by Redux Toolkit.
-- 💳 **Stripe Payment Gateway**: Secure online card payment processing with Stripe Checkout.
-- 📦 **Order Management**: Save delivery info, view order summary, track user orders, and manage admin order lists.
-- 🖼️ **Cloudinary Integration**: Cloud image storage and management for user profile pictures and product media.
-- 📱 **Responsive UI**: Sleek, mobile-friendly design styled with Tailwind CSS and Flaticon icons.
+- ![JWT Auth](https://img.shields.io/badge/-Auth-000000?style=flat-square&logo=jsonwebtokens&logoColor=white) **User Authentication**: Secure registration, login, JWT token verification, and persistent user sessions.
+- ![React Catalog](https://img.shields.io/badge/-Catalog-20232A?style=flat-square&logo=react&logoColor=61DAFB) **Product Catalog**: Explore personal care products organized by categories and sub-categories.
+- ![Search](https://img.shields.io/badge/-Search-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white) **Search & Advanced Filtering**: Filter products dynamically by categories, sub-categories, price range, and search terms.
+- ![Redux Cart](https://img.shields.io/badge/-Redux_State-764ABC?style=flat-square&logo=redux&logoColor=white) **Cart & Redux State**: Real-time shopping cart management powered by Redux Toolkit.
+- ![Stripe Payment](https://img.shields.io/badge/-Stripe-635BFF?style=flat-square&logo=stripe&logoColor=white) **Stripe Payment Gateway**: Secure online card payment processing with Stripe Checkout.
+- ![MongoDB Orders](https://img.shields.io/badge/-Orders-47A248?style=flat-square&logo=mongodb&logoColor=white) **Order Management**: Save delivery info, view order summary, track user orders, and manage admin order lists.
+- ![Cloudinary Storage](https://img.shields.io/badge/-Cloudinary-3448C5?style=flat-square&logo=cloudinary&logoColor=white) **Cloudinary Integration**: Cloud image storage and management for user profile pictures and product media.
+- ![Tailwind UI](https://img.shields.io/badge/-Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white) **Responsive UI**: Sleek, mobile-friendly design styled with Tailwind CSS and Flaticon icons.
 
 ---
 
