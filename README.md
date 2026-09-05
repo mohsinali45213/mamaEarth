@@ -15,16 +15,6 @@
 
 ---
 
-## 🌐 Demo & Screenshots
-
-🚀 **Live Demo:** [https://mama-earth-1jml.vercel.app](https://mama-earth-1jml.vercel.app)
-
-| Homepage & Product Catalog | Shopping Cart & Checkout |
-| :---: | :---: |
-| ![Homepage Preview](https://raw.githubusercontent.com/mohsinali45213/mamaEarth/main/Client/public/preview-home.png) | ![Cart Preview](https://raw.githubusercontent.com/mohsinali45213/mamaEarth/main/Client/public/preview-cart.png) |
-
----
-
 ## ✨ Features
 
 - 🔐 **User Authentication**: Secure registration, login, JWT token verification, and persistent user sessions.
