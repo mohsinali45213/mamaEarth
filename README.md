@@ -17,7 +17,7 @@
 
 | Homepage & Product Catalog | Shopping Cart & Checkout |
 | :---: | :---: |
-| ![Homepage Preview](https://raw.githubusercontent.com/mohsinali45213/mamaEarth/main/Client/public/preview-home.png) | ![Cart Preview](https://raw.githubusercontent.com/mohsinali45213/mamaEarth/main/Client/public/preview-cart.png) |
+| [![Homepage Preview](https://img.shields.io/badge/Preview-Homepage-brightgreen?style=for-the-badge)](https://mama-earth-1jml.vercel.app) <br> *(Add `Client/public/preview-home.png` to display screenshot)* | [![Cart Preview](https://img.shields.io/badge/Preview-Cart-blue?style=for-the-badge)](https://mama-earth-1jml.vercel.app) <br> *(Add `Client/public/preview-cart.png` to display screenshot)* |
 
 ---
 
