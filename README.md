@@ -1,13 +1,17 @@
-# mamaEarth 🌿
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mohsinali45213/mamaEarth/main/Client/public/mamaearth_logo.png" alt="MamaEarth Logo" width="240" />
 
-> A full-stack E-commerce web application inspired by MamaEarth, providing natural beauty & personal care products with seamless shopping, cart management, Stripe payments, dynamic filters, and admin management.
+  # mamaEarth 🌿
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-mama--earth--1jml.vercel.app-brightgreen?style=for-the-badge&logo=vercel)](https://mama-earth-1jml.vercel.app)
-[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg?style=for-the-badge)](https://opensource.org/licenses/ISC)
-[![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react)](https://react.dev)
-[![Node.js](https://img.shields.io/badge/Node.js-Express-339933?style=for-the-badge&logo=nodedotjs)](https://nodejs.org)
-[![MongoDB](https://img.shields.io/badge/MongoDB-Database-47A248?style=for-the-badge&logo=mongodb)](https://www.mongodb.com)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com)
+  > A full-stack E-commerce web application inspired by MamaEarth, providing natural beauty & personal care products with seamless shopping, cart management, Stripe payments, dynamic filters, and admin management.
+
+  [![Live Demo](https://img.shields.io/badge/Live_Demo-mama--earth--1jml.vercel.app-brightgreen?style=for-the-badge&logo=vercel)](https://mama-earth-1jml.vercel.app)
+  [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg?style=for-the-badge)](https://opensource.org/licenses/ISC)
+  [![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react)](https://react.dev)
+  [![Node.js](https://img.shields.io/badge/Node.js-Express-339933?style=for-the-badge&logo=nodedotjs)](https://nodejs.org)
+  [![MongoDB](https://img.shields.io/badge/MongoDB-Database-47A248?style=for-the-badge&logo=mongodb)](https://www.mongodb.com)
+  [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com)
+</div>
 
 ---
 
@@ -15,9 +19,9 @@
 
 🚀 **Live Demo:** [https://mama-earth-1jml.vercel.app](https://mama-earth-1jml.vercel.app)
 
-| Homepage & Product Catalog | Shopping Cart & Checkout |
+| Homepage & Product Catalog | Application Preview |
 | :---: | :---: |
-| [![Homepage Preview](https://img.shields.io/badge/Preview-Homepage-brightgreen?style=for-the-badge)](https://mama-earth-1jml.vercel.app) <br> *(Add `Client/public/preview-home.png` to display screenshot)* | [![Cart Preview](https://img.shields.io/badge/Preview-Cart-blue?style=for-the-badge)](https://mama-earth-1jml.vercel.app) <br> *(Add `Client/public/preview-cart.png` to display screenshot)* |
+| ![Homepage Preview](https://raw.githubusercontent.com/mohsinali45213/mamaEarth/main/Client/public/preview-home.png) | [![Live Demo Preview](https://img.shields.io/badge/Visit-Live_Demo-brightgreen?style=for-the-badge&logo=vercel)](https://mama-earth-1jml.vercel.app) |
 
 ---
 
